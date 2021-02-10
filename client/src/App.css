@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;800;900&display=swap");
+
+.Center {
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,button {
+  font-family: "Montserrat", sans-serif;
+}
+
+.Link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: white;
+}

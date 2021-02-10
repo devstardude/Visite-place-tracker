@@ -1,0 +1,75 @@
+.GlobalUsersDiv {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../../../assets//images/mountains.jpg");
+  background-color: #b2afab;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -2;
+}
+.GlobalUsersContent {
+  padding-top: 15vh;
+}
+
+.UsersScrollableDiv {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.UsersScrollableDiv::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-button {
+  width: 3px;
+  height: 3px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.UsersScrollableDiv::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (max-width: 670px) {
+  .GlobalUsersDiv {
+    min-height: 100%;
+    max-height: 100%;
+  }
+  .UsersScrollableDiv{
+    margin-left: 5px;
+  }
+}
+@media (max-width: 500px) {
+  .UsersScrollableDiv{
+    margin-left: 5px;
+    display: table-caption;
+
+  }
+}

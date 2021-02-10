@@ -1,0 +1,94 @@
+.LandingBanner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../../../../assets/images/landing.jpg");
+  background-color: #b2afab;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .LandingTitleBox{
+} */
+.LandingTitle {
+  color: white;
+  font-weight: 700;
+  font-size: calc(4.6vw + 7vh + 6vmin);
+  z-index: 2;
+}
+
+.HeaderSubtitle {
+  color: white;
+  font-weight: 700;
+  z-index: 2;
+  font-size: calc(1.3vw + 1.9vh + 2.5vmin);
+}
+
+.ExploreIcon {
+  color: white;
+  font-size: calc(1.1vw + 1.7vh + 2.5vmin) !important;
+}
+
+.Fog {
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  bottom: 0;
+  right: 20%;
+  width: calc(40vw + 10vh + 12vmin);
+  opacity: 0.85;
+}
+
+.Fog.Right {
+  left: 20%;
+  right: 0;
+}
+
+.moving-clouds {
+  background-image: url("../../../../assets/images/clouds.png");
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 250.625em;
+  height: 39.75em;
+  -webkit-animation: cloudLoop 80s linear infinite;
+  animation: cloudLoop 80s linear infinite;
+}
+
+@keyframes cloudLoop {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .Fog {
+    top: 27%;
+    left: 0;
+    bottom: 0;
+    right: 20%;
+    width: calc(50vw + 10vh + 12vmin);
+  }
+
+  .Fog.Right {
+    left: 20%;
+    right: 0;
+  }
+  .LandingBanner {
+    min-height: 80vh;
+    max-height: 999px;
+  }
+}

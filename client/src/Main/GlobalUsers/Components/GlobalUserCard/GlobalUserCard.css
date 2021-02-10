@@ -1,0 +1,69 @@
+.GlobalUserCard {
+  min-width: 25rem;
+  max-width: 25rem;
+  min-height: 15rem;
+  max-height: 15rem;
+  /* background-color: blanchedalmond; */
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: -1;
+}
+.GlobalAvatar {
+  max-width: 7rem;
+  min-width: 7rem;
+  max-height: 7rem;
+  min-height: 7rem;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+.GlobalDetailsDiv {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  max-height: 7rem;
+  min-height: 7rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgb(255, 255, 255);
+}
+
+@media (max-width: 670px) {
+  .GlobalUsersDiv {
+    min-height: 100%;
+    max-height: 100%;
+  }
+
+  .GlobalUserCard {
+    min-width: 20rem;
+    max-width: 20rem;
+    min-height: 13rem;
+    max-height: 13rem;
+  }
+  .GlobalAvatar {
+  max-width: 5.8rem;
+  min-width: 5.8rem;
+  max-height: 5.8rem;
+  min-height: 5.8rem;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+.GlobalDetailsDiv{
+    max-height: 5.8rem;
+  min-height: 5.8rem;
+}
+.GlobalName{
+  font-size: 21px;
+}
+.GlobalDesc{
+  font-size: 11px;
+}
+
+}
