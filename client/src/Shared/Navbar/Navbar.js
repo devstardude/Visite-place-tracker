@@ -97,6 +97,9 @@ const Navbar = (props) => {
                 <Link to="/global/users" className="Link">
                   <Button style={{ color: "white",fontFamily: "Montserrat" }}>Users</Button>
                 </Link>
+                <Link to="/global/users/abc" className="Link">
+                  <Button style={{ color: "white",fontFamily: "Montserrat" }}>Profile</Button>
+                </Link>
 
                 {/* {user && (
                   <Link

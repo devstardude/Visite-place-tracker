@@ -1,0 +1,43 @@
+.SingleUserCover {
+  background-color: #b2afab;
+  background-position: center center;
+  background-size: cover;
+  max-height: 999px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+.section {
+  padding: 70px 0;
+  position: absolute;
+  background-color: #ffffff;
+}
+.profile-content {
+  position: relative;
+}
+.owner {
+    z-index: 2;
+  text-align: center;
+}
+.owner .avatar {
+  padding: 15px;
+  max-width: 180px;
+  margin: -85px auto 0;
+  display: inline-block;
+}
+.img-circle {
+  background-color: #00000041;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 50% !important;
+  max-width: 100%;
+}
+.img-no-padding {
+  padding: 0px;
+}

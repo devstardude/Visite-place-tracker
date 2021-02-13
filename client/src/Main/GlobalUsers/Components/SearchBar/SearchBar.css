@@ -1,0 +1,8 @@
+.SearchBar{
+    border: 0;
+    outline: none;
+    width: 50vw;
+    padding: 12px;
+    font-size: 18px!important;
+    font-weight: 500;
+}

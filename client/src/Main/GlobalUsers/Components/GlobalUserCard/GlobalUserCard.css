@@ -3,7 +3,6 @@
   max-width: 25rem;
   min-height: 15.5rem;
   max-height: 15.5rem;
-  /* background-color: blanchedalmond; */
   -webkit-border-radius: 13px;
   -moz-border-radius: 13px;
   border-radius: 13px;
@@ -26,7 +25,7 @@
 }
 
 .RoundAndDark {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #00000033;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
@@ -85,5 +84,8 @@
   max-height: 25px;
   min-width: 25px;
   max-width: 25px;
+}
+.GlobalBadgeText{
+  font-size: small;
 }
 }

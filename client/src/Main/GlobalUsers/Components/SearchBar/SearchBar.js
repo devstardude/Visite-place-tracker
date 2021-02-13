@@ -1,3 +1,18 @@
+// import React from 'react';
+
+// import'./SearchBar.css';
+
+// const SearchBar = (props)=>{
+//   return (
+//     <div className="container Center ">
+//         <input className="SearchBar rounded-pill "></input>
+//     </div>
+//   );
+// };
+
+// export default SearchBar ;
+
+
 import React from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 //import'./SearchBar.css';
@@ -44,14 +59,12 @@ const SearchBar = (props) => {
   return (
     <div>
       <header>
-        <div className="mx-auto" style={{ width: 400, zIndex:2 }}>
+        <div className="mx-auto" style={{ width: 400, zIndex: 2 }}>
           <ReactSearchAutocomplete
-          style={{zIndex:2}}
-            items={items}
+            style={{ zIndex: 2 }}
             onSearch={handleOnSearch}
             onSelect={handleOnSelect}
             onFocus={handleOnFocus}
-            autoFocus
           />
         </div>
       </header>

@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@react-hook/window-size": "^3.0.7",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
@@ -14,6 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-search-autocomplete": "^5.0.2",
+    "react-swipeable-views": "^0.13.9",
     "tomtom-react-searchbox": "^0.2.1",
     "web-vitals": "^0.2.4"
   },

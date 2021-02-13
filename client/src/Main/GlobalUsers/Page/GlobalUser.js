@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../Shared/Navbar/Navbar';
 import GlobalUsersDiv from "../Components/GlobalUsersDiv/GlobalUsersDiv";
 
 //import'./GlobalUser.css';
@@ -7,7 +6,6 @@ import GlobalUsersDiv from "../Components/GlobalUsersDiv/GlobalUsersDiv";
 const GlobalUser = (props)=>{
     return(
     <div>
-        <Navbar/>
         <GlobalUsersDiv/>
     </div>
 );
