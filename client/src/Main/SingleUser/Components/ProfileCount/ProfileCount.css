@@ -1,0 +1,18 @@
+.CountText {
+  font-size: 15px;
+}
+.ProfileInfo {
+  background-color: #b4b4b46b;
+  border-radius: 7px 7px 0 0;
+  width: 50%;
+}
+
+
+@media (max-width: 670px) {
+  .ProfileInfo {
+    width: 100%;
+  }
+  .CountText {
+    font-size: 12px;
+  }
+}

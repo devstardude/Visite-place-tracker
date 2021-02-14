@@ -1,15 +1,15 @@
 import React from "react";
+import ProfileCount from "../Components/ProfileCount/ProfileCount";
 import UserHeader from "../Components/UserHeader/UserHeader";
 import UserTabs from "../Components/UserTabs/UserTabs";
-//import'./SingleUser.css';
+import'./SingleUser.css';
 
 const SingleUser = (props) => {
   return (
-    <div>
+    <div className="SingleUserPage" >
       <UserHeader />
-      <div className="container mt-5">
+      <ProfileCount/>
         <UserTabs />
-      </div>
     </div>
   );
 };

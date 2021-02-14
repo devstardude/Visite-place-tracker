@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -12,6 +12,8 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import ChatIcon from "@material-ui/icons/Chat";
 import { useWindowSize as useWindowSizeD } from "@react-hook/window-size/";
+import PlaceCard from "../PlaceCard/PlaceCard";
+import styles from "./UserTabs.module.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,23 +48,8 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    width: "100%",
-    height: "50vh",
-    fontFamily: "Montserrat",
-  },
-  appBar: {
-      borderRadius:"7px"
-  },
-  indicator: {
-    backgroundColor: "#000000",
-  },
-}));
 
 const UserTabs = () => {
-  const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [widthD] = useWindowSizeD();
@@ -76,15 +63,17 @@ const UserTabs = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar className={classes.appBar} position="static" color="#6c757d">
+    <div className={styles.Root}>
+      <AppBar className={styles.AppBar} position="static" color="#ffffff">
         <Tabs
-          classes={{ indicator: classes.indicator }}
+          elivation={0}
+          className={styles.Tabs}
+          classes={{ indicator: styles.Indicator }}
           value={value}
           onChange={handleChange}
           variant="fullWidth"
           scrollButtons="on"
-          aria-label="scrollable auto tabs example"
+          aria-label="tabs "
           centered
         >
           <Tab
@@ -123,7 +112,7 @@ const UserTabs = () => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
+          <PlaceCard />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Item Two

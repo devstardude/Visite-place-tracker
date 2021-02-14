@@ -1,40 +1,39 @@
-import React from 'react';
-import CoverPic from "../../../../assets/images/cover.jpg"
-import Dp from "../../../../assets/images/dp.jpg"
-import'./UserHeader.css';
+import React from "react";
+import CoverPic from "../../../../assets/images/cover.jpg";
+import Dp from "../../../../assets/images/dp.jpg";
+import "./UserHeader.css";
 
-const UserHeader = (props)=>{
-    return (
-      <React.Fragment>
-        <div
-          className="SingleUserCover"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${CoverPic})`,
-          }}
-        >
-          <div className="filter"></div>
-        </div>
-        <div className="container">
-          <div className="owner ">
-            <div className="avatar ">
-              <img
-                alt="..."
-                className="img-circle img-no-padding img-responsive"
-                src={Dp}
-              />
-            </div>
-            <h2>Name</h2>
-            <p className="w-75 mx-auto">Just a Guy whos a hero for fun</p>
-            <button
-              type="button"
-              class="btn rounded-pill btn-outline-secondary"
-            >
-              Secondary
-            </button>
+const UserHeader = (props) => {
+  return (
+    <React.Fragment>
+      <div
+        className="SingleUserCover"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${CoverPic})`,
+        }}
+      ></div>
+      <div className="container">
+        <div className="Owner ">
+          <div className="Avatar ">
+            <img
+              alt="..."
+              className="Img-circle Img-no-padding img-responsive"
+              src={Dp}
+            />
           </div>
+          <h2>Arun Shekhar</h2>
+          <p className="UserHeaderBio my-3 mx-auto">
+            Just a Guy whos a hero for fun,I never Lose, and the Surface world
+            is guarded by me !Just a Guy whos a hero for fun,I never Lose, and
+            the Surface world is guarded by me{" "}
+          </p>
+          <button type="button" class="btn LikeProfileButton rounded-pill btn-outline-secondary my-2">
+            🖤 Like Profile
+          </button>
         </div>
-      </React.Fragment>
-    );
+      </div>
+    </React.Fragment>
+  );
 };
 
-export default UserHeader ;
+export default UserHeader;
