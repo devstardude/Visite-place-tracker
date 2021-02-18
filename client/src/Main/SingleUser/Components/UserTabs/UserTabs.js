@@ -12,7 +12,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import ChatIcon from "@material-ui/icons/Chat";
 import { useWindowSize as useWindowSizeD } from "@react-hook/window-size/";
-import PlaceCard from "../PlaceCard/PlaceCard";
+import MainUserDiv from "../MainUserDiv/MainUserDiv";
 import styles from "./UserTabs.module.css";
 
 function TabPanel(props) {
@@ -112,16 +112,16 @@ const UserTabs = () => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <PlaceCard />
+          <MainUserDiv />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <MainUserDiv />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          <MainUserDiv divType="postDiv" />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-          Item Four
+          <MainUserDiv divType="messageDiv" />
         </TabPanel>
       </SwipeableViews>
     </div>

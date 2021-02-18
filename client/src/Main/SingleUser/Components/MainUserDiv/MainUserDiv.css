@@ -1,0 +1,48 @@
+.MainUserDiv{
+    height: 80vh;
+    width: 80%;
+    overflow-y: auto;
+}
+
+
+.MainUserDiv::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.MainUserDiv::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.MainUserDiv::-webkit-scrollbar-thumb {
+  background: #d6d6d6;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.MainUserDiv::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.MainUserDiv::-webkit-scrollbar-thumb:active {
+  background: #e0e0e0;
+}
+.MainUserDiv::-webkit-scrollbar-track {
+  background: #525252;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.MainUserDiv::-webkit-scrollbar-track:hover {
+  background: #5c5c5c;
+}
+.MainUserDiv::-webkit-scrollbar-track:active {
+  background: #5c5c5c;
+}
+.MainUserDiv::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+@media(max-width:760px){
+    .MainUserDiv{
+    height: 83vh;
+    width: 95%;
+}
+}

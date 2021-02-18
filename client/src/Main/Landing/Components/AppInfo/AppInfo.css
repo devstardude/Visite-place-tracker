@@ -1,0 +1,31 @@
+.AppInfoFirstHeading h5{
+ line-height: 1.5;
+}
+.AppInfoFirstHeading h2{
+ line-height: 1.5;
+}
+.AppInfoSecondHeading h4{
+ font-size: 23px!important;
+}
+.AppInfoFirstHeading hr{
+    width: 75%;
+}
+.CardDiv{
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.082)!important;
+  backdrop-filter: blur(5px)!important;
+  -webkit-backdrop-filter: blur(4px)!important;
+  border-radius: 10px!important;
+  border: 1px solid rgba(255, 255, 255, 0.18)!important;
+}
+
+.AppInfoSecondtHeading img{
+  border-radius: 10px 10px 0px 0px!important;
+}
+@media(max-width:768px){
+    .AppInfoFirstHeading hr{
+    width: 90%;
+}
+.AppInfoSecondHeading h4{
+ font-size: 20px!important;
+}
+}

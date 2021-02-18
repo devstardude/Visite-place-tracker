@@ -3,7 +3,7 @@ import React from "react";
 import "./GlobalUserCard.css";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
 import EcoIcon from "@material-ui/icons/Eco";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import PublicIcon from "@material-ui/icons/Public";
 import WavesIcon from "@material-ui/icons/Waves";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
@@ -18,7 +18,7 @@ const GlobalUserCard = (props) => {
     props.users.placesCount[3]
   );
   return (
-    <div className="container GlobalUserCard p-3 m-4 mx-auto">
+    <div className="container GlobalUserCard p-3 m-0 m-md-4 mx-auto">
       <div className="row">
         <div className="col-4">
           <div className="d-inline-block">
@@ -67,7 +67,7 @@ const GlobalUserCard = (props) => {
             </TooltipInfo>
             <TooltipInfo info="Others">
               <div className="d-inline mx-1 mx-md-2">
-                <InsertEmoticonIcon style={{ fontSize: "27px" }} />
+                <PublicIcon />
                 <div className="GlobalPlaceCount rounded-circle border border-light mx-1 p-1 ">
                   {props.users.placesCount[3]}
                 </div>

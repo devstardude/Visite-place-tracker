@@ -1,7 +1,7 @@
 .GlobalUsersDiv {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../../../../assets//images/mountains.jpg");
-  background-color: #b2afab;
+   background-color: #202020;
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
@@ -14,25 +14,38 @@
   justify-content: center;
   z-index: -2;
 }
+.NoUsersDiv{
+  width: 30%;
+  color: white;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
 .GlobalUsersContent {
   padding-top: 15vh;
 }
 
 .UsersScrollableDiv {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .UsersScrollableDiv::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
 }
 .UsersScrollableDiv::-webkit-scrollbar-button {
-  width: 3px;
-  height: 3px;
+  width: 0px;
+  height: 0px;
 }
 .UsersScrollableDiv::-webkit-scrollbar-thumb {
-  background: #e1e1e1;
+  background: #d6d6d6;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
@@ -40,36 +53,31 @@
   background: #ffffff;
 }
 .UsersScrollableDiv::-webkit-scrollbar-thumb:active {
-  background: #000000;
+  background: #e0e0e0;
 }
 .UsersScrollableDiv::-webkit-scrollbar-track {
-  background: #666666;
+  background: #525252;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
 .UsersScrollableDiv::-webkit-scrollbar-track:hover {
-  background: #666666;
+  background: #5c5c5c;
 }
 .UsersScrollableDiv::-webkit-scrollbar-track:active {
-  background: #333333;
+  background: #5c5c5c;
 }
 .UsersScrollableDiv::-webkit-scrollbar-corner {
   background: transparent;
 }
 
-@media (max-width: 670px) {
-  .GlobalUsersDiv {
-    min-height: 100%;
-    max-height: 100%;
-  }
-  .UsersScrollableDiv{
-    margin-left: 5px;
-  }
-}
 @media (max-width: 500px) {
-  .UsersScrollableDiv{
-    margin-left: 5px;
-    display: table-caption;
-
+  .GlobalCardScaled{
+    transform: scale(0.9);
   }
+  .GlobalUsersContent {
+  padding-top: 10vh;
+}
+.NoUsersDiv{
+  width: 80%;
+} 
 }

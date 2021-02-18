@@ -1,4 +1,16 @@
-.PlaceCard{
-    height: 20rem;
-    width: 20rem;
+.CardDiv {
+  background: rgba(255, 255, 255, 0.8)!important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.418)!important;
+  backdrop-filter: blur(5px)!important;
+  -webkit-backdrop-filter: blur(4px)!important;
+  border-radius: 10px!important;
+  border: 1px solid rgba(255, 255, 255, 0.18)!important;
+}
+
+.CardImage img{
+  border-radius: 10px 10px 0px 0px!important;
+}
+
+.PlaceCardButtons button{
+  color: black;
 }

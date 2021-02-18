@@ -1,11 +1,12 @@
 import React from "react";
 import ExploreIcon from "@material-ui/icons/Explore";
-import { Zoom,Fade } from "@material-ui/core";
-import Fog from "../../../../assets/images/fog.png"
-import LandingImage from "../../../../assets/images/landing.jpg"
+import { Zoom, Fade } from "@material-ui/core";
+import Fog from "../../../../assets/images/fog.png";
+import LandingImage from "../../../../assets/images/landing.jpg";
 import "./Header.css";
 
 const Header = (props) => {
+
   return (
     <React.Fragment>
       <div
@@ -14,7 +15,6 @@ const Header = (props) => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${LandingImage})`,
         }}
       >
-        {/* <div className="Filter"></div> */}
         <div className="container Center LandingTitleBox">
           <div className="row">
             <div className="col-12">

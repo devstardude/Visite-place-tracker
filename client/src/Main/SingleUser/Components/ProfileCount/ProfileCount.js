@@ -1,7 +1,7 @@
 import React from "react";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
 import EcoIcon from "@material-ui/icons/Eco";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import PublicIcon from "@material-ui/icons/Public";
 import WavesIcon from "@material-ui/icons/Waves";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
@@ -33,7 +33,7 @@ const ProfileCount = (props) => {
         </div>
         <div className="col-3 p-0">
           <div>
-            <InsertEmoticonIcon />
+            <PublicIcon />
           </div>
           <p className="d-inline CountText">Others - 12</p>
         </div>

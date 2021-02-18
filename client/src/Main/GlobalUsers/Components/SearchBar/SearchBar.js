@@ -1,60 +1,26 @@
-import React from "react";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
-//import'./SearchBar.css';
+import React from 'react';
+import SearchIcon from "@material-ui/icons/Search";
+import'./SearchBar.css';
 
-const SearchBar = (props) => {
-  // const items = [
-  //   {
-  //     id: 0,
-  //     name: "Cobol",
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "JavaScript",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Basic",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "PHP",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Java",
-  //   },
-  // ];
-
-  const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    console.log(string, results);
-  };
-
-  const handleOnSelect = (item) => {
-    // the item selected
-    console.log(item);
-  };
-
-  const handleOnFocus = () => {
-    console.log("Focused");
-  };
-
+const SearchBar = (props)=>{
   return (
-    <div>
-      <header>
-        <div className="mx-auto" style={{ width: 400, zIndex: 2 }}>
-          <ReactSearchAutocomplete
-            style={{ zIndex: 2 }}
-            onSearch={handleOnSearch}
-            onSelect={handleOnSelect}
-            onFocus={handleOnFocus}
+    <div className="container SearchBar">
+      <div className="d-flex rounded-pill bg-light p-2">
+        <div className="my-auto px-2">
+          <SearchIcon className="SearchIcon" />
+        </div>
+        <div className="w-100 px-2">
+          <input
+            type="text"
+            spellcheck="false"
+            className="SearchBarInput w-100"
+            value={props.TextValue}
+            onChange={props.change}
           />
         </div>
-      </header>
+      </div>
     </div>
   );
 };
 
-export default SearchBar;
+export default SearchBar ;

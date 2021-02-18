@@ -1,0 +1,19 @@
+.MapBoxModel {
+  border-radius: 7px !important;
+}
+.MapBoxContainer {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.973);
+  box-shadow: 32px rgba(0, 0, 0, 0.418);
+  border-radius: 10px ;
+}
+.MapDiv {
+  height: 15rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .MapBoxContainer {
+    width: 90%;
+  }
+}

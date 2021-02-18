@@ -6,10 +6,10 @@ import'./SingleUser.css';
 
 const SingleUser = (props) => {
   return (
-    <div className="SingleUserPage" >
+    <div className="SingleUserPage">
       <UserHeader />
-      <ProfileCount/>
-        <UserTabs />
+     <ProfileCount />
+      <UserTabs />
     </div>
   );
 };

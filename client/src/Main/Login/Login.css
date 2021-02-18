@@ -1,0 +1,18 @@
+.LoginCover {
+  background-color: #b2afab;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+.LoginCover h1{
+    font-size: 4rem;
+    color: white;
+    font-weight: 700;
+}

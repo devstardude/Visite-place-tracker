@@ -1,7 +1,5 @@
 .LandingBanner {
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../../../../assets/images/landing.jpg"); */
-  /* background-color: #b2afab; */
+  background-color: #202020;
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
@@ -16,7 +14,6 @@
 
 .LandingBanner .Filter {
   background-color: rgba(0, 0, 0, 0.5);
-  content: "";
   display: block;
   height: 100%;
   left: 0;

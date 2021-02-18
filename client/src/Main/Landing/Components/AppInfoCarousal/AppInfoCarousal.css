@@ -1,0 +1,23 @@
+.AppInfoCarousalDiv {
+  width: 50%;
+  border-radius: 7px;
+}
+.carousel-item img {
+  border-radius: 7px !important;
+}
+.carousel.carousel-fade .carousel-item {
+  display: block;
+  opacity: 0;
+  transition: opacity ease-out 0.7s;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .AppInfoCarousalDiv {
+    width: 90%;
+  }
+}
+

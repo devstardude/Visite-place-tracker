@@ -10,16 +10,35 @@ h4,
 h5,
 h6,
 p,
-div,button {
+div,
+button {
   font-family: "Montserrat", sans-serif;
+}
+a {
+  text-decoration: none;
 }
 
 .Link {
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
   color: white;
+  border: none;
+}
+.Link:hover{
+  color: white;
 }
 
-.ColorTrial{
-  color:#6c757d
+.ColorTrial {
+  color: #6c757d;
+}
+
+.IconRotate {
+  color: white !important;
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   title: {
-    paddingLeft:"18px",
+    paddingLeft: "18px",
     flexGrow: 1,
   },
   appBarTransparent: {
@@ -55,7 +55,7 @@ HideOnScroll.propTypes = {
 };
 
 const Navbar = (props) => {
-//   const [user] = useAuthState(auth);
+  //   const [user] = useAuthState(auth);
   const classes = useStyles();
 
   const [navBackground, setNavBackground] = useState("appBarTransparent");
@@ -95,10 +95,14 @@ const Navbar = (props) => {
                   </Button>
                 </Link>
                 <Link to="/global/users" className="Link">
-                  <Button style={{ color: "white",fontFamily: "Montserrat" }}>Users</Button>
+                  <Button style={{ color: "white", fontFamily: "Montserrat" }}>
+                    Users
+                  </Button>
                 </Link>
                 <Link to="/global/users/abc" className="Link">
-                  <Button style={{ color: "white",fontFamily: "Montserrat" }}>Profile</Button>
+                  <Button style={{ color: "white", fontFamily: "Montserrat" }}>
+                    Profile
+                  </Button>
                 </Link>
 
                 {/* {user && (
