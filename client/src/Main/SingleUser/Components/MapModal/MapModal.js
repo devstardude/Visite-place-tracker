@@ -1,9 +1,8 @@
 import React from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import Zoom from "@material-ui/core/Zoom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker} from "react-leaflet";
 import "./MapModal.css";
 
 const ModalBox = () => {
@@ -16,6 +15,8 @@ const ModalBox = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const position = [27.1751, 78.0421];
 
   return (
     <div>
@@ -42,14 +43,14 @@ const ModalBox = () => {
             <div className="MapDiv">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}
-                center={[27.1751, 78.0421]}
+                center={position}
                 zoom={17}
               >
                 <TileLayer
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[51.505, -0.09]}></Marker>
+                <Marker position={position}></Marker>
               </MapContainer>
             </div>
             <div className="p-3 Center">

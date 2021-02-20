@@ -62,8 +62,6 @@ const users = [
 
 const GlobalUsersDiv = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [exam, setExam] = useState();
-
   const checkArray = (users) => {
     const newArray = users.filter((user) => {
       if (searchQuery === "") {
@@ -84,13 +82,13 @@ const GlobalUsersDiv = (props) => {
             change={(event) => setSearchQuery(event.target.value)}
           />
         </div>
-        <div className="px-2 mx-0 mx-lg-5">
-          <div className="container UsersScrollableDiv px-0 my-4">
-            <div className="row px-0 px-lg-5">
+        <div className="px-3 px-md-5">
+          <div className="container UsersScrollableDiv px-0 px-md-5 my-4 ">
+            <div className="row px-0  ">
               {checkArray(users).map((user) => (
                 <div
                   key={user.name}
-                  className="GlobalCardScaled col-12 col-lg-6 py-0 py-lg-1"
+                  className="GlobalCardScaled col-12 col-lg-6 py-1 py-md-3 py-lg-4"
                 >
                   {users && <GlobalUserCard users={user} />}
                 </div>

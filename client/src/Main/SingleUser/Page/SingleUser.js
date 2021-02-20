@@ -8,7 +8,7 @@ const SingleUser = (props) => {
   return (
     <div className="SingleUserPage">
       <UserHeader />
-     <ProfileCount />
+      <ProfileCount />
       <UserTabs />
     </div>
   );

@@ -9,19 +9,19 @@ const AppInfoCarousal = (props) => {
   return (
     <div>
       <div
-        id="carouselExampleIndicators"
+        id="carousal"
         className="carousel carousel-fade"
         data-ride="carousel"
       >
         <ol className="carousel-indicators">
           <li
-            data-target="#carouselExampleIndicators"
+            data-target="#carousal"
             data-slide-to="0"
             className="active"
           ></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carousal" data-slide-to="1"></li>
+          <li data-target="#carousal" data-slide-to="2"></li>
+          <li data-target="#carousal" data-slide-to="3"></li>
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -55,7 +55,7 @@ const AppInfoCarousal = (props) => {
         </div>
         <a
           className="carousel-control-prev"
-          href="#carouselExampleIndicators"
+          href="#carousal"
           role="button"
           data-slide="prev"
         >
@@ -67,7 +67,7 @@ const AppInfoCarousal = (props) => {
         </a>
         <a
           className="carousel-control-next"
-          href="#carouselExampleIndicators"
+          href="#carousal"
           role="button"
           data-slide="next"
         >

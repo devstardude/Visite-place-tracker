@@ -70,9 +70,9 @@
   background: transparent;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .GlobalCardScaled{
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   .GlobalUsersContent {
   padding-top: 10vh;

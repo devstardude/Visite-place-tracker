@@ -19,7 +19,7 @@ const TooltipInfo = (props)=>{
       <ClickAwayListener onClickAway={handleTooltipClose}>
         <Tooltip
           PopperProps={{
-            disablePortal: true,
+            disablePortal: false,
           }}
           onClose={handleTooltipClose}
           open={open}

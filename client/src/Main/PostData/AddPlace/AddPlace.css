@@ -1,0 +1,50 @@
+.AddPlaceForm {
+  height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+}
+.AddPlaceForm::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.AddPlaceForm::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.AddPlaceForm::-webkit-scrollbar-thumb {
+  background: #353535;
+  border: 0px none #7e7e7e;
+  border-radius: 50px;
+}
+.AddPlaceForm::-webkit-scrollbar-thumb:hover {
+  background: #353535;
+}
+.AddPlaceForm::-webkit-scrollbar-thumb:active {
+  background: #353535;
+}
+.AddPlaceForm::-webkit-scrollbar-track {
+  background: #e7e7e7;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.AddPlaceForm::-webkit-scrollbar-track:hover {
+  background: #e7e7e7;
+}
+.AddPlaceForm::-webkit-scrollbar-track:active {
+  background: #e7e7e7;
+}
+.AddPlaceForm::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.AddPlaceButtonDiv {
+  text-align: center;
+}
+
+
+
+@media (max-width: 768px) {
+  .AddPlaceForm {
+    height: 80vh;
+    width: 95%;
+  }
+}

@@ -15,10 +15,10 @@
   z-index: -1;
 }
 .GlobalAvatar {
-  max-width: 7rem;
-  min-width: 7rem;
-  max-height: 7rem;
-  min-height: 7rem;
+  max-width: 7.2rem;
+  min-width: 7.2rem;
+  max-height: 7.2rem;
+  min-height: 7.2rem;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
@@ -32,8 +32,8 @@
   color: white;
 }
 .GlobalDetailsDiv {
-  max-height: 7rem;
-  min-height: 7rem;
+  max-height: 7.2rem;
+  min-height: 7.2rem;
 }
 .GlobalPlaceCount{
   text-align: center;

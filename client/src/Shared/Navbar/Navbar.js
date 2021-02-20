@@ -11,16 +11,13 @@ import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import RightDrawer from "../RightDrawer/RightDrawer";
-// import firebase from "firebase/app";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import * as db from "../../../firebase/config";
-// const auth = firebase.auth();
+import firebase from "firebase/app";
+import { useAuthState } from "react-firebase-hooks/auth";
+import * as db from "../../firebase/firebase";
+import Avatar from "@material-ui/core/Avatar";
 
 function HideOnScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
   return (
@@ -47,15 +44,11 @@ const useStyles = makeStyles((theme) => ({
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
 const Navbar = (props) => {
-  //   const [user] = useAuthState(auth);
+  const [user] = useAuthState(firebase.auth());
   const classes = useStyles();
 
   const [navBackground, setNavBackground] = useState("appBarTransparent");
@@ -88,35 +81,79 @@ const Navbar = (props) => {
                   Visité
                 </Link>
               </Typography>
-              <div className="mr-0 d-none d-md-block">
-                <Link className="Link" to="/login">
-                  <Button style={{ color: "white", fontFamily: "Montserrat" }}>
-                    Get Started
-                  </Button>
-                </Link>
-                <Link to="/global/users" className="Link">
-                  <Button style={{ color: "white", fontFamily: "Montserrat" }}>
-                    Users
-                  </Button>
-                </Link>
-                <Link to="/global/users/abc" className="Link">
-                  <Button style={{ color: "white", fontFamily: "Montserrat" }}>
-                    Profile
-                  </Button>
-                </Link>
-
-                {/* {user && (
-                  <Link
-                    to="/"
-                    style={{ textDecoration: "none", color: "white" }}
-                    onClick={db.logOut}
-                  >
-                    <Button style={{ color: "white" }} edge="end">
+              {!user ? (
+                <div className="mr-0 d-none d-md-block">
+                  <Link className="Link" to="/login">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                  <Link to="/login/adduser" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Add User
+                    </Button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="mr-0 d-none d-md-flex align-content-middle">
+                  <Link className="Link" to="/">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Home
+                    </Button>
+                  </Link>
+                  <Link to="/global/users" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Users
+                    </Button>
+                  </Link>
+                  <Link to="/global/users/abc" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Profile
+                    </Button>
+                  </Link>
+                  <Link to="/login/adduser" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Add User
+                    </Button>
+                  </Link>
+                  <Link to="/add" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Add Data
+                    </Button>
+                  </Link>
+                  <Link to="/" className="Link" onClick={db.logOut}>
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
                       Logout
                     </Button>
                   </Link>
-                )} */}
-              </div>
+                  <Link to="/" className="Link">
+                    <div className="mx-2">
+                      <Avatar
+                        style={{ height: "30px", width: "30px" }}
+                        alt="dp"
+                        src={user.photoURL}
+                      />
+                    </div>
+                  </Link>
+                </div>
+              )}
+
               <div className="d-block d-md-none m-0 p-0">
                 <RightDrawer />
               </div>

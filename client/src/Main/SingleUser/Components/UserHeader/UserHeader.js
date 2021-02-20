@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import CoverPic from "../../../../assets/images/cover.jpg";
 import Dp from "../../../../assets/images/dp.jpg";
 import "./UserHeader.css";
@@ -27,9 +28,17 @@ const UserHeader = (props) => {
             is guarded by me !Just a Guy whos a hero for fun,I never Lose, and
             the Surface world is guarded by me{" "}
           </p>
-          <button type="button" class="btn LikeProfileButton rounded-pill btn-outline-secondary my-2">
+          {/* <button type="button" class="btn LikeProfileButton rounded-pill btn-outline-secondary my-2">
             🖤 Like Profile
-          </button>
+          </button> */}
+          <Link to="/add">
+            <button
+              type="button"
+              className="btn btn-outline-secondary rounded-pill"
+            >
+              ➕ Add
+            </button>
+          </Link>
         </div>
       </div>
     </React.Fragment>

@@ -5,8 +5,8 @@ import PlaceCard from "../PlaceCard/PlaceCard";
 
 const PlaceDiv = (props) => {
   return (
-    <div className="container-fluid">
-      <div className="row px-0">
+    <div className="container-fluid ">
+      <div className="row ">
         <div className="col-12 col-lg-6 pr-4 px-lg-5 pb-5 pt-3">
           <PlaceCard />
         </div>

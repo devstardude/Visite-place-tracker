@@ -50,7 +50,7 @@ const AppInfo = (props) => {
                     imageSrc={Image}
                   />
                   <CardBody className="text-center">
-                    <h4>Global Tourism Blogs and Recommandations</h4>
+                    <h4>Tourism Blogs and Recommandations</h4>
                   </CardBody>
                 </Card>
               </div>

@@ -1,0 +1,25 @@
+.postDataMainContainer{
+  width: 60%;
+  border-radius: 10px;
+}
+.Root {
+  width: 100%;
+  height: 100vh;
+  font-family: "Montserrat";
+}
+.Tabs{
+    color: rgb(0, 0, 0);
+}
+.AppBar {
+  background: rgb(250, 248, 248);
+
+}
+.Indicator {
+  background-color: #000000;
+}
+
+@media(max-width:768px){
+  .postDataMainContainer{
+  width: 100%;
+}
+}

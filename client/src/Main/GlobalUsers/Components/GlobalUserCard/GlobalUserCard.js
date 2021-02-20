@@ -18,8 +18,8 @@ const GlobalUserCard = (props) => {
     props.users.placesCount[3]
   );
   return (
-    <div className="container GlobalUserCard p-3 m-0 m-md-4 mx-auto">
-      <div className="row">
+    <div className="container GlobalUserCard m-0 p-2 mx-auto">
+      <div className="row p-2">
         <div className="col-4">
           <div className="d-inline-block">
             <img
@@ -75,7 +75,7 @@ const GlobalUserCard = (props) => {
             </TooltipInfo>
           </div>
         </div>
-        <div className="col-12 mt-1">
+        <div className="col-12 mt-1 mt-lg-2">
           <div className="d-flex justify-content-between">
             <TooltipInfo info="Likes">
               <div className="RoundAndDark py-1 px-2 px-md-3">

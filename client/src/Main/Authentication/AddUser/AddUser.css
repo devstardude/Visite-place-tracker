@@ -1,0 +1,43 @@
+.LoginCover {
+  background-color: #b2afab;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+.LoginCover h1 {
+  font-size: calc(2.6vw + 4vh + 3vmin);
+  color: white;
+  font-weight: 700;
+}
+.AddUserHeading h5 {
+  font-size: 22px;
+}
+
+.AddUserForm {
+  width: 60%;
+}
+.AddUserButtonDiv {
+  text-align: left;
+}
+.AddUserButtonDiv {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .LoginCover {
+    min-height: 35vh;
+  }
+  .AddUserHeading h5 {
+    font-size: 15px;
+  }
+  .AddUserForm {
+    width: 90%;
+  }
+}
