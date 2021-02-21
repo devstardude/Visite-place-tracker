@@ -28,14 +28,10 @@ a {
   color: white;
 }
 
-.ColorTrial {
-  color: #6c757d;
+.CursorPointer:hover{
+  cursor: pointer;
 }
 
-.IconRotate {
-  color: white !important;
-  animation: rotate 30s linear infinite;
-}
 
 @keyframes rotate {
   to {

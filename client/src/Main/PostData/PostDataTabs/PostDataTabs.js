@@ -64,11 +64,11 @@ const PostDataTabs = () => {
   return (
     <React.Fragment>
       <div>
-        <Masthead cover={CoverPic} title="Add Data" />
+        <Masthead cover={CoverPic} title="Add Memories" />
       </div>
       <div className={`${styles.postDataMainContainer} mx-auto mt-0`}>
         <Paper className={styles.Root}>
-          <AppBar className={styles.AppBar} position="static" >
+          <AppBar className={styles.AppBar} position="static">
             <Tabs
               elivation={0}
               className={styles.Tabs}

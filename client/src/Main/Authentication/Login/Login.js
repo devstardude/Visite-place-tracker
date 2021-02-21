@@ -1,48 +1,98 @@
-import React from "react";
-import {Redirect} from "react-router-dom"
-import firebase from "firebase/app";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { signInWithGoogle } from "../../../firebase/firebase";
+import React, { useContext } from "react";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { Paper } from "@material-ui/core";
+import {
+  CustomTextInput,
+} from "../../../Shared/Inputs/Inputs";
 import CoverPic from "../../../assets/images/cover.jpg";
 import "./Login.css";
 import Masthead from "../../../Shared/Masthead/Masthead";
+import { AuthContext } from "../../../Shared/Context/auth-context";
+import { useHttpClient } from "../../../Shared/hooks/http-hook";
+import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 
 const Login = (props) => {
-  const [user, loading, error] = useAuthState(firebase.auth());
-  if(user){
-    return(
-      <Redirect to="/global/users"/>
-    )
-  }
+  const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
+  const dataSubmitHandler = async(values, { setSubmitting, resetForm }) => {
+     try {
+       const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/users/login`,
+          "POST",
+          JSON.stringify({
+            email: values.email,
+            password: values.password,
+          }),
+          {
+            "Content-Type": "application/json",
+          }
+        );
+        auth.login(
+          responseData.userId,
+          responseData.token,
+          responseData.username,
+          responseData.email,
+          responseData.dp
+        );
+     }catch{}
+    setSubmitting(false);
+    resetForm();
+  };
+
   return (
     <div>
       <Masthead cover={CoverPic} title="Login" />
-      <div className="Center mt-5 pt-4">
-        <div className="card text-center mx-auto" style={{ width: "18rem" }}>
-          <div className="card-header">Let's Go</div>
-          <div className="card-body">
-            <h5 className="card-title">Login With Google</h5>
-            <p className="card-text" style={{ color: "black" }}>
-              Only your Email will be used.
-              <br /> We respect your Privacy.
-            </p>
-            <button
-              onClick={signInWithGoogle}
-              className="btn btn-outline-secondary"
+      <div className="container">
+        <div className="mt-4 Center AddUserHeading">
+          <h3>Welcome back Traveller.</h3>
+          <hr />
+          <h5>Hope you're having a great adventure.</h5>
+        </div>
+        {error && <ErrorModal errorText={error} clicked={clearError} />}
+        <div className="AddUserForm my-4 mx-auto">
+          <Paper>
+            <Formik
+              initialValues={{
+                email: "",
+                password: "",
+              }}
+              validationSchema={Yup.object({
+                email: Yup.string()
+                  .email("Must be a valid email")
+                  .required("Required"),
+                password: Yup.string()
+                  .min(6, "Password is too short - should be 6 chars minimum.")
+                  .required("Required"),
+              })}
+              onSubmit={dataSubmitHandler}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                className="bi bi-google mx-1"
-                viewBox=" 16"
-              >
-                <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
-              </svg>
-              Click Here
-            </button>
-          </div>
+              {({ setFieldValue, ...props }) => (
+                <Form className="py-2">
+                  <CustomTextInput
+                    label="Email"
+                    name="email"
+                    placeholder="Email here"
+                  />
+                  <CustomTextInput
+                  password
+                    label="Password"
+                    name="password"
+                    placeholder="Password here"
+                  />
+                  <div className="AddUserButtonDiv">
+                    <button
+                      className="btn btn-dark px-4 py-2 m-3 "
+                      type="submit"
+                    >
+                      {props.isSubmitting ? "Submitting" : "Submit"}
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </Paper>
         </div>
       </div>
     </div>

@@ -13,7 +13,9 @@
 }
 
 @media (max-width: 768px) {
-
+  .LoginCover {
+    min-height: 35vh;
+  }
   .AddUserHeading h5 {
     font-size: 15px;
   }

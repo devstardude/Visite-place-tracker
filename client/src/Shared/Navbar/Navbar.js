@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,10 +11,9 @@ import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import RightDrawer from "../RightDrawer/RightDrawer";
-import firebase from "firebase/app";
-import { useAuthState } from "react-firebase-hooks/auth";
-import * as db from "../../firebase/firebase";
 import Avatar from "@material-ui/core/Avatar";
+import { AuthContext } from "../Context/auth-context";
+import TooltipInfo from "../TooltipInfo/TooltipInfo";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -48,9 +47,9 @@ HideOnScroll.propTypes = {
 };
 
 const Navbar = (props) => {
-  const [user] = useAuthState(firebase.auth());
+  const auth = useContext(AuthContext);
   const classes = useStyles();
-
+  const loggedIn = auth.isLoggedIn
   const [navBackground, setNavBackground] = useState("appBarTransparent");
   const navRef = useRef();
   navRef.current = navBackground;
@@ -81,20 +80,20 @@ const Navbar = (props) => {
                   Visité
                 </Link>
               </Typography>
-              {!user ? (
+              {!loggedIn ? (
                 <div className="mr-0 d-none d-md-block">
                   <Link className="Link" to="/login">
                     <Button
                       style={{ color: "white", fontFamily: "Montserrat" }}
                     >
-                      Get Started
+                      Login
                     </Button>
                   </Link>
-                  <Link to="/login/adduser" className="Link">
+                  <Link to="/register" className="Link">
                     <Button
                       style={{ color: "white", fontFamily: "Montserrat" }}
                     >
-                      Add User
+                      Register
                     </Button>
                   </Link>
                 </div>
@@ -135,21 +134,23 @@ const Navbar = (props) => {
                       Add Data
                     </Button>
                   </Link>
-                  <Link to="/" className="Link" onClick={db.logOut}>
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Logout
-                    </Button>
-                  </Link>
+
+                  <Button
+                    onClick={auth.logout}
+                    style={{ color: "white", fontFamily: "Montserrat" }}
+                  >
+                    Logout
+                  </Button>
                   <Link to="/" className="Link">
-                    <div className="mx-2">
-                      <Avatar
-                        style={{ height: "30px", width: "30px" }}
-                        alt="dp"
-                        src={user.photoURL}
-                      />
-                    </div>
+                    <TooltipInfo info={auth.username} >
+                      <div className="mx-2">
+                        <Avatar
+                          src={auth.dp}
+                          style={{ height: "30px", width: "30px" }}
+                          alt="dp"
+                        />
+                      </div>
+                    </TooltipInfo>
                   </Link>
                 </div>
               )}

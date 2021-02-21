@@ -12,7 +12,12 @@
   min-height: 40vh;
 }
 .MastheadCover h1{
-    font-size: calc(2.6vw + 4vh + 3vmin);
+    font-size: calc(2.2vw + 3.6vh + 2.5vmin);
+    color: white;
+    font-weight: 700;
+}
+.MastheadCover h2{
+    font-size: calc(2.2vw + 3.6vh + 2.5vmin);
     color: white;
     font-weight: 700;
 }

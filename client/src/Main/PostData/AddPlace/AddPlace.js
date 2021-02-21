@@ -32,9 +32,12 @@ const AddPlace = (props) => {
     setPlaceSearch(null);
   };
 
-  function CustomClear({ onClear }) {
+  const CustomClear=({ onClear })=> {
     return (
-      <div className="d-flex my-auto" onClick={resetPlaceSearchHandler}>
+      <div
+        className="d-flex my-auto CursorPointer"
+        onClick={resetPlaceSearchHandler}
+      >
         <div onClick={resetPlaceSearchHandler}>
           <div onClick={onClear}>
             <h4>x</h4>

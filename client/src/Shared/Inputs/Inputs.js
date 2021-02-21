@@ -19,6 +19,7 @@ export const CustomTextInput = (props) => {
         InputLabelProps={{
           style: { color: "grey" },
         }}
+        type={props.password && "password"}
       />
     </div>
   );

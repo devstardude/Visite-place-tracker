@@ -3,12 +3,8 @@ import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
-import firebase from "firebase/app";
-import { useAuthState } from "react-firebase-hooks/auth";
-import {logOut} from "../../firebase/firebase";
 const RightDrawer = () => {
-  const [user] = useAuthState(firebase.auth());
-
+const loggedIn = false
   const [state, setState] = React.useState({
     right: false,
   });
@@ -23,7 +19,7 @@ const RightDrawer = () => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {!user ? (
+      {!loggedIn ? (
         <React.Fragment>
           <div className="container Center mt-5">
             <div className="mb-3">
@@ -76,7 +72,6 @@ const RightDrawer = () => {
             <div className="mb-3">
               <Link className="Link">
                 <Button
-                  onClick={logOut}
                   style={{ minWidth: "6rem" }}
                   variant="outlined"
                 >

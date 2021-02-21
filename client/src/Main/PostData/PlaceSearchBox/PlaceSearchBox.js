@@ -1,17 +1,14 @@
 import React from "react";
-import SearchBox,{ components } from "tomtom-react-searchbox";
+import SearchBox from "tomtom-react-searchbox";
 import "./PlaceSearchBox.css";
 
 const PlaceSearchBox=(props)=> {
-    function CustomClear({ onClear }) {
-      return <div onClick={onClear}>Clear</div>;
-    }
   return (
     <div className="search-bar">
       <SearchBox
         wrapperClassName="search-box shadow bg-white rounded"
         onResultChoose={(result) => props.searchResult(result)}
-        autofocus={true}
+        autofocus={false}
         placeholder="Search for an address"
         searchOptions={{
           key: process.env.REACT_APP_TOMTOM_API_KEY,

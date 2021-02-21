@@ -19,16 +19,6 @@ const firebaseApp = !firebase.apps.length
 const auth = firebaseApp.auth();
 const storage = firebaseApp.storage();
 
-export async function signInWithGoogle() {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  await auth.signInWithPopup(provider);
-}
-
-
-export async function logOut() {
-  await auth.signOut();
-}
-
 export async function uploadImage(uid, file) {
   const id = uid;
   const uploadTask = storage.ref(`images/${file.name}-${id}`).put(file);
