@@ -1,8 +1,29 @@
 import React from "react";
 import { useField } from "formik";
-import { TextField } from "@material-ui/core";
+import { TextField, MenuItem } from "@material-ui/core";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import "./Inputs.css"
+import "./Inputs.css";
+
+const placeTypes = [
+  {
+    value: "urban",
+    label: "Urban",
+  },
+  {
+    value: "nature",
+    label: "Nature",
+  },
+  {
+    value: "sea",
+    label: "Sea",
+  },
+  {
+    value: "other",
+    label: "Other",
+  },
+
+];
+
 
 export const CustomTextInput = (props) => {
   const [field, meta] = useField(props);
@@ -21,6 +42,33 @@ export const CustomTextInput = (props) => {
         }}
         type={props.password && "password"}
       />
+    </div>
+  );
+};
+
+export const CustomSelectInput = (props) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className="m-3">
+      <TextField
+        error={meta.touched && meta.error ? meta.error : false}
+        {...props}
+        {...field}
+        InputLabelProps={{
+          style: { color: "grey" },
+        }}
+        fullWidth
+        id="standard-select-currency"
+        label="Select Type of Place"
+        select
+        helperText={meta.error}
+      >
+        {placeTypes.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
     </div>
   );
 };

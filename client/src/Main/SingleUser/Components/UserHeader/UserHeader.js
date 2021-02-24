@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import CoverPic from "../../../../assets/images/cover.jpg";
 import Dp from "../../../../assets/images/dp.jpg";
 import "./UserHeader.css";
@@ -19,14 +19,13 @@ const UserHeader = (props) => {
             <img
               alt="..."
               className="Img-circle Img-no-padding img-responsive"
-              src={Dp}
+              src={props.user.dp}
             />
           </div>
-          <h2>Arun Shekhar</h2>
+          {console.log(props.user.username)}
+          <h2>{props.user.username}</h2>
           <p className="UserHeaderBio my-3 mx-auto">
-            Just a Guy whos a hero for fun,I never Lose, and the Surface world
-            is guarded by me !Just a Guy whos a hero for fun,I never Lose, and
-            the Surface world is guarded by me{" "}
+            {props.user.bio}
           </p>
           {/* <button type="button" class="btn LikeProfileButton rounded-pill btn-outline-secondary my-2">
             🖤 Like Profile

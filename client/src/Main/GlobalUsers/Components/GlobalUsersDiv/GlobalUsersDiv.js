@@ -1,69 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GlobalUserCard from "../GlobalUserCard/GlobalUserCard";
 import SearchBar from "../SearchBar/SearchBar";
+import { useHttpClient } from "../../../../Shared/hooks/http-hook";
 import "./GlobalUsersDiv.css";
+import ErrorModal from "../../../../Shared/ErrorModal/ErrorModal";
+import Spinner from "../../../../Shared/Spinner/Spinner";
 
-const users = [
-  {
-    id: "abcdefgh",
-    name: "Arun Shekhar",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [12, 10, 18, 15],
-    likes: "13",
-    posts: "5",
-  },
-  {
-    id: "abcdefgh",
-    name: "Max Sweish",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [0, 0, 0, 0],
-    likes: "3",
-    posts: "5",
-  },
-  {
-    id: "abcdefgh",
-    name: "Yapa Nove",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [12, 6, 8, 5],
-    likes: "3",
-    posts: "5",
-  },
-  {
-    id: "abcdefgh",
-    name: "Minka Tenko",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [12, 6, 8, 5],
-    likes: "3",
-    posts: "5",
-  },
-  {
-    id: "abcdefgh",
-    name: "Dodo dodora",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [12, 6, 8, 5],
-    likes: "3",
-    posts: "5",
-  },
-  {
-    id: "abcdefgh",
-    name: "Panko Tomo",
-    desc:
-      "Just a guy who's a hero for fun ! I Never lose ! and surface world is guarded by me",
-    placesCount: [12, 6, 8, 5],
-    likes: "3",
-    posts: "5",
-  },
-];
+
 
 const GlobalUsersDiv = (props) => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [loadedUsers, setLoadedUsers] = useState();
   const [searchQuery, setSearchQuery] = useState("");
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/users`
+        );
+
+        setLoadedUsers(responseData.users);
+      } catch (err) {}
+    };
+    fetchUsers();
+  }, [sendRequest]);
   const checkArray = (users) => {
-    const newArray = users.filter((user) => {
+    const newArray = loadedUsers.filter((user) => {
       if (searchQuery === "") {
         return user;
       } else if (user.name.toLowerCase().includes(searchQuery.toLowerCase())) {
@@ -74,6 +36,7 @@ const GlobalUsersDiv = (props) => {
   };
   return (
     <div>
+      {error && <ErrorModal errorText={error} clicked={clearError} />}
       <div className="GlobalUsersDiv"></div>
       <div className="GlobalUsersContent  ">
         <div className="GlobalSearchBar">
@@ -84,17 +47,23 @@ const GlobalUsersDiv = (props) => {
         </div>
         <div className="px-3 px-md-5">
           <div className="container UsersScrollableDiv px-0 px-md-5 my-4 ">
+          {console.log(loadedUsers)}
             <div className="row px-0  ">
-              {checkArray(users).map((user) => (
-                <div
-                  key={user.name}
-                  className="GlobalCardScaled col-12 col-lg-6 py-1 py-md-3 py-lg-4"
-                >
-                  {users && <GlobalUserCard users={user} />}
-                </div>
-              ))}
+              {isLoading && <Spinner />}
+              {!isLoading &&
+                loadedUsers &&
+                checkArray(loadedUsers).map((user) => (
+                  <div
+                    key={user.id}
+                    className="GlobalCardScaled col-12 col-lg-6 py-1 py-md-3 py-lg-4"
+                  >
+                    {loadedUsers && <GlobalUserCard user={user} />}
+                  </div>
+                ))}
             </div>
-            {checkArray(users).length === 0 && <NoUsers />}
+            {!isLoading &&
+              loadedUsers &&
+              checkArray(loadedUsers).length === 0 && <NoUsers />}
           </div>
         </div>
       </div>

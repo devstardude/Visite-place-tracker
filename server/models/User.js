@@ -22,19 +22,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  placeCount: {
-    type: [],
-    default: null,
-  },
-  postCount: {
-    type: [],
-    default: null,
-  },
   likes: {
     type: [],
     default: null,
   },
   places: {
+    type: [],
+    default: null,
+  },
+  posts: {
     type: [],
     default: null,
   },

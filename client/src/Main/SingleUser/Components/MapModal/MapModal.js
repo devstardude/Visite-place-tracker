@@ -5,7 +5,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { MapContainer, TileLayer, Marker} from "react-leaflet";
 import "./MapModal.css";
 
-const ModalBox = () => {
+const ModalBox = (props) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -15,8 +15,8 @@ const ModalBox = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const position = [27.1751, 78.0421];
+  const coordinates = props.coordinates
+  const position = [coordinates.lat, coordinates.lon];
 
   return (
     <div>
@@ -39,7 +39,7 @@ const ModalBox = () => {
       >
         <Zoom in={open}>
           <div className="container align-self-center MapBoxContainer p-0">
-            <h2 className="pt-3 px-3 pb-2">Yeah Baby!</h2>
+            <h2 className="pt-3 px-3 pb-2">{props.address}</h2>
             <div className="MapDiv">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}

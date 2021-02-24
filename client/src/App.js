@@ -12,7 +12,7 @@ const Landing = lazy(() => import("./Main/Landing/Page/Landing"));
 const GlobalUser = lazy(() => import("./Main/GlobalUsers/Page/GlobalUser"));
 const SingleUser = lazy(() => import("./Main/SingleUser/Page/SingleUser"));
 const Login = lazy(() => import("./Main/Authentication/Login/Login"));
-const AddUser = lazy(() => import("./Main/Authentication/AddUser/Register"));
+const Register = lazy(() => import("./Main/Authentication/Register/Register"));
 const PostDataTabs = lazy(() =>
   import("./Main/PostData/PostDataTabs/PostDataTabs")
 );
@@ -21,17 +21,27 @@ let hist = createBrowserHistory();
 function App() {
   const { token, username, email,dp, login, logout, userId } = useAuth();
   let routes;
-  routes = (
-    <Switch>
-      <Route path="/global/users" component={GlobalUser} exact />
-      <Route path="/global/users/:userId" component={SingleUser} exact />
-      <Route path="/register" component={AddUser} exact />
-      <Route path="/login" component={Login} exact />
-      <Route path="/add" component={PostDataTabs} exact />
-      <Route path="/" component={Landing} exact />
-      <Redirect to="/" />
-    </Switch>
-  );
+  if(token){
+    routes = (
+      <Switch>
+        <Route path="/global/users" component={GlobalUser} exact />
+        <Route path="/global/users/:userId" component={SingleUser} exact />
+        <Route path="/add" component={PostDataTabs} exact />
+        <Route path="/" component={Landing} exact />
+        <Redirect to="/" />
+      </Switch>
+    );
+  } else{
+    routes = (
+      <Switch>
+        <Route path="/register" component={Register} exact />
+        <Route path="/login" component={Login} exact />
+        <Route path="/" component={Landing} exact />
+        <Redirect to="/" />
+      </Switch>
+    );
+  }
+  
   return (
     <div className="App">
       <AuthContext.Provider

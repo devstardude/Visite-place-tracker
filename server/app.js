@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const HttpError = require("./utils/httpError");
 const postsRoute = require("./routes/postRoute");
 const usersRoute = require("./routes/userRoute");
+const placeRoute = require("./routes/placeRoute");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 // Routes
 // app.use("/api/posts",postsRoute);
 app.use("/api/users",usersRoute); 
+app.use("/api/places",placeRoute)
 
 //Handle unkonwn route
 app.use((req, res, next) => {
@@ -44,7 +46,7 @@ app.use((error, req, res, next) => {
 const onlineDbLink = String(process.env.DB)
 const localDbLink = "mongodb://localhost:27017/visiteDB";
 mongoose
-  .connect(localDbLink, {
+  .connect(onlineDbLink, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

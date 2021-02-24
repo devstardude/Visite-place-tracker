@@ -48,8 +48,7 @@ function a11yProps(index) {
   };
 }
 
-
-const UserTabs = () => {
+const UserTabs = (props) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [widthD] = useWindowSizeD();
@@ -112,10 +111,10 @@ const UserTabs = () => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <MainUserDiv />
+          <MainUserDiv divType="visited" {...props} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <MainUserDiv />
+          <MainUserDiv divType="wishlist" {...props} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <MainUserDiv divType="postDiv" />

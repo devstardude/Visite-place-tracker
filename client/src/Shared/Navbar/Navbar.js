@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -49,7 +49,7 @@ HideOnScroll.propTypes = {
 const Navbar = (props) => {
   const auth = useContext(AuthContext);
   const classes = useStyles();
-  const loggedIn = auth.isLoggedIn
+  const loggedIn = auth.isLoggedIn;
   const [navBackground, setNavBackground] = useState("appBarTransparent");
   const navRef = useRef();
   navRef.current = navBackground;
@@ -113,18 +113,11 @@ const Navbar = (props) => {
                       Users
                     </Button>
                   </Link>
-                  <Link to="/global/users/abc" className="Link">
+                  <Link to={`/global/users/${auth.userId}`} className="Link">
                     <Button
                       style={{ color: "white", fontFamily: "Montserrat" }}
                     >
                       Profile
-                    </Button>
-                  </Link>
-                  <Link to="/login/adduser" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Add User
                     </Button>
                   </Link>
                   <Link to="/add" className="Link">
@@ -142,7 +135,7 @@ const Navbar = (props) => {
                     Logout
                   </Button>
                   <Link to="/" className="Link">
-                    <TooltipInfo info={auth.username} >
+                    <TooltipInfo info={auth.username}>
                       <div className="mx-2">
                         <Avatar
                           src={auth.dp}

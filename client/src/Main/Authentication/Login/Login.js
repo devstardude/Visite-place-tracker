@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Paper } from "@material-ui/core";
@@ -39,6 +40,7 @@ const Login = (props) => {
      }catch{}
     setSubmitting(false);
     resetForm();
+    return <Redirect to="/"/>
   };
 
   return (
@@ -48,7 +50,7 @@ const Login = (props) => {
         <div className="mt-4 Center AddUserHeading">
           <h3>Welcome back Traveller.</h3>
           <hr />
-          <h5>Hope you're having a great adventure.</h5>
+          <h5>Hope you're having great adventures.</h5>
         </div>
         {error && <ErrorModal errorText={error} clicked={clearError} />}
         <div className="AddUserForm my-4 mx-auto">

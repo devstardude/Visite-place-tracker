@@ -13,6 +13,7 @@ import {
 } from "../../../Shared/Inputs/Inputs";
 
 import "./Register.css";
+import { Redirect } from "react-router-dom";
 
 const Register = (props) => {
   const auth = useContext(AuthContext);
@@ -44,6 +45,7 @@ const Register = (props) => {
     } catch {}
     setSubmitting(false);
     resetForm();
+    return <Redirect to="/" />;
   };
 
   return (

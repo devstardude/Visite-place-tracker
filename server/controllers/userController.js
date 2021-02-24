@@ -6,6 +6,43 @@ const User = require("../models/User");
 
 const jwt_token = String(process.env.JWT);
 
+const getUsers = async (req, res, next) => {
+  let users;
+  try {
+    users = await User.find({}, "-password");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching users failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  res.json({ users: users.map((user) => user.toObject({ getters: true })) });
+};
+
+const getUserById = async (req,res,next) => {
+  const userId = req.params.uid;
+  let user;
+  try {
+    user = await User.find({ _id: userId }, { email: 0, password: 0, date :0});
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError(
+      "Fetching places failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  if (!user) {
+    return next(
+      new HttpError("Could not find places for the provided user id.", 404)
+    );
+  }
+  res.status(200).json({
+    user,
+  });
+};
+
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -53,10 +90,9 @@ const signup = async (req, res, next) => {
     bio,
     dp:
       "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-    placeCount: [0, 0, 0],
-    postCount: [],
     likes: [],
     places: [],
+    posts: [],
   });
   //save user
   try {
@@ -75,7 +111,7 @@ const signup = async (req, res, next) => {
       {
         userId: createdUser.id,
         email: createdUser.email,
-        name: createdUser.name,
+        username: createdUser.username,
       },
       jwt_token,
       { expiresIn: "1h" }
@@ -90,7 +126,7 @@ const signup = async (req, res, next) => {
   //response
   res.status(201).json({
     userId: createdUser.id,
-    name: createdUser.name,
+    username: createdUser.username,
     email: createdUser.email,
     dp: createdUser.dp,
     token: token,
@@ -167,5 +203,7 @@ const login = async (req, res, next) => {
     token: token,
   });
 };
+exports.getUsers = getUsers;
+exports.getUserById = getUserById;
 exports.signup = signup;
 exports.login = login;

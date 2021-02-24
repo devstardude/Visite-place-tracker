@@ -10,12 +10,18 @@ const PlaceCard = (props) => {
       <Card className="CardDiv">
         <ImageHeader className="CardImage" alt="image" imageSrc={Image} />
         <CardBody className="text-center">
-          <h4>Name </h4>
-          <p>Lalal lalala lalala lalala lala la la la lalalala</p>
+          <h4>{props.place.title} </h4>
+          <p className="text-muted  m-0 p-0">
+            {"( "}
+            {props.place.address}
+            {" )"}
+          </p>
+          <p className="text-muted m-0 p-0">Type: {props.place.typeOfPlace}</p>
+          <p className="mt-2 mb-0 p-0">{props.place.description}</p>
         </CardBody>
         <CardFooter>
           <div className="d-flex PlaceCardButtons mx-auto">
-          <MapModal/>
+            <MapModal address={props.place.address} coordinates={props.place.coordinates} />
           </div>
         </CardFooter>
       </Card>

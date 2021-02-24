@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
 import "./GlobalUserCard.css";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
 import EcoIcon from "@material-ui/icons/Eco";
@@ -9,35 +9,39 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import StarIcon from "@material-ui/icons/Star";
 import TooltipInfo from "../../../../Shared/TooltipInfo/TooltipInfo";
-import badge from "../../../../utils/badge";
+import {badge,placeCount} from "../../../../utils/utils";
 const GlobalUserCard = (props) => {
+  const likes = props.user.likes.length
+  const posts = props.user.posts.length
+  const userPlaceCount = placeCount(props.user.places)
   const badgeText = badge(
-    props.users.placesCount[0],
-    props.users.placesCount[1],
-    props.users.placesCount[2],
-    props.users.placesCount[3]
+    userPlaceCount.urbanCount,
+    userPlaceCount.natureCount,
+    userPlaceCount.seaCount,
+    userPlaceCount.otherCount
   );
   return (
     <div className="container GlobalUserCard m-0 p-2 mx-auto">
+      {console.log(userPlaceCount.urbanCount)}
       <div className="row p-2">
         <div className="col-4">
-          <div className="d-inline-block">
-            <img
-              className=" GlobalAvatar"
-              src="https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c"
-              alt="Dp.jpg"
-            />
-          </div>
+          <Link to={`/global/users/${props.user.id}`}>
+            <div className="d-inline-block">
+              <img className=" GlobalAvatar" src={props.user.dp} alt="Dp.jpg" />
+            </div>
+          </Link>
         </div>
         <div className="col-8">
-          <div className="GlobalDetailsDiv RoundAndDark p-2">
-            <h3 className="m-0 pb-1 GlobalName">{props.users.name}</h3>
-            {/* Name Limit is 12 */}
-            <p className="m-0 pb-1 GlobalDesc">
-              {props.users.desc.slice(0, 75)}{" "}
-              {props.users.desc.slice(76, 77) && "... (Read More)"}
-            </p>
-          </div>
+          <Link to={`/global/users/${props.user.id}`}>
+            <div className="GlobalDetailsDiv RoundAndDark p-2">
+              <h3 className="m-0 pb-1 GlobalName">{props.user.username}</h3>
+              {/* Name Limit is 12 */}
+              <p className="m-0 pb-1 GlobalDesc">
+                {props.user.bio.slice(0, 75)}{" "}
+                {props.user.bio.slice(76, 77) && "... (Read More)"}
+              </p>
+            </div>
+          </Link>
         </div>
         <div className="col-12">
           <div className="RoundAndDark text-center mt-3 mb-2 p-2">
@@ -45,7 +49,7 @@ const GlobalUserCard = (props) => {
               <div className="d-inline mx-1 mx-md-2">
                 <EmojiTransportationIcon />
                 <div className="GlobalPlaceCount rounded-circle border border-light mx-1 p-1 ">
-                  {props.users.placesCount[0]}
+                  {userPlaceCount.urbanCount}
                 </div>
               </div>
             </TooltipInfo>
@@ -53,7 +57,7 @@ const GlobalUserCard = (props) => {
               <div className="d-inline mx-1 mx-md-2">
                 <EcoIcon />
                 <div className="GlobalPlaceCount rounded-circle border border-light mx-1 p-1 ">
-                  {props.users.placesCount[1]}
+                  {userPlaceCount.natureCount}
                 </div>
               </div>
             </TooltipInfo>
@@ -61,7 +65,7 @@ const GlobalUserCard = (props) => {
               <div className="d-inline mx-1 mx-md-2">
                 <WavesIcon />
                 <div className="GlobalPlaceCount rounded-circle border border-light mx-1 p-1 ">
-                  {props.users.placesCount[2]}
+                  {userPlaceCount.seaCount}
                 </div>
               </div>
             </TooltipInfo>
@@ -69,7 +73,7 @@ const GlobalUserCard = (props) => {
               <div className="d-inline mx-1 mx-md-2">
                 <PublicIcon />
                 <div className="GlobalPlaceCount rounded-circle border border-light mx-1 p-1 ">
-                  {props.users.placesCount[3]}
+                  {userPlaceCount.otherCount}
                 </div>
               </div>
             </TooltipInfo>
@@ -80,7 +84,7 @@ const GlobalUserCard = (props) => {
             <TooltipInfo info="Likes">
               <div className="RoundAndDark py-1 px-2 px-md-3">
                 <FavoriteIcon fontSize="small" style={{ color: "#ffffffbd" }} />{" "}
-                <p className="d-inline">{props.users.likes}</p>
+                <p className="d-inline">{likes}</p>
               </div>
             </TooltipInfo>
 
@@ -95,7 +99,7 @@ const GlobalUserCard = (props) => {
                   fontSize="small"
                   style={{ color: "#ffffffbd" }}
                 />{" "}
-                <p className="d-inline">{props.users.posts}</p>
+                <p className="d-inline">{posts}</p>
               </div>
             </TooltipInfo>
           </div>
