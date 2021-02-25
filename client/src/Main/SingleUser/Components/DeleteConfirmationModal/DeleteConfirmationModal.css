@@ -1,15 +1,17 @@
-.ErrorBoxModel {
+.DeleteBoxModel {
   border-radius: 7px !important;
 }
-.ErrorBoxContainer {
+.DeleteBoxContainer {
   width: 50%;
   background: rgba(255, 255, 255, 0.973);
   box-shadow: 32px rgba(0, 0, 0, 0.418);
   border-radius: 10px ;
 }
 
+
+
 @media (max-width: 768px) {
-  .ErrorBoxContainer {
+  .DeleteBoxContainer {
     width: 90%;
   }
 }

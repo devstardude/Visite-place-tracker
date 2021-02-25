@@ -13,7 +13,7 @@ const ErrorModal = (props) => {
   return (
     <div onClick={props.clicked}>
       <Modal
-        className="d-flex align-content-center MapBoxModel"
+        className="d-flex align-content-center ErrorBoxModel"
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -23,7 +23,7 @@ const ErrorModal = (props) => {
         }}
       >
         <Zoom in={open}>
-          <div className="container align-self-center MapBoxContainer p-0">
+          <div className="container align-self-center ErrorBoxContainer p-0">
             <h2 className="pt-3 px-3 pb-2">{props.errorText}</h2>
             <div className="p-3 Center">
               <button

@@ -15,6 +15,19 @@ const SingleUser = (props) => {
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
+  const onDeleteHandler = (wishlist, deletedPlaceId) => {
+    const pid=String(deletedPlaceId)
+    if (wishlist) {
+      setWishlist((prevPlace) =>( 
+        prevPlace.filter((place) => place.id !== pid)
+      ));
+    } else {
+      setVisited((prevPlace) => (
+        prevPlace.filter((place) => place.id !== pid)
+      ));
+      console.log(visited)
+    }
+  };
   const userId = useParams().userId;
 
   useEffect(() => {
@@ -48,7 +61,11 @@ const SingleUser = (props) => {
       <div className="SingleUserPage">
         <UserHeader user={userData} />
         <ProfileCount user={userData} />
-        <UserTabs visitedList={visited} wishlistList={wishlist} />
+        <UserTabs
+          visitedList={visited}
+          wishlistList={wishlist}
+          onDelete={onDeleteHandler}
+        />
       </div>
     );
   }

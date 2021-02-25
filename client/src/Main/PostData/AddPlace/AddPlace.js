@@ -19,7 +19,7 @@ const AddPlace = (props) => {
 
   const [placeSearch, setPlaceSearch] = useState(null);
   const [state, setState] = React.useState({
-    checkedA: false,
+    PostWishlistSwitch: false,
   });
 
   const handleChange = (event) => {
@@ -38,7 +38,7 @@ const AddPlace = (props) => {
         image: "Image",
         coordinates: placeSearch.position,
         typeOfPlace:values.typeOfPlace,
-        wishlist: state.checkedA,
+        wishlist: state.PostWishlistSwitch,
       });
       await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/places",
@@ -66,7 +66,6 @@ const AddPlace = (props) => {
         className="d-flex my-auto CursorPointer"
         onClick={resetPlaceSearchHandler}
       >
-      {console.log(placeSearch)}
         <div onClick={resetPlaceSearchHandler}>
           <div onClick={onClear}>
             <h4>x</h4>
@@ -129,9 +128,9 @@ const AddPlace = (props) => {
               />
               <div className="m-1 py-0">
                 <Switch
-                  checked={state.checkedA}
+                  checked={state.PostWishlistSwitch}
                   onChange={handleChange}
-                  name="checkedA"
+                  name="PostWishlistSwitch"
                   inputProps={{ "aria-label": "secondary checkbox" }}
                 />
                 <p className="d-inline">Turn on to wishlist place.</p>

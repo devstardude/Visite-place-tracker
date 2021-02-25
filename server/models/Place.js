@@ -26,6 +26,7 @@ const placeSchema = new mongoose.Schema({
   creator: {
     type: String,
     required: true,
+    ref:"User"
   },
   date: {
     type: Date,

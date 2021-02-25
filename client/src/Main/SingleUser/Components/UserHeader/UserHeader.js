@@ -22,7 +22,6 @@ const UserHeader = (props) => {
               src={props.user.dp}
             />
           </div>
-          {console.log(props.user.username)}
           <h2>{props.user.username}</h2>
           <p className="UserHeaderBio my-3 mx-auto">
             {props.user.bio}

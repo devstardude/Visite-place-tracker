@@ -22,7 +22,7 @@ const ModalBox = (props) => {
     <div>
       <button
         type="button"
-        className="btn btn-outline-secondary"
+        className="btn btn-outline-secondary w-100"
         onClick={handleOpen}
       >
         Show Map

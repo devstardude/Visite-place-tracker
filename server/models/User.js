@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
   places: {
     type: [],
     default: null,
+    ref:"Place"
   },
   posts: {
     type: [],

@@ -24,11 +24,11 @@ const GlobalUsersDiv = (props) => {
     };
     fetchUsers();
   }, [sendRequest]);
-  const checkArray = (users) => {
+  const checkArray = () => {
     const newArray = loadedUsers.filter((user) => {
       if (searchQuery === "") {
         return user;
-      } else if (user.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+      } else if (user.username.toLowerCase().includes(searchQuery.toLowerCase())) {
         return user;
       }
     });
@@ -47,7 +47,6 @@ const GlobalUsersDiv = (props) => {
         </div>
         <div className="px-3 px-md-5">
           <div className="container UsersScrollableDiv px-0 px-md-5 my-4 ">
-          {console.log(loadedUsers)}
             <div className="row px-0  ">
               {isLoading && <Spinner />}
               {!isLoading &&

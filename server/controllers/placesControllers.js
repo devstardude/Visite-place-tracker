@@ -156,8 +156,54 @@ const updatePlace = async (req, res, next) => {
     res.status(200).json({ place: place.toObject({ getters: true }) });
 };
 
+const deletePlace = async(req,res,next)=>{
+  const placeId =req.params.pid;
+  let place;
+  try{
+    place = await Place.findById(placeId).populate("creator");
+  }catch(err){
+    const error = new HttpError(
+      "Something went wrong, could not delete place.",
+      500
+    );
+    return next(error);
+  }
+    if (!place) {
+      const error = new HttpError("Could not find place for this id.", 404);
+      return next(error);
+    }
+    const creatorId = String(place.creator._id)
+    const tokenId = String(req.userData.userId);
+     if (creatorId !== tokenId) {
+       const error = new HttpError(
+         "You are not allowed to delete this place.",
+         401
+       );
+       return next(error);
+     }
+     
+  try {
+    const creatorPlacesList = place.creator.places;
+    const placeObjectToPull = creatorPlacesList.find((obj) => {
+      return obj.id === placeId;
+    });
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await place.remove({ session: sess });
+    creatorPlacesList.pull(placeObjectToPull);
+    await place.creator.save({ session: sess });
+    await sess.commitTransaction();
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not delete place.",
+      500
+    );
+    return next(error);
+  }
+    res.status(200).json({ message: "Deleted place." });
+}
 exports.getPlaceById = getPlaceById;
 exports.getPlacesByUserId = getPlacesByUserId;
 exports.createPlace = createPlace;
 exports.updatePlace = updatePlace;
-// exports.deletePlace = deletePlace;
+exports.deletePlace = deletePlace;
