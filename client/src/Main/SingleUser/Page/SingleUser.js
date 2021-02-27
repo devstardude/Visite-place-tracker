@@ -15,17 +15,50 @@ const SingleUser = (props) => {
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
+  const wishlistChangeHandler = (place) => {
+    const pid = String(place.id);
+    if (place.wishlist) {
+      setWishlist((prevPlaces) =>
+        prevPlaces.filter((place) => place.id !== pid)
+      );
+      setVisited((prevPlace) => {
+        return [...prevPlace, { ...place, wishlist: false }];
+      });
+      setUserData((prevData) => {
+        const newData = userData.places.map((place) =>
+          place.id === pid ? { ...place, wishlist: false } : place
+        );
+        return { ...prevData, places: newData };
+      });
+    }
+    if (!place.wishlist) {
+      setVisited((prevPlaces) =>
+        prevPlaces.filter((place) => place.id !== pid)
+      );
+      setWishlist((prevPlaces) => {
+        return [...prevPlaces, { ...place, wishlist: true }];
+      });
+      setUserData((prevData) => {
+        const newData = userData.places.map((place) =>
+          place.id === pid ? { ...place, wishlist: true } : place
+        );
+        return { ...prevData, places: newData };
+      });
+    }
+  };
   const onDeleteHandler = (wishlist, deletedPlaceId) => {
-    const pid=String(deletedPlaceId)
+    const pid = String(deletedPlaceId);
     if (wishlist) {
-      setWishlist((prevPlace) =>( 
-        prevPlace.filter((place) => place.id !== pid)
-      ));
+      setWishlist((prevPlace) => prevPlace.filter((place) => place.id !== pid));
     } else {
-      setVisited((prevPlace) => (
-        prevPlace.filter((place) => place.id !== pid)
-      ));
-      console.log(visited)
+      setVisited((prevPlace) => prevPlace.filter((place) => place.id !== pid));
+      setUserData((prevData) => {
+        const newPlaceArray = prevData.places.filter(
+          (place) => place.id !== deletedPlaceId
+        );
+        const newUserData = { ...prevData, places: newPlaceArray };
+        return newUserData;
+      });
     }
   };
   const userId = useParams().userId;
@@ -65,6 +98,7 @@ const SingleUser = (props) => {
           visitedList={visited}
           wishlistList={wishlist}
           onDelete={onDeleteHandler}
+          onWishlistChange={wishlistChangeHandler}
         />
       </div>
     );

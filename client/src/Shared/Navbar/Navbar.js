@@ -127,6 +127,20 @@ const Navbar = (props) => {
                       Add Data
                     </Button>
                   </Link>
+                  <Link to="/edit/place/abc" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Edit Place
+                    </Button>
+                  </Link>
+                  <Link to="/edit/post/abc" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      Edit Post
+                    </Button>
+                  </Link>
 
                   <Button
                     onClick={auth.logout}

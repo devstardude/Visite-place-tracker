@@ -3,16 +3,22 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   CustomTextInput,
-  CustomFileInput,
+  CustomFileInput
 } from "../../../Shared/Inputs/Inputs";
 
 import "./AddPost.css";
 
 const AddPost = (props) => {
   const dataSubmitHandler = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    const data = {
+      title:values.title,
+      description:values.description,
+      content:values.content,
+      tags:values.tag.split(',')
+    }
+    console.log(data);
     setSubmitting(false);
-    resetForm();
+    // resetForm();
   };
   return (
     <div className="AddPlaceForm">
@@ -22,10 +28,11 @@ const AddPost = (props) => {
             title: "",
             description: "",
             content: "",
+            tag: "",
             file: null,
           }}
           validationSchema={Yup.object({
-            username: Yup.string()
+            title: Yup.string()
               .min(2, "Must be atleast 1 characters")
               .max(12, "Cannot exceed 12 character")
               .required("Required"),
@@ -37,28 +44,35 @@ const AddPost = (props) => {
               .min(1, "Must be atleast 1 characters")
               .max(60, "Cannot exceed 60 character")
               .required("Required"),
-            file: Yup.mixed().required("Please upload a file"),
+            // file: Yup.mixed().required("Please upload a file"),
           })}
           onSubmit={dataSubmitHandler}
         >
           {({ setFieldValue, ...props }) => (
             <Form>
               <CustomTextInput
-                label="Username"
-                name="username"
-                placeholder="Username here"
+                label="Title"
+                name="title"
+                placeholder="Title here"
               />
               <CustomTextInput
+                multiline
                 label="Description"
                 name="description"
                 placeholder="Description here"
               />
               <CustomTextInput
+                multiline
                 label="Content"
                 name="content"
                 placeholder="Content here"
               />
-
+              <CustomTextInput
+              multiline
+                label="Tags"
+                name="tag"
+                placeholder="Tags seperated by commas.(Don't put spaces in between)"
+              />
               <CustomFileInput
                 buttonText="Pick Post Image"
                 id="file"

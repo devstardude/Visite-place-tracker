@@ -10,6 +10,8 @@ router.get("/:pid", placesControllers.getPlaceById);
 router.get("/user/:uid", placesControllers.getPlacesByUserId);
 
 router.use(checkAuth);
+router.patch("/wishlist/:pid",placesControllers.changeWishlistValue)
+
 router.delete("/:pid", placesControllers.deletePlace);
 router.post(
   "/",
@@ -21,8 +23,8 @@ router.post(
   placesControllers.createPlace
 );
 router.patch(
-  "/:pid",
-  [check("title").not().isEmpty(), check("description").isLength({ min: 5 })],
+  "/update/:pid",
+  [check("title").not().isEmpty(), check("description").isLength({ min: 1 })],
   placesControllers.updatePlace
 );
 

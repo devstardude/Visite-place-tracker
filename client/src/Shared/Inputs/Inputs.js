@@ -2,6 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import { TextField, MenuItem } from "@material-ui/core";
 import ImageUpload from "../ImageUpload/ImageUpload";
+import ChipInput from "material-ui-chip-input";
 import "./Inputs.css";
 
 const placeTypes = [
@@ -37,6 +38,7 @@ export const CustomTextInput = (props) => {
         id={props.name}
         label={props.label}
         helperText={meta.error}
+        multiline={props.multiline&&true}
         InputLabelProps={{
           style: { color: "grey" },
         }}
@@ -62,6 +64,7 @@ export const CustomSelectInput = (props) => {
         label="Select Type of Place"
         select
         helperText={meta.error}
+        autoComplete="off"
       >
         {placeTypes.map((option) => (
           <MenuItem key={option.value} value={option.value}>
