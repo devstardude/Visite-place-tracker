@@ -1,21 +1,36 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   CustomTextInput,
   CustomFileInput
 } from "../../../Shared/Inputs/Inputs";
+import { AuthContext } from "../../../Shared/Context/auth-context";
+import { useHttpClient } from "../../../Shared/hooks/http-hook";
+import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 
 import "./AddPost.css";
 
 const AddPost = (props) => {
-  const dataSubmitHandler = (values, { setSubmitting, resetForm }) => {
-    const data = {
+   const auth = useContext(AuthContext);
+   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const dataSubmitHandler = async(values, { setSubmitting, resetForm }) => {
+
+    const data = JSON.stringify({
       title:values.title,
       description:values.description,
       content:values.content,
-      tags:values.tag.split(',')
-    }
+      tags:values.tags.split(',')
+    })
+    await sendRequest(
+      `${process.env.REACT_APP_BACKEND_URL}/posts/new`,
+      "POST",
+      data,
+      {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + auth.token,
+      }
+    );
     console.log(data);
     setSubmitting(false);
     // resetForm();
@@ -23,13 +38,14 @@ const AddPost = (props) => {
   return (
     <div className="AddPlaceForm">
       <div>
+        {error && <ErrorModal errorText={error} clicked={clearError} />}
         <Formik
           initialValues={{
             title: "",
             description: "",
             content: "",
-            tag: "",
-            file: null,
+            tags: "",
+            image: null,
           }}
           validationSchema={Yup.object({
             title: Yup.string()
@@ -44,7 +60,7 @@ const AddPost = (props) => {
               .min(1, "Must be atleast 1 characters")
               .max(60, "Cannot exceed 60 character")
               .required("Required"),
-            // file: Yup.mixed().required("Please upload a file"),
+            // image: Yup.mixed().required("Please upload an image"),
           })}
           onSubmit={dataSubmitHandler}
         >
@@ -68,16 +84,16 @@ const AddPost = (props) => {
                 placeholder="Content here"
               />
               <CustomTextInput
-              multiline
+                multiline
                 label="Tags"
-                name="tag"
+                name="tags"
                 placeholder="Tags seperated by commas.(Don't put spaces in between)"
               />
               <CustomFileInput
                 buttonText="Pick Post Image"
                 id="file"
-                name="file"
-                onInput={(file) => file && setFieldValue("file", file)}
+                name="image"
+                onInput={(file) => file && setFieldValue("image", file)}
               />
 
               <div className="AddPlaceButtonDiv">

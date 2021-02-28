@@ -117,10 +117,10 @@ const UserTabs = (props) => {
           <MainUserDiv divType="wishlist" {...props} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <MainUserDiv divType="postDiv" />
+          <MainUserDiv divType="postDiv" {...props} />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-          <MainUserDiv divType="messageDiv" />
+          <MainUserDiv divType="messageDiv" {...props} />
         </TabPanel>
       </SwipeableViews>
     </div>

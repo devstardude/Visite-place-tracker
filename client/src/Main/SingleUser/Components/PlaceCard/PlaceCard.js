@@ -51,9 +51,10 @@ const PlaceCard = React.memo((props) => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      props.onDelete(props.place.wishlist, props.place.id);
+      props.onPlaceDelete(props.place.wishlist, props.place.id);
     } catch (err) {}
   };
+
   return (
     <div className="mx-auto SingelUserPlaceCard">
       {error && <ErrorModal errorText={error} clicked={clearError} />}
@@ -82,7 +83,10 @@ const PlaceCard = React.memo((props) => {
                     <button className="btn btn-outline-info">Edit</button>
                   </Link>
 
-                  <DeleteConfirmationModal deleteHandler={deleteHandler} />
+                  <DeleteConfirmationModal
+                    deleteHandler={deleteHandler}
+                    deleteWarning="Are you sure you want to delete this place?"
+                  />
                   <Switch
                     disabled={switchDisabled}
                     checked={switchState}

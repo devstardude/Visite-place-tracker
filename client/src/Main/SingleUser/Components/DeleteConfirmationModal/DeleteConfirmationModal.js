@@ -35,7 +35,8 @@ const DeleteConfirmationModal = (props) => {
         <Zoom in={open}>
           <div className="container align-self-center DeleteBoxContainer p-0">
             <h2 className="pt-3 px-3 pb-2">
-              Are you sure you want to delete this place?
+              {props.deleteWarning}
+              
             </h2>
             <div className="p-3 Center">
               <button

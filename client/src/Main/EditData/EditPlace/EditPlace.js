@@ -53,7 +53,7 @@ const EditPlace = (props) => {
   if (isLoading) {
     return <Loading />;
   }
-   if (loadedPlace && !error) {
+   if (!loadedPlace && !error) {
      return (
        <div>
          <div>

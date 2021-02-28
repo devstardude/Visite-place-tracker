@@ -7,11 +7,11 @@ import UserHeader from "../Components/UserHeader/UserHeader";
 import UserTabs from "../Components/UserTabs/UserTabs";
 import Loading from "../../../Shared/Loading/Loading";
 import "./SingleUser.css";
-
 const SingleUser = (props) => {
   const [userData, setUserData] = useState();
   const [visited, setVisited] = useState();
   const [wishlist, setWishlist] = useState();
+  const [posts, setPosts] = useState();
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -46,7 +46,7 @@ const SingleUser = (props) => {
       });
     }
   };
-  const onDeleteHandler = (wishlist, deletedPlaceId) => {
+  const onPlaceDeleteHandler = (wishlist, deletedPlaceId) => {
     const pid = String(deletedPlaceId);
     if (wishlist) {
       setWishlist((prevPlace) => prevPlace.filter((place) => place.id !== pid));
@@ -61,6 +61,14 @@ const SingleUser = (props) => {
       });
     }
   };
+  const onPostDeleteHandler = (postId)=>{
+    setPosts((prevPosts)=>prevPosts.filter((post)=>post.id!==postId))
+    setUserData((prevData)=>{
+      const newPostArray = prevData.posts.filter((post)=>post!==postId)
+      const newUserData = {...prevData,posts:newPostArray}
+      return newUserData;
+    })
+  }
   const userId = useParams().userId;
 
   useEffect(() => {
@@ -83,6 +91,15 @@ const SingleUser = (props) => {
         setUserData(responseData.user[0]);
       } catch (err) {}
     };
+    const fetchPosts = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/posts/myposts/${userId}`
+        );
+        setPosts(responseData.userPosts);
+      } catch (err) {}
+    };
+    fetchPosts();
     fetchUserData();
     fetchPlaces();
   }, [sendRequest, userId]);
@@ -97,7 +114,9 @@ const SingleUser = (props) => {
         <UserTabs
           visitedList={visited}
           wishlistList={wishlist}
-          onDelete={onDeleteHandler}
+          postsList={posts}
+          onPlaceDelete={onPlaceDeleteHandler}
+          onPostDelete={onPostDeleteHandler}
           onWishlistChange={wishlistChangeHandler}
         />
       </div>

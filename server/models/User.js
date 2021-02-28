@@ -29,12 +29,15 @@ const userSchema = new mongoose.Schema({
   places: {
     type: [],
     default: null,
-    ref:"Place"
+    ref: "Place",
   },
-  posts: {
-    type: [],
-    default: null,
-  },
+  posts: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Post",
+      required: true,
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,

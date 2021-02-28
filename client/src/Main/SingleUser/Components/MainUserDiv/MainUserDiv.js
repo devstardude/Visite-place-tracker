@@ -16,7 +16,7 @@ const MainUserDiv = (props) => {
   } else if (divType === "postDiv") {
     return (
       <div className="MainUserDiv mx-auto">
-        <PostDiv />
+        <PostDiv {...props} />
       </div>
     );
   } else if (divType === "wishlist") {
