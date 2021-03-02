@@ -10,7 +10,7 @@ const MessageBox = (props) => {
         <TooltipInfo info={senderName}>
           <img className="MessageImage" src={senderDp} alt="..." />
         </TooltipInfo>
-        <Link to={`/global/users/${senderId}`}>
+        <Link to={`/user/${senderId}`}>
           <p className="align-self-center MessageBoxText">{text}</p>
         </Link>
       </div>

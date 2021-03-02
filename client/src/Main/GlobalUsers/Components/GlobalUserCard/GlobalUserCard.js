@@ -24,14 +24,14 @@ const GlobalUserCard = (props) => {
     <div className="container GlobalUserCard m-0 p-2 mx-auto">
       <div className="row p-2 p-md-1">
         <div className="col-4">
-          <Link to={`/global/users/${props.user.id}`}>
+          <Link to={`/user/${props.user.id}`}>
             <div className="d-inline-block">
               <img className=" GlobalAvatar" src={props.user.dp} alt="Dp.jpg" />
             </div>
           </Link>
         </div>
         <div className="col-8">
-          <Link to={`/global/users/${props.user.id}`}>
+          <Link to={`/user/${props.user.id}`}>
             <div className="GlobalDetailsDiv RoundAndDark p-2">
               <h3 className="m-0 pb-1 GlobalName">{props.user.username}</h3>
               {/* Name Limit is 12 */}

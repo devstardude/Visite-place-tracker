@@ -47,7 +47,7 @@ const EditPost = (props)=>{
           Authorization: "Bearer " + auth.token,
         }
       );
-      history.push(`/global/users/${auth.userId}`);
+      history.push(`/user/${auth.userId}`);
     } catch (err) {}
     setSubmitting(false);
     resetForm();
@@ -63,7 +63,7 @@ const EditPost = (props)=>{
        </div>
        <div className="Center">
          <h2 className="mt-3">Could not find post!</h2>
-         <Link to={`/global/users/${auth.userId}`}>
+         <Link to={`/user/${auth.userId}`}>
            <button className="mt-3 btn btn-outline-secondary">Go Back</button>
          </Link>
        </div>

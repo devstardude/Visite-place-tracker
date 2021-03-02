@@ -31,7 +31,7 @@ const AppInfo = (props) => {
             <hr className="mx-auto" />
             <div className="row p-3">
               <div className="col-12 col-md-4 mb-4">
-                <Card className="CardDiv">
+                <Card className="LandingCardDiv">
                   <ImageHeader
                     className="CardImage"
                     alt="image"
@@ -43,7 +43,7 @@ const AppInfo = (props) => {
                 </Card>
               </div>
               <div className="col-12 col-md-4 mb-4">
-                <Card className="CardDiv">
+                <Card className="LandingCardDiv">
                   <ImageHeader
                     className="CardImage"
                     alt="image"
@@ -55,7 +55,7 @@ const AppInfo = (props) => {
                 </Card>
               </div>
               <div className="col-12 col-md-4 mb-4">
-                <Card className="CardDiv">
+                <Card className="LandingCardDiv">
                   <ImageHeader
                     className="CardImage"
                     alt="image"

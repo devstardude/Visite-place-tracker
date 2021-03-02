@@ -35,7 +35,7 @@ const AddPost = (props) => {
     );
     setSubmitting(false);
     // resetForm();
-    // history.push(`/global/users/${auth.userId}`);
+    // history.push(`/user/${auth.userId}`);
 
   };
   return (

@@ -52,7 +52,7 @@ const AddPlace = (props) => {
     } catch (err) {}
     setSubmitting(false);
     // resetForm();
-    // history.push(`/global/users/${auth.userId}`);
+    // history.push(`/user/${auth.userId}`);
   };
   const PlaceSearchResultHandler = (result) => {
     setPlaceSearch(result);

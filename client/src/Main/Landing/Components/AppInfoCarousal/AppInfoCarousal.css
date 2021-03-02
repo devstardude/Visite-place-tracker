@@ -1,6 +1,12 @@
 .AppInfoCarousalDiv {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
   width: 50%;
   border-radius: 7px;
+  transition: 1s;
+}
+.AppInfoCarousalDiv:hover{
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.218);
+
 }
 .carousel-item img {
   border-radius: 7px !important;

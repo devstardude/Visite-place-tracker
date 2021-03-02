@@ -1,15 +1,19 @@
 import React from "react";
+import Spinner from "../../../../Shared/Spinner/Spinner";
 import PlaceCard from "../PlaceCard/PlaceCard";
 
 // import "./VisitedDiv.css";
 
 const VisitedDiv = (props) => {
-  if(props.visitedList && props.visitedList.length===0){
+  if (props.loading) {
+    return <Spinner />
+  }
+  if(!props.visitedList || props.visitedList.length===0){
     return (
-      <div className="container">
-        <div className="bg-light">
-          No Place to show
-        </div>
+      <div className="container Center pt-4">
+        <h4 style={{color:"#ffffff"}}>
+          No Places to show
+        </h4>
       </div>
     );
   }

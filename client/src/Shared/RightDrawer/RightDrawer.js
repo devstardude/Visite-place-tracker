@@ -49,7 +49,7 @@ const loggedIn = false
               </Link>
             </div>
             <div className="mb-3">
-              <Link className="Link" to="/global/users/abc">
+              <Link className="Link" to="/user/abc">
                 <Button style={{ minWidth: "6rem" }} variant="outlined">
                   Profile
                 </Button>

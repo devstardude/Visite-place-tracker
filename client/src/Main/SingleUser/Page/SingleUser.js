@@ -13,20 +13,20 @@ const SingleUser = (props) => {
   const [visited, setVisited] = useState();
   const [wishlist, setWishlist] = useState();
   const [posts, setPosts] = useState();
-  const [alertState,setAlertState]=useState({
-    open:false,
-    message:"",
-    variant:""
-  })
+  const [alertState, setAlertState] = useState({
+    open: false,
+    message: "",
+    variant: "",
+  });
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const userId = useParams().userId;
- const handleClose = (event, reason) => {
-   if (reason === "clickaway") {
-     return;
-   }
-   setAlertState({open:false,message:"",variant:""})
- };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlertState({ open: false, message: "", variant: "" });
+  };
   const wishlistChangeHandler = (place) => {
     const pid = String(place.id);
     if (place.wishlist) {
@@ -42,11 +42,11 @@ const SingleUser = (props) => {
         );
         return { ...prevData, places: newData };
       });
-          setAlertState({
-            open: true,
-            message: "Added to visited",
-            variant: "success",
-          });
+      setAlertState({
+        open: true,
+        message: "Added to visited",
+        variant: "success",
+      });
     }
     if (!place.wishlist) {
       setVisited((prevPlaces) =>
@@ -102,27 +102,27 @@ const SingleUser = (props) => {
     });
   };
   const giveLikeCountHandler = (id) => {
-  setUserData((prevData)=>{
-    const newLikesArray = [...prevData.likes,id]
-    return {...prevData,likes:newLikesArray}
-  })
-   setAlertState({
-     open: true,
-     message: "Profile Liked",
-     variant: "success",
-   });
+    setUserData((prevData) => {
+      const newLikesArray = [...prevData.likes, id];
+      return { ...prevData, likes: newLikesArray };
+    });
+    setAlertState({
+      open: true,
+      message: "Profile Liked",
+      variant: "success",
+    });
   };
-
+  const userId = useParams().userId;
   useEffect(() => {
+    setVisited();
+    setWishlist();
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/places/user/${userId}`
         );
-        const visited = visitedFilter(responseData.places);
-        const wishlist = wishlistFilter(responseData.places);
-        setVisited(visited);
-        setWishlist(wishlist);
+        setVisited(visitedFilter(responseData.places));
+        setWishlist(wishlistFilter(responseData.places));
       } catch (err) {}
     };
     const fetchUserData = async () => {
@@ -141,9 +141,9 @@ const SingleUser = (props) => {
         setPosts(responseData.userPosts);
       } catch (err) {}
     };
-    fetchPosts();
     fetchUserData();
     fetchPlaces();
+    fetchPosts();
   }, [sendRequest, userId]);
 
   if (!userData) {
@@ -152,11 +152,16 @@ const SingleUser = (props) => {
     return (
       <div className="SingleUserPage">
         {/* {error && <ErrorModal errorText={error} clicked={clearError} />} */}
-
         <UserHeader giveLikeCount={giveLikeCountHandler} user={userData} />
         <ProfileCount user={userData} />
-        <Alert handleClose={handleClose} openAlert={alertState.open} alertMessage={alertState.message} variant={alertState.variant} />
+        <Alert
+          handleClose={handleClose}
+          openAlert={alertState.open}
+          alertMessage={alertState.message}
+          variant={alertState.variant}
+        />
         <UserTabs
+          loading={isLoading}
           id={userId}
           visitedList={visited}
           wishlistList={wishlist}

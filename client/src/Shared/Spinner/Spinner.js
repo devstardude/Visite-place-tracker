@@ -7,7 +7,7 @@ const Spinner = (props)=>{
       <div className="container Center py-2">
         <CircularProgress
           color="inherit"
-          size={`4rem`}
+          size={`3.5rem`}
           style={{ display: "inline-block", color: "white" }}
         />
       </div>

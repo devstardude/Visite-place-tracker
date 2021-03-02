@@ -120,7 +120,7 @@ const Navbar = (props) => {
                       Users
                     </Button>
                   </Link>
-                  <Link to={`/global/users/${auth.userId}`} className="Link">
+                  <Link to={`/user/${auth.userId}`} className="Link">
                     <Button
                       style={{ color: "white", fontFamily: "Montserrat" }}
                     >

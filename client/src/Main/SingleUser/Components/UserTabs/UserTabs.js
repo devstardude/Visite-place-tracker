@@ -71,25 +71,25 @@ const UserTabs = (props) => {
   return (
     <div className={styles.Root}>
       <AppBar className={styles.AppBar} position="static" color="#ffffff">
-        <Tabs
-          elivation={0}
-          className={styles.Tabs}
-          classes={{ indicator: styles.Indicator }}
-          value={value}
-          onChange={handleChange}
-          variant="fullWidth"
-          scrollButtons="on"
-          aria-label="tabs "
-          centered
-        >
-          <Tab
-            style={{ outline: "none" }}
-            icon={<ExploreIcon />}
-            label={widthD < 768 ? "" : "Visited"}
-            aria-label="Visited"
-            {...a11yProps(0)}
-          />
-          {currentUserCheck && (
+        {currentUserCheck ? (
+          <Tabs
+            elivation={0}
+            className={styles.Tabs}
+            classes={{ indicator: styles.Indicator }}
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            scrollButtons="on"
+            aria-label="tabs "
+            centered
+          >
+            <Tab
+              style={{ outline: "none" }}
+              icon={<ExploreIcon />}
+              label={widthD < 768 ? "" : "Visited"}
+              aria-label="Visited"
+              {...a11yProps(0)}
+            />
             <Tab
               style={{ outline: "none" }}
               icon={<BookmarkIcon />}
@@ -97,16 +97,13 @@ const UserTabs = (props) => {
               aria-label="Wishlist"
               {...a11yProps(1)}
             />
-          )}
-
-          <Tab
-            style={{ outline: "none" }}
-            icon={<FeaturedPlayListIcon />}
-            label={widthD < 768 ? "" : "Posts"}
-            aria-label="Posts"
-            {...a11yProps(2)}
-          />
-          {currentUserCheck && (
+            <Tab
+              style={{ outline: "none" }}
+              icon={<FeaturedPlayListIcon />}
+              label={widthD < 768 ? "" : "Posts"}
+              aria-label="Posts"
+              {...a11yProps(2)}
+            />
             <Tab
               style={{ outline: "none" }}
               icon={<ChatIcon />}
@@ -114,31 +111,69 @@ const UserTabs = (props) => {
               aria-label="Messages"
               {...a11yProps(3)}
             />
-          )}
-        </Tabs>
+          </Tabs>
+        ) : (
+          <Tabs
+            elivation={0}
+            className={styles.Tabs}
+            classes={{ indicator: styles.Indicator }}
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            scrollButtons="on"
+            aria-label="tabs "
+            centered
+          >
+            <Tab
+              style={{ outline: "none" }}
+              icon={<ExploreIcon />}
+              label={widthD < 768 ? "" : "Visited"}
+              aria-label="Visited"
+              {...a11yProps(0)}
+            />
+            <Tab
+              style={{ outline: "none" }}
+              icon={<FeaturedPlayListIcon />}
+              label={widthD < 768 ? "" : "Posts"}
+              aria-label="Posts"
+              {...a11yProps(1)}
+            />
+          </Tabs>
+        )}
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <MainUserDiv divType="visited" {...props} />
-        </TabPanel>
-        {currentUserCheck && (
+      {currentUserCheck ? (
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <MainUserDiv divType="visited" {...props} />
+          </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <MainUserDiv divType="wishlist" {...props} />
           </TabPanel>
-        )}
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          <MainUserDiv divType="postDiv" {...props} />
-        </TabPanel>
-        {currentUserCheck && (
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <MainUserDiv divType="postDiv" {...props} />
+          </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
             <MainUserDiv divType="messageDiv" {...props} />
           </TabPanel>
-        )}
-      </SwipeableViews>
+        </SwipeableViews>
+      ) : (
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <MainUserDiv divType="visited" {...props} />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <MainUserDiv divType="postDiv" {...props} />
+          </TabPanel>
+        </SwipeableViews>
+      )}
     </div>
   );
 };

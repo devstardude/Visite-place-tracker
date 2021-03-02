@@ -7,7 +7,7 @@ import "./AppInfoCarousal.css";
 
 const AppInfoCarousal = (props) => {
   return (
-    <div>
+    <div className="CarousalDiv">
       <div
         id="carousal"
         className="carousel carousel-fade"

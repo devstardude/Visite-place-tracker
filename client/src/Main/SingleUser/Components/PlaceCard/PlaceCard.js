@@ -57,7 +57,6 @@ const PlaceCard = React.memo((props) => {
 
   return (
     <div className="mx-auto SingelUserPlaceCard">
-    
       {error && <ErrorModal errorText={error} clicked={clearError} />}
       <Card className="CardDiv">
         <ImageHeader className="CardImage" alt="image" imageSrc={Image} />

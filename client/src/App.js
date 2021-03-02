@@ -28,12 +28,13 @@ function App() {
   if(token){
     routes = (
       <Switch>
-        <Route path="/global/users" component={GlobalUser} exact />
-        <Route path="/global/users/:userId" component={SingleUser} exact />
-        <Route path="/add" component={PostDataTabs} exact />
-        <Route path="/post/:postId" component={SinglePost} exact />
+        <Route path="/user/:userId" component={SingleUser} exact />
         <Route path="/edit/place/:placeId" component={EditPlace} exact />
         <Route path="/edit/post/:postId" component={EditPost} exact />
+        <Route path="/global/users" component={GlobalUser} exact />
+        <Route path="/add" component={PostDataTabs} exact />
+        <Route path="/post/:postId" component={SinglePost} exact />
+
         <Route path="/aboutme" component={AboutMe} exact />
         <Route path="/" component={Landing} exact />
         <Redirect to="/" />
