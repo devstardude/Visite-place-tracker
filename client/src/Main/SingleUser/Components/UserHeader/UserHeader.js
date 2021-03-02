@@ -12,8 +12,8 @@ const UserHeader = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const currentUserCheck = props.user._id === auth.userId;
-const alreadyLiked = props.user.likes.includes(auth.userId);
-const [isLiked,setIsLiked]=useState(alreadyLiked)
+  const alreadyLiked = props.user.likes.includes(auth.userId);
+  const [isLiked, setIsLiked] = useState(alreadyLiked);
 
   const giveLikeHandler = async () => {
     try {
@@ -26,7 +26,7 @@ const [isLiked,setIsLiked]=useState(alreadyLiked)
           Authorization: "Bearer " + auth.token,
         }
       );
-      setIsLiked(true)
+      setIsLiked(true);
       props.giveLikeCount(props.user._id);
     } catch (err) {}
   };
@@ -79,5 +79,7 @@ const [isLiked,setIsLiked]=useState(alreadyLiked)
     </React.Fragment>
   );
 };
+
+
 
 export default UserHeader;

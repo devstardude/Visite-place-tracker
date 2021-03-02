@@ -6,17 +6,27 @@ import ProfileCount from "../Components/ProfileCount/ProfileCount";
 import UserHeader from "../Components/UserHeader/UserHeader";
 import UserTabs from "../Components/UserTabs/UserTabs";
 import Loading from "../../../Shared/Loading/Loading";
-import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import "./SingleUser.css";
+import Alert from "../../../Shared/Alert/Alert";
 const SingleUser = (props) => {
   const [userData, setUserData] = useState();
   const [visited, setVisited] = useState();
   const [wishlist, setWishlist] = useState();
   const [posts, setPosts] = useState();
+  const [alertState,setAlertState]=useState({
+    open:false,
+    message:"",
+    variant:""
+  })
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const userId = useParams().userId;
-
+ const handleClose = (event, reason) => {
+   if (reason === "clickaway") {
+     return;
+   }
+   setAlertState({open:false,message:"",variant:""})
+ };
   const wishlistChangeHandler = (place) => {
     const pid = String(place.id);
     if (place.wishlist) {
@@ -32,6 +42,11 @@ const SingleUser = (props) => {
         );
         return { ...prevData, places: newData };
       });
+          setAlertState({
+            open: true,
+            message: "Added to visited",
+            variant: "success",
+          });
     }
     if (!place.wishlist) {
       setVisited((prevPlaces) =>
@@ -45,6 +60,11 @@ const SingleUser = (props) => {
           place.id === pid ? { ...place, wishlist: true } : place
         );
         return { ...prevData, places: newData };
+      });
+      setAlertState({
+        open: true,
+        message: "Added to wishlist",
+        variant: "success",
       });
     }
   };
@@ -62,6 +82,11 @@ const SingleUser = (props) => {
         return newUserData;
       });
     }
+    setAlertState({
+      open: true,
+      message: "Place Deleted",
+      variant: "error",
+    });
   };
   const onPostDeleteHandler = (postId) => {
     setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
@@ -70,12 +95,22 @@ const SingleUser = (props) => {
       const newUserData = { ...prevData, posts: newPostArray };
       return newUserData;
     });
+    setAlertState({
+      open: true,
+      message: "Post Deleted",
+      variant: "error",
+    });
   };
   const giveLikeCountHandler = (id) => {
   setUserData((prevData)=>{
     const newLikesArray = [...prevData.likes,id]
     return {...prevData,likes:newLikesArray}
   })
+   setAlertState({
+     open: true,
+     message: "Profile Liked",
+     variant: "success",
+   });
   };
 
   useEffect(() => {
@@ -116,9 +151,11 @@ const SingleUser = (props) => {
   } else {
     return (
       <div className="SingleUserPage">
-        {error && <ErrorModal errorText={error} clicked={clearError} />}
+        {/* {error && <ErrorModal errorText={error} clicked={clearError} />} */}
+
         <UserHeader giveLikeCount={giveLikeCountHandler} user={userData} />
         <ProfileCount user={userData} />
+        <Alert handleClose={handleClose} openAlert={alertState.open} alertMessage={alertState.message} variant={alertState.variant} />
         <UserTabs
           id={userId}
           visitedList={visited}

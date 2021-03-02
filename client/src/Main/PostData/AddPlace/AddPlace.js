@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import PlaceSearchBox from "../PlaceSearchBox/PlaceSearchBox";
 import Switch from "@material-ui/core/Switch";
 import { Form, Formik } from "formik";
@@ -12,11 +13,10 @@ import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import "./AddPlace.css";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
-
 const AddPlace = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-
+  const history = useHistory();
   const [placeSearch, setPlaceSearch] = useState(null);
   const [state, setState] = React.useState({
     PostWishlistSwitch: false,
@@ -37,7 +37,7 @@ const AddPlace = (props) => {
           placeSearch.address.country,
         image: "Image",
         coordinates: placeSearch.position,
-        typeOfPlace:values.typeOfPlace,
+        typeOfPlace: values.typeOfPlace,
         wishlist: state.PostWishlistSwitch,
       });
       await sendRequest(
@@ -52,6 +52,7 @@ const AddPlace = (props) => {
     } catch (err) {}
     setSubmitting(false);
     // resetForm();
+    // history.push(`/global/users/${auth.userId}`);
   };
   const PlaceSearchResultHandler = (result) => {
     setPlaceSearch(result);

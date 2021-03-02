@@ -1,4 +1,5 @@
 import React,{useContext} from "react";
+import { useHistory } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -8,12 +9,13 @@ import {
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
-
 import "./AddPost.css";
 
 const AddPost = (props) => {
    const auth = useContext(AuthContext);
    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const history = useHistory();
+
   const dataSubmitHandler = async(values, { setSubmitting, resetForm }) => {
 
     const data = JSON.stringify({
@@ -33,6 +35,8 @@ const AddPost = (props) => {
     );
     setSubmitting(false);
     // resetForm();
+    // history.push(`/global/users/${auth.userId}`);
+
   };
   return (
     <div className="AddPlaceForm">

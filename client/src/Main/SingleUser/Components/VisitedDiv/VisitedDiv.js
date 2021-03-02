@@ -4,8 +4,17 @@ import PlaceCard from "../PlaceCard/PlaceCard";
 // import "./VisitedDiv.css";
 
 const VisitedDiv = (props) => {
+  if(props.visitedList && props.visitedList.length===0){
+    return (
+      <div className="container">
+        <div className="bg-light">
+          No Place to show
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="row ">
         {props.visitedList &&
           props.visitedList.map((place) => (
