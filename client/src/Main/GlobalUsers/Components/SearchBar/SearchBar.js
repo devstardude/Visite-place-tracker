@@ -12,7 +12,7 @@ const SearchBar = (props)=>{
         <div className="w-100 px-2">
           <input
             type="text"
-            spellcheck="false"
+            spellCheck="false"
             className="SearchBarInput w-100"
             value={props.TextValue}
             onChange={props.change}

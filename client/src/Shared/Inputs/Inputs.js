@@ -2,7 +2,6 @@ import React from "react";
 import { useField } from "formik";
 import { TextField, MenuItem } from "@material-ui/core";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import ChipInput from "material-ui-chip-input";
 import "./Inputs.css";
 
 const placeTypes = [

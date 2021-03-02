@@ -18,6 +18,8 @@ const PostDataTabs = lazy(() =>
 );
 const EditPlace = lazy(()=>import("./Main/EditData/EditPlace/EditPlace"))
 const EditPost = lazy(()=>import("./Main/EditData/EditPost/EditPost"))
+const SinglePost = lazy(()=>import("./Shared/SinglePost/SinglePost"))
+const AboutMe = lazy(() => import("./Main/AboutMe/AboutMe"));
 let hist = createBrowserHistory();
 
 function App() {
@@ -29,8 +31,10 @@ function App() {
         <Route path="/global/users" component={GlobalUser} exact />
         <Route path="/global/users/:userId" component={SingleUser} exact />
         <Route path="/add" component={PostDataTabs} exact />
+        <Route path="/post/:postId" component={SinglePost} exact />
         <Route path="/edit/place/:placeId" component={EditPlace} exact />
         <Route path="/edit/post/:postId" component={EditPost} exact />
+        <Route path="/aboutme" component={AboutMe} exact />
         <Route path="/" component={Landing} exact />
         <Redirect to="/" />
       </Switch>
@@ -41,6 +45,7 @@ function App() {
         <Route path="/register" component={Register} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/" component={Landing} exact />
+        <Route path="/aboutme" component={AboutMe} exact />
         <Redirect to="/" />
       </Switch>
     );

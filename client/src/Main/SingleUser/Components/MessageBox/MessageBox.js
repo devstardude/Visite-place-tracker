@@ -1,13 +1,18 @@
 import React from "react";
-
-import'./MessageBox.css';
+import { Link} from "react-router-dom";
+import TooltipInfo from "../../../../Shared/TooltipInfo/TooltipInfo";
+import "./MessageBox.css";
 const MessageBox = (props) => {
-  const { text, uid, photoURL } = props.message;
+  const { text, senderId, senderName, senderDp } = props.message;
   return (
     <div className="container p-3 ">
       <div className="d-flex align-middle">
-        <img className="MessageImage" src={photoURL} alt="..." />
-        <p class="align-self-center MessageBoxText">i am papa please bete maan le meri baat</p>
+        <TooltipInfo info={senderName}>
+          <img className="MessageImage" src={senderDp} alt="..." />
+        </TooltipInfo>
+        <Link to={`/global/users/${senderId}`}>
+          <p className="align-self-center MessageBoxText">{text}</p>
+        </Link>
       </div>
     </div>
   );

@@ -22,8 +22,7 @@ const GlobalUserCard = (props) => {
   );
   return (
     <div className="container GlobalUserCard m-0 p-2 mx-auto">
-      {console.log(userPlaceCount.urbanCount)}
-      <div className="row p-2">
+      <div className="row p-2 p-md-1">
         <div className="col-4">
           <Link to={`/global/users/${props.user.id}`}>
             <div className="d-inline-block">

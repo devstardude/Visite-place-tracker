@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Image from "../../../../assets/images/traveller.jpg";
 import { Card, ImageHeader, CardBody, CardFooter } from "react-simple-card";
@@ -11,21 +11,21 @@ import "./PostCard.css";
 
 const PostCard = (props) => {
   const auth = useContext(AuthContext);
-    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const currentUserCheck = auth.userId === props.post.creator;
-    const deleteHandler = async () => {
-      try {
-        await sendRequest(
-          process.env.REACT_APP_BACKEND_URL + `/posts/delete/${props.post.id}`,
-          "DELETE",
-          null,
-          {
-            Authorization: "Bearer " + auth.token,
-          }
-        );
-        props.onPostDelete(props.post.id);
-      } catch (err) {}
-    };
+  const deleteHandler = async () => {
+    try {
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + `/posts/delete/${props.post.id}`,
+        "DELETE",
+        null,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      props.onPostDelete(props.post.id);
+    } catch (err) {}
+  };
   return (
     <div class="col-12 col-md-6 col-lg-4 p-md-4 p-3">
       {error && <ErrorModal errorText={error} clicked={clearError} />}

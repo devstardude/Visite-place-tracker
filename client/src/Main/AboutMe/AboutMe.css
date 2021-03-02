@@ -46,9 +46,6 @@
  width: 57%;
  line-height: 2;
 }
-.Owner button{
-  width: 9.9rem;
-}
 
 @media (max-width:768px){
   .UserHeaderBio{

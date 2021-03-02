@@ -1,78 +1,32 @@
-import React from 'react';
-import MessageBox from '../MessageBox/MessageBox';
+import React from "react";
+import MessageBox from "../MessageBox/MessageBox";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { firestore } from "../../../../firebase/firebase";
+import Spinner from "../../../../Shared/Spinner/Spinner";
+import "./MessageDiv.css";
 
-import'./MessageDiv.css';
+const MessageDiv = (props) => {
+  const messagesRef = firestore.collection(`user-${props.id}`);
+  const query = messagesRef.orderBy("createdAt").limit(25);
+  const [messages] = useCollectionData(query, { idField: "id" });
 
-const MessageDiv = (props)=>{
-    const messages = [
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-      {
-        text: "Helo Babe",
-        photoURL:
-          "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
-      },
-    ];
+  if(!messages){
     return (
       <div className="h-100 MessageDiv">
-        {messages.map((m) => (
-          <MessageBox message={m} />
-        ))}
+        <div className="mt-3">
+          <Spinner />
+        </div>
       </div>
     );
+  }
+  
+  return (
+    <div className="h-100 MessageDiv">
+      {messages && messages.map((m) => <MessageBox message={m} />)}
+
+      {messages.length===0 && <h4 className="Center mt-3">No Messages</h4>}
+    </div>
+  );
 };
 
-export default MessageDiv ;
+export default MessageDiv;

@@ -1,5 +1,5 @@
 .CardDiv {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95)!important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.418)!important;
   border-radius: 10px!important;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -7,6 +7,7 @@
 }
 .CardDiv:hover{
      box-shadow: 0 8px 32px 0 rgba(218, 218, 218, 0.2)!important;
+     background: rgba(255, 255, 255)!important;
 }
 
 .CardImage img{
@@ -21,4 +22,5 @@
   .PlaceCardButtons button{
   width: 5rem;
 }
+
 }

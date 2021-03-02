@@ -4,8 +4,6 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   CustomTextInput,
-  CustomFileInput,
-  CustomSelectInput,
 } from "../../../Shared/Inputs/Inputs";
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";

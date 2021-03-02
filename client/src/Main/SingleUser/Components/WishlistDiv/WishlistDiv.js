@@ -3,13 +3,13 @@ import PlaceCard from "../PlaceCard/PlaceCard";
 
 // import "./WishlistDiv.css";
 
-const PlaceDiv = (props) => {
+const WishlistDiv = (props) => {
   return (
     <div className="container-fluid ">
       <div className="row ">
         {props.wishlistList &&
           props.wishlistList.map((place) => (
-            <div className="col-12 col-lg-6 pr-4 px-lg-5 pb-5 pt-3">
+            <div key={place.id} className="col-12 col-lg-6 pr-4 px-lg-5 pb-5 pt-3">
               <PlaceCard place={place} {...props} />
             </div>
           ))}
@@ -18,4 +18,4 @@ const PlaceDiv = (props) => {
   );
 };
 
-export default PlaceDiv;
+export default WishlistDiv;

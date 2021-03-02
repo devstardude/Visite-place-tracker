@@ -16,10 +16,10 @@ const firebaseConfig = {
 const firebaseApp = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
-const auth = firebaseApp.auth();
+export const firestore = firebase.firestore();
 const storage = firebaseApp.storage();
 
-export async function uploadImage(uid, file) {
+export const  uploadImage=async(uid, file)=> {
   const id = uid;
   const uploadTask = storage.ref(`images/${file.name}-${id}`).put(file);
   return new Promise((resolve, reject) => {
@@ -37,3 +37,4 @@ export async function uploadImage(uid, file) {
     );
   });
 }
+

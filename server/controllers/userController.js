@@ -20,11 +20,11 @@ const getUsers = async (req, res, next) => {
   res.json({ users: users.map((user) => user.toObject({ getters: true })) });
 };
 
-const getUserById = async (req,res,next) => {
+const getUserById = async (req, res, next) => {
   const userId = req.params.uid;
   let user;
   try {
-    user = await User.find({ _id: userId }, { email: 0, password: 0, date :0});
+    user = await User.find({ _id: userId }, { email: 0, password: 0, date: 0 });
   } catch (err) {
     console.log(err);
     const error = new HttpError(
@@ -194,7 +194,6 @@ const login = async (req, res, next) => {
     return next(error);
   }
   //response
-
   res.json({
     userId: existingUser.id,
     username: existingUser.username,
@@ -203,7 +202,33 @@ const login = async (req, res, next) => {
     token: token,
   });
 };
+
+const giveLike = async (req, res, next) => {
+  const userId = req.params.userId;
+  const likerId = req.userData.userId;
+  let user;
+  try {
+    user = await User.findById(userId, { likes: 1 });
+  } catch (err) {
+    const error = new HttpError("Finding user failed, please try again.", 500);
+    return next(error);
+  }
+  const alreadyLiked = user.likes.includes(likerId)
+  if(alreadyLiked){
+    const error = new HttpError("Already Liked !",500)
+    return next(error);
+  }
+  try {
+    user.likes.push(likerId);
+    await user.save();
+  } catch (err) {
+    const error = new HttpError("Cannot like profile, please try again.", 500);
+    return next(error);
+  }
+  res.status(200).json({message:"Profile Liked"})
+};
 exports.getUsers = getUsers;
 exports.getUserById = getUserById;
 exports.signup = signup;
 exports.login = login;
+exports.giveLike = giveLike;

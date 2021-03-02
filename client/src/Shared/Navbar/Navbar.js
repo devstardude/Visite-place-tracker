@@ -96,6 +96,13 @@ const Navbar = (props) => {
                       Register
                     </Button>
                   </Link>
+                  <Link to="/aboutme" className="Link">
+                    <Button
+                      style={{ color: "white", fontFamily: "Montserrat" }}
+                    >
+                      About Me
+                    </Button>
+                  </Link>
                 </div>
               ) : (
                 <div className="mr-0 d-none d-md-flex align-content-middle">
@@ -127,21 +134,6 @@ const Navbar = (props) => {
                       Add Data
                     </Button>
                   </Link>
-                  <Link to="/edit/place/abc" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Edit Place
-                    </Button>
-                  </Link>
-                  <Link to="/edit/post/abc" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Edit Post
-                    </Button>
-                  </Link>
-
                   <Button
                     onClick={auth.logout}
                     style={{ color: "white", fontFamily: "Montserrat" }}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@material-ui/core/styles";
@@ -13,6 +13,7 @@ import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import ChatIcon from "@material-ui/icons/Chat";
 import { useWindowSize as useWindowSizeD } from "@react-hook/window-size/";
 import MainUserDiv from "../MainUserDiv/MainUserDiv";
+import { AuthContext } from "../../../../Shared/Context/auth-context";
 import styles from "./UserTabs.module.css";
 
 function TabPanel(props) {
@@ -49,6 +50,9 @@ function a11yProps(index) {
 }
 
 const UserTabs = (props) => {
+  const auth = React.useContext(AuthContext);
+  const { id } = props;
+  const currentUserCheck = id === auth.userId;
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [widthD] = useWindowSizeD();
@@ -60,6 +64,9 @@ const UserTabs = (props) => {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+  useEffect(() => {
+    setValue(0);
+  }, [id]);
 
   return (
     <div className={styles.Root}>
@@ -82,13 +89,16 @@ const UserTabs = (props) => {
             aria-label="Visited"
             {...a11yProps(0)}
           />
-          <Tab
-            style={{ outline: "none" }}
-            icon={<BookmarkIcon />}
-            label={widthD < 768 ? "" : "Wishlist"}
-            aria-label="Wishlist"
-            {...a11yProps(1)}
-          />
+          {currentUserCheck && (
+            <Tab
+              style={{ outline: "none" }}
+              icon={<BookmarkIcon />}
+              label={widthD < 768 ? "" : "Wishlist"}
+              aria-label="Wishlist"
+              {...a11yProps(1)}
+            />
+          )}
+
           <Tab
             style={{ outline: "none" }}
             icon={<FeaturedPlayListIcon />}
@@ -96,13 +106,15 @@ const UserTabs = (props) => {
             aria-label="Posts"
             {...a11yProps(2)}
           />
-          <Tab
-            style={{ outline: "none" }}
-            icon={<ChatIcon />}
-            label={widthD < 768 ? "" : "Messages"}
-            aria-label="Messages"
-            {...a11yProps(3)}
-          />
+          {currentUserCheck && (
+            <Tab
+              style={{ outline: "none" }}
+              icon={<ChatIcon />}
+              label={widthD < 768 ? "" : "Messages"}
+              aria-label="Messages"
+              {...a11yProps(3)}
+            />
+          )}
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -113,15 +125,19 @@ const UserTabs = (props) => {
         <TabPanel value={value} index={0} dir={theme.direction}>
           <MainUserDiv divType="visited" {...props} />
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <MainUserDiv divType="wishlist" {...props} />
-        </TabPanel>
+        {currentUserCheck && (
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <MainUserDiv divType="wishlist" {...props} />
+          </TabPanel>
+        )}
         <TabPanel value={value} index={2} dir={theme.direction}>
           <MainUserDiv divType="postDiv" {...props} />
         </TabPanel>
-        <TabPanel value={value} index={3} dir={theme.direction}>
-          <MainUserDiv divType="messageDiv" {...props} />
-        </TabPanel>
+        {currentUserCheck && (
+          <TabPanel value={value} index={3} dir={theme.direction}>
+            <MainUserDiv divType="messageDiv" {...props} />
+          </TabPanel>
+        )}
       </SwipeableViews>
     </div>
   );

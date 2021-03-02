@@ -6,6 +6,7 @@ import ProfileCount from "../Components/ProfileCount/ProfileCount";
 import UserHeader from "../Components/UserHeader/UserHeader";
 import UserTabs from "../Components/UserTabs/UserTabs";
 import Loading from "../../../Shared/Loading/Loading";
+import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import "./SingleUser.css";
 const SingleUser = (props) => {
   const [userData, setUserData] = useState();
@@ -14,6 +15,7 @@ const SingleUser = (props) => {
   const [posts, setPosts] = useState();
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const userId = useParams().userId;
 
   const wishlistChangeHandler = (place) => {
     const pid = String(place.id);
@@ -61,15 +63,20 @@ const SingleUser = (props) => {
       });
     }
   };
-  const onPostDeleteHandler = (postId)=>{
-    setPosts((prevPosts)=>prevPosts.filter((post)=>post.id!==postId))
-    setUserData((prevData)=>{
-      const newPostArray = prevData.posts.filter((post)=>post!==postId)
-      const newUserData = {...prevData,posts:newPostArray}
+  const onPostDeleteHandler = (postId) => {
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
+    setUserData((prevData) => {
+      const newPostArray = prevData.posts.filter((post) => post !== postId);
+      const newUserData = { ...prevData, posts: newPostArray };
       return newUserData;
-    })
-  }
-  const userId = useParams().userId;
+    });
+  };
+  const giveLikeCountHandler = (id) => {
+  setUserData((prevData)=>{
+    const newLikesArray = [...prevData.likes,id]
+    return {...prevData,likes:newLikesArray}
+  })
+  };
 
   useEffect(() => {
     const fetchPlaces = async () => {
@@ -109,9 +116,11 @@ const SingleUser = (props) => {
   } else {
     return (
       <div className="SingleUserPage">
-        <UserHeader user={userData} />
+        {error && <ErrorModal errorText={error} clicked={clearError} />}
+        <UserHeader giveLikeCount={giveLikeCountHandler} user={userData} />
         <ProfileCount user={userData} />
         <UserTabs
+          id={userId}
           visitedList={visited}
           wishlistList={wishlist}
           postsList={posts}

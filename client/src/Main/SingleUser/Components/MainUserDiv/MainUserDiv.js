@@ -10,7 +10,7 @@ const MainUserDiv = (props) => {
   if (divType === "messageDiv") {
     return (
       <div className="MainUserDiv mx-auto">
-        <MessageDiv />
+        <MessageDiv {...props} />
       </div>
     );
   } else if (divType === "postDiv") {

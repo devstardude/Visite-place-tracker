@@ -31,7 +31,6 @@ const AddPost = (props) => {
         Authorization: "Bearer " + auth.token,
       }
     );
-    console.log(data);
     setSubmitting(false);
     // resetForm();
   };
