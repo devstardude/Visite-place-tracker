@@ -1,13 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
+import { AuthContext } from "../Context/auth-context";
 import { Link } from "react-router-dom";
+
+const notLoggedInButtons = [
+  {
+    link: "/",
+    text: "Home",
+  },
+  {
+    link: "/login",
+    text: "Login",
+  },
+  {
+    link: "/register",
+    text: "Register",
+  },
+  {
+    link: "/about",
+    text: "About",
+  },
+];
+
+
 const RightDrawer = () => {
-const loggedIn = false
+  const auth = useContext(AuthContext);
+  const loggedIn = auth.isLoggedIn;
   const [state, setState] = React.useState({
     right: false,
   });
+  const loggedInButtons = [
+    {
+      link: "/",
+      text: "Home",
+    },
+    {
+      link: "/global/users",
+      text: "Users",
+    },
+    {
+      link: `/user/${auth.userId}`,
+      text: "Profile",
+    },
+    {
+      link: "/add",
+      text: "Add Data",
+    },
+    {
+      link: "/globalzone",
+      text: "Global Zone",
+    },
+    {
+      link: "/about",
+      text: "About",
+    },
+  ];
 
   const toggleDrawer = (anchor, open) => () => {
     setState({ ...state, [anchor]: open });
@@ -22,62 +71,25 @@ const loggedIn = false
       {!loggedIn ? (
         <React.Fragment>
           <div className="container Center mt-5">
-            <div className="mb-3">
-              <Link className="Link" to="/login">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Get Started
-                </Button>
-              </Link>
-            </div>
+            {notLoggedInButtons.map((button) => (
+              <LinkButton link={button.link} text={button.text} />
+            ))}
           </div>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <div className="container Center mt-5">
+            {loggedInButtons.map((button) => (
+              <LinkButton link={button.link} text={button.text} />
+            ))}
             <div className="mb-3">
-              <Link className="Link" to="/">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Home
-                </Button>
-              </Link>
-            </div>
-            <div className="mb-3">
-              <Link className="Link" to="/global/users">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Users
-                </Button>
-              </Link>
-            </div>
-            <div className="mb-3">
-              <Link className="Link" to="/user/abc">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Profile
-                </Button>
-              </Link>
-            </div>
-            <div className="mb-3">
-              <Link className="Link" to="/login/adduser">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Add User
-                </Button>
-              </Link>
-            </div>
-            <div className="mb-3">
-              <Link className="Link" to="/add">
-                <Button style={{ minWidth: "6rem" }} variant="outlined">
-                  Add Data
-                </Button>
-              </Link>
-            </div>
-            <div className="mb-3">
-              <Link className="Link">
                 <Button
-                  style={{ minWidth: "6rem" }}
+                  onClick={auth.logout}
+                  style={{ minWidth: "7rem" }}
                   variant="outlined"
                 >
                   Logout
                 </Button>
-              </Link>
             </div>
           </div>
         </React.Fragment>
@@ -98,6 +110,18 @@ const loggedIn = false
         {list("right")}
       </Drawer>
     </React.Fragment>
+  );
+};
+
+const LinkButton = (props) => {
+  return (
+    <div className="mb-3">
+      <Link className="Link" to={props.link}>
+        <Button style={{ minWidth: "7rem" }} variant="outlined">
+          {props.text}
+        </Button>
+      </Link>
+    </div>
   );
 };
 

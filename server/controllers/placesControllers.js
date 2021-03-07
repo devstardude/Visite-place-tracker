@@ -5,9 +5,9 @@ const HttpError = require("../utils/httpError");
 const Place = require("../models/Place");
 const User = require("../models/User");
 
+// --------------Get place by place Id-----
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
-
   try {
     place = await Place.findById(placeId);
   } catch (err) {
@@ -24,9 +24,10 @@ const getPlaceById = async (req, res, next) => {
     );
     return next(error);
   }
-  res.json({ place: place.toObject({ getters: true }) });
+  res.status(200).json({ place: place.toObject({ getters: true }) });
 };
 
+// --------------Get places by user Id-----
 const getPlacesByUserId = async (req, res, next) => {
   const userId = req.params.uid;
   let userWithPlaces;
@@ -49,6 +50,7 @@ const getPlacesByUserId = async (req, res, next) => {
   });
 };
 
+// --------------Create place-----
 const createPlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -71,8 +73,7 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     coordinates,
-    image:
-      "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
+    image,
     typeOfPlace,
     wishlist,
     creator: req.userData.userId,
@@ -113,6 +114,7 @@ const createPlace = async (req, res, next) => {
   res.status(201).json({ place: createdPlace });
 };
 
+// --------------Update Place-----
 const updatePlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -151,6 +153,7 @@ const updatePlace = async (req, res, next) => {
   res.status(200).json({ place: place.toObject({ getters: true }) });
 };
 
+// --------------Wishlist Toggle-----
 const changeWishlistValue = async (req, res, next) => {
   const placeId = req.params.pid;
   let place;
@@ -200,6 +203,7 @@ const changeWishlistValue = async (req, res, next) => {
   res.status(200).json({ message: "wishlist updated." });
 };
 
+// --------------Delete place-----
 const deletePlace = async (req, res, next) => {
   const placeId = req.params.pid;
   let place;

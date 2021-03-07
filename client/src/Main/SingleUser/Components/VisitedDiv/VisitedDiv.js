@@ -6,7 +6,7 @@ import PlaceCard from "../PlaceCard/PlaceCard";
 
 const VisitedDiv = (props) => {
   if (props.loading) {
-    return <Spinner />
+    return <Spinner  />
   }
   if(!props.visitedList || props.visitedList.length===0){
     return (
@@ -22,7 +22,7 @@ const VisitedDiv = (props) => {
       <div className="row ">
         {props.visitedList &&
           props.visitedList.map((place) => (
-            <div className="col-12 col-lg-6 pr-4 px-lg-5 pb-5 pt-3">
+            <div className="col-12 col-md-6 px-1 px-md-5 pt-3 pb-4">
               <PlaceCard key={place.id} place={place} {...props} />
             </div>
           ))}

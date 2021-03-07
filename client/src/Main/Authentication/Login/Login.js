@@ -6,7 +6,6 @@ import { Paper } from "@material-ui/core";
 import {
   CustomTextInput,
 } from "../../../Shared/Inputs/Inputs";
-import CoverPic from "../../../assets/images/cover.jpg";
 import "./Login.css";
 import Masthead from "../../../Shared/Masthead/Masthead";
 import { AuthContext } from "../../../Shared/Context/auth-context";
@@ -45,7 +44,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <Masthead cover={CoverPic} title="Login" />
+      <Masthead  title="Login" />
       <div className="container">
         <div className="mt-4 Center AddUserHeading">
           <h3>Welcome back Traveller.</h3>

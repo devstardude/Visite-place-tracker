@@ -13,6 +13,8 @@ import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import "./AddPlace.css";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
+import { imageUploadHandler } from "../../../utils/utils";
+
 const AddPlace = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -27,6 +29,7 @@ const AddPlace = (props) => {
   };
 
   const dataSubmitHandler = async (values, { setSubmitting, resetForm }) => {
+    console.log(values.image)
     try {
       const data = JSON.stringify({
         title: values.title,
@@ -35,7 +38,7 @@ const AddPlace = (props) => {
           placeSearch.address.freeformAddress +
           ", " +
           placeSearch.address.country,
-        image: "Image",
+        image: await imageUploadHandler(auth.userId,values.image),
         coordinates: placeSearch.position,
         typeOfPlace: values.typeOfPlace,
         wishlist: state.PostWishlistSwitch,
@@ -125,7 +128,7 @@ const AddPlace = (props) => {
                 buttonText="Pick Place Image"
                 id="file"
                 name="image"
-                onInput={(file) => file && setFieldValue("file", file)}
+                onInput={(file) => file && setFieldValue("image", file)}
               />
               <div className="m-1 py-0">
                 <Switch

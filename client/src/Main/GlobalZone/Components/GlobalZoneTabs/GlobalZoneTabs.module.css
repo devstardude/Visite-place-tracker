@@ -1,4 +1,4 @@
-.postDataMainContainer {
+.GlobalDataMainContainer{
   width: 60%;
   border-radius: 10px;
 }
@@ -7,18 +7,19 @@
   height: 100vh;
   font-family: "Montserrat";
 }
-.Tabs {
-  color: rgb(0, 0, 0);
+.Tabs{
+    color: rgb(0, 0, 0);
 }
 .AppBar {
   background: rgb(250, 248, 248);
+
 }
 .Indicator {
   background-color: #000000;
 }
 
-@media (max-width: 768px) {
-  .postDataMainContainer {
-    width: 100%;
-  }
+@media(max-width:768px){
+  .GlobalDataMainContainer{
+  width: 100%;
+}
 }

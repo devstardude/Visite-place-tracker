@@ -19,7 +19,7 @@ const firebaseApp = !firebase.apps.length
 export const firestore = firebase.firestore();
 const storage = firebaseApp.storage();
 
-export const  uploadImage=async(uid, file)=> {
+export const uploadImage = async(uid, file)=> {
   const id = uid;
   const uploadTask = storage.ref(`images/${file.name}-${id}`).put(file);
   return new Promise((resolve, reject) => {

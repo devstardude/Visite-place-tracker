@@ -1,0 +1,23 @@
+.EditHeading h5 {
+  font-size: 22px;
+}
+
+.AddUserForm {
+  width: 60%;
+}
+.AddUserButtonDiv {
+  text-align: left;
+}
+.AddUserButtonDiv {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+
+  .EditHeading h5 {
+    font-size: 15px;
+  }
+  .AddUserForm {
+    width: 90%;
+  }
+}

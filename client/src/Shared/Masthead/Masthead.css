@@ -1,5 +1,5 @@
 .MastheadCover {
-  background-color: #b2afab;
+  background-color: #161616;
   background-position: center center;
   background-size: cover;
   overflow: hidden;
@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   min-height: 40vh;
+  object-fit: cover;
 }
 .MastheadCover h1{
     font-size: calc(2.2vw + 3.6vh + 2.5vmin);

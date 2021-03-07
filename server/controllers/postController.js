@@ -3,7 +3,8 @@ const { validationResult } = require("express-validator");
 const HttpError = require("../utils/httpError");
 const Post = require("../models/Post");
 const User = require("../models/User");
-//------Get All Posts
+
+//---------Get All Posts----
 const getPosts = async (req, res, next) => {
   let posts;
   try {
@@ -18,7 +19,7 @@ const getPosts = async (req, res, next) => {
   res.json({ posts: posts.map((post) => post.toObject({ getters: true })) });
 };
 
-//------Get Single Posts
+//------Get Single Posts----
 const getSinglePost = async (req, res, next) => {
   const postId = req.params.pId;
   let post;
@@ -34,7 +35,7 @@ const getSinglePost = async (req, res, next) => {
   res.json({ post: post.toObject({ getters: true }) });
 };
 
-// User's Post
+//-----------User's Post---
 const myPosts = async (req, res, next) => {
   const userId = req.params.uId;
   let userPosts;
@@ -57,7 +58,7 @@ const myPosts = async (req, res, next) => {
   });
 };
 
-//Create Post
+//------------Create Post----
 const createPost = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -67,15 +68,14 @@ const createPost = async (req, res, next) => {
     );
   }
 
-  const { title, description, content, tags } = req.body;
+  const { title, description, content, tags, image } = req.body;
   const createdPost = new Post({
     title,
     description,
     content,
     tags,
     time: String(new Date().toDateString()),
-    image:
-      "https://lh3.googleusercontent.com/a-/AOh14GhdjLQbJ3MbF_f1xTIU9oz_7_arV-yGFmFun5kT=s96-c",
+    image,
     username: req.userData.username,
     email: req.userData.email,
     creator: req.userData.userId,
@@ -111,7 +111,7 @@ const createPost = async (req, res, next) => {
   }
   res.status(201).json({ post: createdPost });
 };
-
+// ------------Update post--------
 const updatePost = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -131,13 +131,9 @@ const updatePost = async (req, res, next) => {
     );
     return next(error);
   }
-
-  //check username is same
-
   post.title = title;
   post.description = description;
   post.content = content;
-
   try {
     await post.save();
   } catch (err) {
@@ -150,6 +146,7 @@ const updatePost = async (req, res, next) => {
   res.status(200).json({ post: post.toObject({ getters: true }) });
 };
 
+// -----------Delete post-------
 const deletePost = async (req, res, next) => {
   const postId = req.params.pid;
   let post;

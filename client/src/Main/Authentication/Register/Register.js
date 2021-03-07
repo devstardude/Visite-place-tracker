@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
-import CoverPic from "../../../assets/images/cover.jpg";
 import Masthead from "../../../Shared/Masthead/Masthead";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import { Form, Formik } from "formik";
@@ -50,7 +49,7 @@ const Register = (props) => {
 
   return (
     <div>
-      <Masthead cover={CoverPic} title="Registration" />
+      <Masthead title="Registration" />
       <div className="container">
         <div className="mt-4 Center AddUserHeading">
           <h3>Looks like it's your first time here.</h3>

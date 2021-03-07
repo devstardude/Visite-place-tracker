@@ -3,6 +3,14 @@
 .Center {
   text-align: center;
 }
+.Right {
+  text-align: right;
+}
+.WaveBackground{
+  background-color: #ffffff4b;
+background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+
+}
 h1,
 h2,
 h3,
@@ -31,7 +39,6 @@ a {
 .CursorPointer:hover{
   cursor: pointer;
 }
-
 
 @keyframes rotate {
   to {

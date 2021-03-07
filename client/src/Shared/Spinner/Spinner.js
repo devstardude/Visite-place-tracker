@@ -8,7 +8,7 @@ const Spinner = (props)=>{
         <CircularProgress
           color="inherit"
           size={`3.5rem`}
-          style={{ display: "inline-block", color: "white" }}
+          style={{ display: "inline-block", color: (props.color ? props.color :"white") }}
         />
       </div>
     );

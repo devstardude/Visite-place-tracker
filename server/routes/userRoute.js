@@ -20,6 +20,9 @@ router.post("/login",[
     check("email").normalizeEmail().isEmail(),
     check("password").isLength({ min: 6 }),
   ], usersController.login);
+  
+// ---------Further routes are protected by Authentication------
 router.use(checkAuth);
 router.patch("/like/:userId",usersController.giveLike)
+router.patch("/update",usersController.updateUser);
 module.exports = router;

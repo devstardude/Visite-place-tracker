@@ -10,6 +10,8 @@
      background: rgba(255, 255, 255);
 }
 .CardImage img{
+  height: 200px;
+  object-fit: cover;
   border-radius: 10px 10px 0px 0px!important;
 }
 

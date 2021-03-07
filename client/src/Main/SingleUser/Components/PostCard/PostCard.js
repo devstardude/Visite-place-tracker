@@ -27,7 +27,7 @@ const PostCard = (props) => {
     } catch (err) {}
   };
   return (
-    <div class="col-12 col-md-6 col-lg-4 p-md-4 p-3">
+    <div className="col-12 col-lg-6 pr-4 px-lg-5 pb-5 pt-3">
       {error && <ErrorModal errorText={error} clicked={clearError} />}
       <Card className="CardDiv">
         <Link style={{ color: "black" }} to={`/post/${props.post.id}`}>

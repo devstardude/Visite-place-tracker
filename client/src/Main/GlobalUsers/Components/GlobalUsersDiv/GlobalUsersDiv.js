@@ -6,8 +6,6 @@ import "./GlobalUsersDiv.css";
 import ErrorModal from "../../../../Shared/ErrorModal/ErrorModal";
 import Spinner from "../../../../Shared/Spinner/Spinner";
 
-
-
 const GlobalUsersDiv = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUsers, setLoadedUsers] = useState();
@@ -28,7 +26,9 @@ const GlobalUsersDiv = (props) => {
     const newArray = loadedUsers.filter((user) => {
       if (searchQuery === "") {
         return user;
-      } else if (user.username.toLowerCase().includes(searchQuery.toLowerCase())) {
+      } else if (
+        user.username.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
         return user;
       }
     });

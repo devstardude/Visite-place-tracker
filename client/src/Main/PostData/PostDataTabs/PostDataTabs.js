@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ExploreIcon from "@material-ui/icons/Explore";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
-import CoverPic from "../../../assets/images/cover.jpg";
 import Masthead from "../../../Shared/Masthead/Masthead";
 import styles from "./PostDataTabs.module.css";
 import { Paper } from "@material-ui/core";
@@ -62,56 +61,58 @@ const PostDataTabs = () => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <div>
-        <Masthead cover={CoverPic} title="Add Memories" />
+        <Masthead title="Add Memories" />
       </div>
-      <div className={`${styles.postDataMainContainer} mx-auto mt-0`}>
-        <Paper className={styles.Root}>
-          <AppBar className={styles.AppBar} position="static">
-            <Tabs
-              elivation={0}
-              className={styles.Tabs}
-              classes={{ indicator: styles.Indicator }}
-              value={value}
-              onChange={handleChange}
-              variant="fullWidth"
-              scrollButtons="on"
-              aria-label="tabs "
-              centered
-            >
-              <Tab
-                style={{ outline: "none" }}
-                icon={<ExploreIcon />}
-                label="Add Place"
-                aria-label="Add Place"
-                {...a11yProps(0)}
-              />
+      <div className="WaveBackground">
+        <div className={`${styles.postDataMainContainer} mx-auto mt-0`}>
+          <Paper className={styles.Root}>
+            <AppBar className={styles.AppBar} position="static">
+              <Tabs
+                elivation={0}
+                className={styles.Tabs}
+                classes={{ indicator: styles.Indicator }}
+                value={value}
+                onChange={handleChange}
+                variant="fullWidth"
+                scrollButtons="on"
+                aria-label="tabs "
+                centered
+              >
+                <Tab
+                  style={{ outline: "none" }}
+                  icon={<ExploreIcon />}
+                  label="Add Place"
+                  aria-label="Add Place"
+                  {...a11yProps(0)}
+                />
 
-              <Tab
-                style={{ outline: "none" }}
-                icon={<FeaturedPlayListIcon />}
-                label="Add Post"
-                aria-label="Add Posts"
-                {...a11yProps(1)}
-              />
-            </Tabs>
-          </AppBar>
-          <SwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={value}
-            onChangeIndex={handleChangeIndex}
-          >
-            <TabPanel value={value} index={0} dir={theme.direction}>
-              <AddPlace />
-            </TabPanel>
-            <TabPanel value={value} index={1} dir={theme.direction}>
-              <AddPost />
-            </TabPanel>
-          </SwipeableViews>
-        </Paper>
+                <Tab
+                  style={{ outline: "none" }}
+                  icon={<FeaturedPlayListIcon />}
+                  label="Add Post"
+                  aria-label="Add Posts"
+                  {...a11yProps(1)}
+                />
+              </Tabs>
+            </AppBar>
+            <SwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={value}
+              onChangeIndex={handleChangeIndex}
+            >
+              <TabPanel value={value} index={0} dir={theme.direction}>
+                <AddPlace />
+              </TabPanel>
+              <TabPanel value={value} index={1} dir={theme.direction}>
+                <AddPost />
+              </TabPanel>
+            </SwipeableViews>
+          </Paper>
+        </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

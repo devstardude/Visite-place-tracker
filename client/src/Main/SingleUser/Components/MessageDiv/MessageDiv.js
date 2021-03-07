@@ -10,7 +10,7 @@ const MessageDiv = (props) => {
   const query = messagesRef.orderBy("createdAt").limit(25);
   const [messages] = useCollectionData(query, { idField: "id" });
 
-  if(!messages){
+  if (!messages) {
     return (
       <div className="h-100 MessageDiv">
         <div className="mt-3">
@@ -19,12 +19,11 @@ const MessageDiv = (props) => {
       </div>
     );
   }
-  
-  return (
-    <div className="h-100 MessageDiv">
-      {messages && messages.map((m) => <MessageBox message={m} />)}
 
-      {messages.length===0 && <h4 className="Center mt-3">No Messages</h4>}
+  return (
+    <div className="h-100 MessageDiv bd-dark">
+      {messages && messages.map((m) => <MessageBox message={m} />)}
+      {messages.length === 0 && <h4 className="Center mt-3">No Messages</h4>}
     </div>
   );
 };

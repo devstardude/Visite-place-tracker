@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import CoverPic from "../../../../assets/images/cover.jpg";
+import CoverPic from "../../../../assets/images/banner.jpg";
 import { AuthContext } from "../../../../Shared/Context/auth-context";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import SendMessageModal from "../SendMessageModal/SendMessageModal";
@@ -36,44 +36,56 @@ const UserHeader = (props) => {
       <div
         className="SingleUserCover"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${CoverPic})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${CoverPic})`,
         }}
       ></div>
-      <div className="container">
-        <div className="Owner ">
-          <div className="Avatar ">
-            <img
-              alt="..."
-              className="Img-circle Img-no-padding img-responsive"
-              src={props.user.dp}
-            />
-          </div>
-          <h2>{props.user.username}</h2>
-          <p className="UserHeaderBio my-3 mx-auto">{props.user.bio}</p>
-          {!currentUserCheck && (
-            <div>
-              <button
-                onClick={giveLikeHandler}
-                type="button"
-                className={`btn LikeProfileButton rounded-pill ${
-                  !isLiked ? "btn-outline-danger" : "btn-danger"
-                } my-2 mx-2`}
-              >
-                <FavoriteIcon /> {isLiked ? "Profile Liked" : "Like Profile"}
-              </button>
-              <SendMessageModal id={props.user._id} />
+      <div className="WaveBackground">
+        <div className="container pb-4">
+          <div className="Owner ">
+            <div className="Avatar ">
+              <img
+                alt="..."
+                className="Img-circle Img-no-padding img-responsive"
+                src={props.user.dp}
+              />
             </div>
-          )}
-          {currentUserCheck && (
-            <Link to="/add">
-              <button
-                type="button"
-                className="btn btn-outline-secondary rounded-pill"
-              >
-                ➕ Add
-              </button>
-            </Link>
-          )}
+            <h2>{props.user.username}</h2>
+            <p className="UserHeaderBio my-3 mx-auto">{props.user.bio}</p>
+            {!currentUserCheck && (
+              <div>
+                <button
+                  onClick={giveLikeHandler}
+                  type="button"
+                  className={`btn LikeProfileButton rounded-pill ${
+                    !isLiked ? "btn-outline-danger" : "btn-danger"
+                  } my-2 mx-2`}
+                >
+                  <FavoriteIcon /> {isLiked ? "Profile Liked" : "Like Profile"}
+                </button>
+                <SendMessageModal id={props.user._id} />
+              </div>
+            )}
+            {currentUserCheck && (
+              <div>
+                <Link to="/add">
+                  <button
+                    type="button"
+                    className=" d-inline btn btn-outline-secondary rounded-pill"
+                  >
+                    ➕ Add
+                  </button>
+                </Link>
+                <Link to="/edit/user">
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary rounded-pill"
+                  >
+                    ⚙ Setting
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </React.Fragment>

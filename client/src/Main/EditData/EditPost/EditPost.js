@@ -10,7 +10,6 @@ import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import Loading from "../../../Shared/Loading/Loading";
 import Masthead from "../../../Shared/Masthead/Masthead";
-import CoverPic from "../../../assets/images/cover.jpg";
 import { Paper } from "@material-ui/core";
 import'./EditPost.css';
 
@@ -59,10 +58,10 @@ const EditPost = (props)=>{
    return (
      <div>
        <div>
-         <Masthead cover={CoverPic} title="Edit Post" />
+         <Masthead title="Edit Post" />
        </div>
        <div className="Center">
-         <h2 className="mt-3">Could not find post!</h2>
+         <h2 className="pt-3">Could not find post!</h2>
          <Link to={`/user/${auth.userId}`}>
            <button className="mt-3 btn btn-outline-secondary">Go Back</button>
          </Link>
@@ -74,7 +73,7 @@ const EditPost = (props)=>{
  return (
    <div>
      <div>
-       <Masthead cover={CoverPic} title="Edit Post" />
+       <Masthead title="Edit Post" />
      </div>
      <div className="container">
        <div className="mt-4 Center EditHeading">

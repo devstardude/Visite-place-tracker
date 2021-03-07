@@ -28,6 +28,7 @@ function HideOnScroll(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    transition: "3s",
   },
   title: {
     paddingLeft: "18px",
@@ -46,6 +47,25 @@ HideOnScroll.propTypes = {
   window: PropTypes.func,
 };
 
+const notLoggedInButtons = [
+  {
+    link: "/",
+    text: "Home",
+  },
+  {
+    link: "/login",
+    text: "Login",
+  },
+  {
+    link: "/register",
+    text: "Register",
+  },
+  {
+    link: "/about",
+    text: "About",
+  },
+];
+
 const Navbar = (props) => {
   const auth = useContext(AuthContext);
   const classes = useStyles();
@@ -53,9 +73,35 @@ const Navbar = (props) => {
   const [navBackground, setNavBackground] = useState("appBarTransparent");
   const navRef = useRef();
   navRef.current = navBackground;
+  const loggedInButtons = [
+    {
+      link: "/",
+      text: "Home",
+    },
+    {
+      link: "/global/users",
+      text: "Users",
+    },
+    {
+      link: `/user/${auth.userId}`,
+      text: "Profile",
+    },
+    {
+      link: "/add",
+      text: "Add Data",
+    },
+    {
+      link: "/globalzone",
+      text: "Global Zone",
+    },
+    {
+      link: "/about",
+      text: "About",
+    },
+  ];
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 300;
+      const show = window.scrollY > 200;
       if (show) {
         setNavBackground("appBarSolid");
       } else {
@@ -82,58 +128,28 @@ const Navbar = (props) => {
               </Typography>
               {!loggedIn ? (
                 <div className="mr-0 d-none d-md-block">
-                  <Link className="Link" to="/login">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Login
-                    </Button>
-                  </Link>
-                  <Link to="/register" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Register
-                    </Button>
-                  </Link>
-                  <Link to="/aboutme" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      About Me
-                    </Button>
-                  </Link>
+                  {notLoggedInButtons.map((button) => (
+                    <Link className="Link" to={button.link}>
+                      <Button
+                        style={{ color: "white", fontFamily: "Montserrat" }}
+                      >
+                        {button.text}
+                      </Button>
+                    </Link>
+                  ))}
                 </div>
               ) : (
                 <div className="mr-0 d-none d-md-flex align-content-middle">
-                  <Link className="Link" to="/">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Home
-                    </Button>
-                  </Link>
-                  <Link to="/global/users" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Users
-                    </Button>
-                  </Link>
-                  <Link to={`/user/${auth.userId}`} className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Profile
-                    </Button>
-                  </Link>
-                  <Link to="/add" className="Link">
-                    <Button
-                      style={{ color: "white", fontFamily: "Montserrat" }}
-                    >
-                      Add Data
-                    </Button>
-                  </Link>
+                  {loggedInButtons.map((button) => (
+                    <Link className="Link" to={button.link}>
+                      <Button
+                        style={{ color: "white", fontFamily: "Montserrat" }}
+                      >
+                        {button.text}
+                      </Button>
+                    </Link>
+                  ))}
+
                   <Button
                     onClick={auth.logout}
                     style={{ color: "white", fontFamily: "Montserrat" }}

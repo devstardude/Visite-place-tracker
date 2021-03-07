@@ -4,6 +4,7 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 import { useHttpClient } from "../hooks/http-hook";
 import Loading from "../Loading/Loading";
 import Masthead from "../Masthead/Masthead";
+import Spinner from "../Spinner/Spinner";
 //import'./SinglePost.css';
 
 const SinglePost = (props) => {
@@ -21,27 +22,39 @@ const SinglePost = (props) => {
     };
     fetchPlace();
   }, [sendRequest, postId]);
+
   if (isLoading) {
     <Loading />;
   }
   if (loadedPost) {
     return (
-      <div>
-        <Masthead title={loadedPost.title} cover={loadedPost.image} />
-        <div className="container">
+       <div>
+      <Masthead title={loadedPost.title} cover={loadedPost.image} />
+     { console.log(loadedPost)}
+      <div className="container">
         <div>
-            <h4>{loadedPost.title}</h4>
-            <p className="text-muted" >{loadedPost.description}</p>
-            <p className="" >{loadedPost.content}</p>
+          <h4>{loadedPost.title}</h4>
+          <p className="text-muted">{loadedPost.description}</p>
+          <p className="">{loadedPost.content}</p>
         </div>
-        </div>
+      </div>
+    </div>
+     
+    );
+  }
+  if(!loadedPost && !isLoading){
+    return (
+      <div>
+        <ErrorModal error={error} onClear={clearError} />
+        <Masthead title="Not found" />
       </div>
     );
   }
   return (
     <div>
-      <ErrorModal error={error} onClear={clearError} />
       <Masthead title="Loading" />
+      <br/>
+      <Spinner color="black" />
     </div>
   );
 };

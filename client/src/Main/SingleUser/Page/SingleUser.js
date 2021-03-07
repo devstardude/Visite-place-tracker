@@ -116,6 +116,7 @@ const SingleUser = (props) => {
   useEffect(() => {
     setVisited();
     setWishlist();
+    window.scrollTo(0, 0);
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
