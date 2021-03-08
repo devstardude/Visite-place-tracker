@@ -9,6 +9,7 @@ import {
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
+import { CustomSubmitButton } from "../../../Shared/CustomButton/CustomButton";
 import "./AddPost.css";
 
 const AddPost = (props) => {
@@ -99,10 +100,13 @@ const AddPost = (props) => {
                 onInput={(file) => file && setFieldValue("image", file)}
               />
 
-              <div className="AddPlaceButtonDiv">
-                <button className="btn btn-dark px-4 py-2 m-3 " type="submit">
-                  {props.isSubmitting ? "Submitting" : "Submit"}
-                </button>
+              <div className="container mb-2">
+                <CustomSubmitButton
+                  isDisabled={props.isSubmitting}
+                  isLoading={props.isSubmitting}
+                  type="submit"
+                  text={props.isSubmitting ? "Submitting" : "Submit"}
+                />
               </div>
             </Form>
           )}

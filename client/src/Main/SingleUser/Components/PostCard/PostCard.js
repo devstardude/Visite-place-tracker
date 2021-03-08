@@ -8,7 +8,6 @@ import ErrorModal from "../../../../Shared/ErrorModal/ErrorModal";
 import { useHttpClient } from "../../../../Shared/hooks/http-hook";
 import { Chip } from "@material-ui/core";
 import "./PostCard.css";
-
 const PostCard = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

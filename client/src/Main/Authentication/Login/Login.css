@@ -5,12 +5,7 @@
 .AddUserForm {
   width: 60%;
 }
-.AddUserButtonDiv {
-  text-align: left;
-}
-.AddUserButtonDiv {
-  text-align: center;
-}
+
 
 @media (max-width: 768px) {
 

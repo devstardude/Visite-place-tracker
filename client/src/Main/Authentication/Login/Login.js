@@ -11,6 +11,7 @@ import Masthead from "../../../Shared/Masthead/Masthead";
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
+import { CustomSubmitButton } from "../../../Shared/CustomButton/CustomButton";
 
 const Login = (props) => {
   const auth = useContext(AuthContext);
@@ -44,7 +45,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <Masthead  title="Login" />
+      <Masthead title="Login" />
       <div className="container">
         <div className="mt-4 Center AddUserHeading">
           <h3>Welcome back Traveller.</h3>
@@ -70,25 +71,25 @@ const Login = (props) => {
               onSubmit={dataSubmitHandler}
             >
               {({ setFieldValue, ...props }) => (
-                <Form className="py-2">
+                <Form className="p-1 p-md-2">
                   <CustomTextInput
                     label="Email"
                     name="email"
                     placeholder="Email here"
                   />
                   <CustomTextInput
-                  password
+                    password
                     label="Password"
                     name="password"
                     placeholder="Password here"
                   />
-                  <div className="AddUserButtonDiv">
-                    <button
-                      className="btn btn-dark px-4 py-2 m-3 "
+                  <div className="mt-4 mb-4">
+                    <CustomSubmitButton
+                      isDisabled={props.isSubmitting}
+                      isLoading={props.isSubmitting}
                       type="submit"
-                    >
-                      {props.isSubmitting ? "Submitting" : "Submit"}
-                    </button>
+                      text={props.isSubmitting ? "Submitting" : "Submit"}
+                    />
                   </div>
                 </Form>
               )}

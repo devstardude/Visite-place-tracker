@@ -54,7 +54,7 @@ const GlobalUsersDiv = (props) => {
                 checkArray(loadedUsers).map((user) => (
                   <div
                     key={user.id}
-                    className="GlobalCardScaled col-12 col-lg-6 py-1 py-md-3 py-lg-4"
+                    className="GlobalCardScaled col-12 col-lg-6 py-2 py-md-3 py-lg-4"
                   >
                     {loadedUsers && <GlobalUserCard user={user} />}
                   </div>

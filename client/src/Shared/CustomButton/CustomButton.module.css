@@ -1,0 +1,22 @@
+.CustomSubmitButton {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: whitesmoke!important;
+    background-color: rgba(29, 29, 29, 0.856)!important;
+    padding: 8px 25px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.CustomSubmitButton:hover{
+    background-color: rgba(29, 29, 29, 0.925)!important;
+}
+.CustomSubmitButton:focus{
+    outline: none;
+}
+.CustomSubmitButton:disabled{
+    background-color: rgba(109, 109, 109, 0.925)!important;
+}
+
+.DrawerLinkButton{
+    border:1px solid #2184ac!important;
+}

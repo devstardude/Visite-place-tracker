@@ -22,6 +22,7 @@
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
+  object-fit: cover;
 }
 
 .RoundAndDark {

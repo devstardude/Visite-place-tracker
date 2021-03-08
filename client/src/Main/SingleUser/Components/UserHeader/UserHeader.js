@@ -5,8 +5,11 @@ import { AuthContext } from "../../../../Shared/Context/auth-context";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import SendMessageModal from "../SendMessageModal/SendMessageModal";
 import { useHttpClient } from "../../../../Shared/hooks/http-hook";
+import SettingsIcon from "@material-ui/icons/Settings";
+import ExploreIcon from "@material-ui/icons/Explore";
 import ErrorModal from "../../../../Shared/ErrorModal/ErrorModal";
 import "./UserHeader.css";
+import Masthead from "../../../../Shared/Masthead/Masthead";
 
 const UserHeader = (props) => {
   const auth = useContext(AuthContext);
@@ -33,12 +36,7 @@ const UserHeader = (props) => {
   return (
     <React.Fragment>
       {error && <ErrorModal errorText={error} clicked={clearError} />}
-      <div
-        className="SingleUserCover"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${CoverPic})`,
-        }}
-      ></div>
+      <Masthead />
       <div className="WaveBackground">
         <div className="container pb-4">
           <div className="Owner ">
@@ -52,7 +50,7 @@ const UserHeader = (props) => {
             <h2>{props.user.username}</h2>
             <p className="UserHeaderBio my-3 mx-auto">{props.user.bio}</p>
             {!currentUserCheck && (
-              <div>
+              <div className="OtherUserButtons">
                 <button
                   onClick={giveLikeHandler}
                   type="button"
@@ -66,21 +64,23 @@ const UserHeader = (props) => {
               </div>
             )}
             {currentUserCheck && (
-              <div>
+              <div className="UserButtons">
                 <Link to="/add">
                   <button
+                    onClick={giveLikeHandler}
                     type="button"
-                    className=" d-inline btn btn-outline-secondary rounded-pill"
+                    className="btn btn-outline-primary rounded-pill my-2 mx-2"
                   >
-                    ➕ Add
+                    <ExploreIcon /> Add Memories
                   </button>
                 </Link>
                 <Link to="/edit/user">
                   <button
+                    onClick={giveLikeHandler}
                     type="button"
-                    className="btn btn-outline-secondary rounded-pill"
+                    className="btn btn-outline-danger rounded-pill my-2 mx-2"
                   >
-                    ⚙ Setting
+                    <SettingsIcon /> Change Profile
                   </button>
                 </Link>
               </div>

@@ -13,6 +13,8 @@ import {
 
 import "./Register.css";
 import { Redirect } from "react-router-dom";
+import { imageUploadHandler } from "../../../utils/utils";
+import { CustomSubmitButton } from "../../../Shared/CustomButton/CustomButton";
 
 const Register = (props) => {
   const auth = useContext(AuthContext);
@@ -24,7 +26,8 @@ const Register = (props) => {
         username:values.username,
         email:values.email,
         password:values.password,
-        bio:values.password
+        bio:values.password,
+        dp: await imageUploadHandler(auth.userId,values.dp)
       })
       const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/users/signup`,
@@ -56,11 +59,9 @@ const Register = (props) => {
           <hr />
           <h5>Please complete the user registration form.</h5>
         </div>
-        {error && (
-          <ErrorModal errorText={error} clicked={clearError} />
-        )}
+        {error && <ErrorModal errorText={error} clicked={clearError} />}
 
-        <div className="AddUserForm my-4 mx-auto">
+        <div className="AddUserForm my-4 mx-auto ">
           <Paper>
             <Formik
               initialValues={{
@@ -68,7 +69,7 @@ const Register = (props) => {
                 password: "",
                 username: "",
                 bio: "",
-                // dp: null,
+                dp: null,
               }}
               validationSchema={Yup.object({
                 email: Yup.string()
@@ -85,19 +86,19 @@ const Register = (props) => {
                   .min(1, "Must be atleast 1 characters")
                   .max(60, "Cannot exceed 60 character")
                   .required("Required"),
-                // dp: Yup.mixed().required("Please upload a file"),
+                dp: Yup.mixed().required("Please upload a file"),
               })}
               onSubmit={dataSubmitHandler}
             >
               {({ setFieldValue, ...props }) => (
-                <Form className="py-2">
+                <Form className="p-1 p-md-2">
                   <CustomTextInput
                     label="Email"
                     name="email"
                     placeholder="Email here"
                   />
                   <CustomTextInput
-                  password
+                    password
                     label="Password"
                     name="password"
                     placeholder="Password here"
@@ -112,19 +113,19 @@ const Register = (props) => {
                     name="bio"
                     placeholder="Bio here"
                   />
-                  {/* <CustomFileInput
+                  <CustomFileInput
                     buttonText="Pick Profile Image"
                     id="file"
                     name="dp"
                     onInput={(file) => file && setFieldValue("dp", file)}
-                  /> */}
-                  <div className="AddUserButtonDiv">
-                    <button
-                      className="btn btn-dark px-4 py-2 m-3 "
+                  />
+                  <div className="mb-4">
+                    <CustomSubmitButton
+                      isDisabled={props.isSubmitting}
+                      isLoading={props.isSubmitting}
                       type="submit"
-                    >
-                      {props.isSubmitting ? "Submitting" : "Submit"}
-                    </button>
+                      text={props.isSubmitting ? "Submitting" : "Submit"}
+                    />
                   </div>
                 </Form>
               )}

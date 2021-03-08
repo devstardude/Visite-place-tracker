@@ -156,7 +156,7 @@ const Navbar = (props) => {
                   >
                     Logout
                   </Button>
-                  <Link to="/" className="Link">
+                  <Link to={`/user/${auth.userId}`} className="Link">
                     <TooltipInfo info={auth.username}>
                       <div className="mx-2">
                         <Avatar

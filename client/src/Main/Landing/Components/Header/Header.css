@@ -84,7 +84,7 @@
 
 @media (max-width: 767.98px) {
   .Fog {
-    top: 29%;
+    top: 25%;
     left: 0;
     bottom: 0;
     right: 20%;
@@ -97,7 +97,7 @@
     right: 0;
   }
   .LandingBanner {
-    min-height: 80vh;
+    min-height: 100vh;
     max-height: 999px;
   }
 }

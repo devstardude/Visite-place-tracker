@@ -8,7 +8,7 @@ import'./GlobalZonePostCard.css';
 
 const GlobalZonePostCard = (props)=>{
     return (
-      <div className="mb-5 pb-3">
+      <div className="mb-5">
         <Card className="GlobalZoneCardDiv ">
           <Link style={{ color: "black" }} to={`/post/${props.post.id}`}>
             <ImageHeader

@@ -11,9 +11,10 @@ import {
 } from "../../../Shared/Inputs/Inputs";
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
-import "./AddPlace.css";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import { imageUploadHandler } from "../../../utils/utils";
+import { CustomSubmitButton } from "../../../Shared/CustomButton/CustomButton";
+import "./AddPlace.css";
 
 const AddPlace = (props) => {
   const auth = useContext(AuthContext);
@@ -29,7 +30,6 @@ const AddPlace = (props) => {
   };
 
   const dataSubmitHandler = async (values, { setSubmitting, resetForm }) => {
-    console.log(values.image)
     try {
       const data = JSON.stringify({
         title: values.title,
@@ -139,15 +139,15 @@ const AddPlace = (props) => {
                 />
                 <p className="d-inline">Turn on to wishlist place.</p>
               </div>
-
               <div className="AddPlaceButtonDiv">
-                <button
-                  disabled={placeSearch === null && true}
-                  className="btn btn-dark px-4 py-2 m-3 "
+                <CustomSubmitButton
+                  isDisabled={
+                    props.isSubmitting || (placeSearch === null && true)
+                  }
+                  isLoading={props.isSubmitting}
                   type="submit"
-                >
-                  {props.isSubmitting ? "Submitting" : "Submit"}
-                </button>
+                  text={props.isSubmitting ? "Submitting" : "Submit"}
+                />
               </div>
             </Form>
           )}
