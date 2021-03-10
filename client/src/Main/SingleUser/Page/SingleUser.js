@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import { visitedFilter, wishlistFilter } from "../../../utils/utils";
@@ -6,13 +6,17 @@ import ProfileCount from "../Components/ProfileCount/ProfileCount";
 import UserHeader from "../Components/UserHeader/UserHeader";
 import UserTabs from "../Components/UserTabs/UserTabs";
 import Loading from "../../../Shared/Loading/Loading";
-import "./SingleUser.css";
+import { AuthContext } from "../../../Shared/Context/auth-context";
 import Alert from "../../../Shared/Alert/Alert";
+
+import "./SingleUser.css";
 const SingleUser = (props) => {
+  const auth = useContext(AuthContext);
   const [userData, setUserData] = useState();
   const [visited, setVisited] = useState();
   const [wishlist, setWishlist] = useState();
   const [posts, setPosts] = useState();
+  const [messages,setMessages] = useState();
   const [alertState, setAlertState] = useState({
     open: false,
     message: "",
@@ -113,6 +117,7 @@ const SingleUser = (props) => {
     });
   };
   const userId = useParams().userId;
+  const token = auth.token;
   useEffect(() => {
     setVisited();
     setWishlist();
@@ -142,17 +147,31 @@ const SingleUser = (props) => {
         setPosts(responseData.userPosts);
       } catch (err) {}
     };
+    const fetchMessages = async()=>{
+      try{
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/users/getmessages/${userId}`,
+          "GET",
+          null,
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          }
+        );
+        setMessages(responseData.messages)
+      }catch(err){}
+    }
     fetchUserData();
     fetchPlaces();
     fetchPosts();
-  }, [sendRequest, userId]);
+    fetchMessages();
+  }, [sendRequest, userId,token]);
 
   if (!userData) {
     return <Loading />;
   } else {
     return (
       <div className="SingleUserPage">
-        {/* {error && <ErrorModal errorText={error} clicked={clearError} />} */}
         <UserHeader giveLikeCount={giveLikeCountHandler} user={userData} />
         <ProfileCount user={userData} />
         <Alert
@@ -170,6 +189,7 @@ const SingleUser = (props) => {
           onPlaceDelete={onPlaceDeleteHandler}
           onPostDelete={onPostDeleteHandler}
           onWishlistChange={wishlistChangeHandler}
+          messages={messages}
         />
       </div>
     );

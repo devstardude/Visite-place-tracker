@@ -1,6 +1,5 @@
 .CustomSubmitButton {
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
+    font-size: 16px!important;
     color: whitesmoke!important;
     background-color: rgba(29, 29, 29, 0.856)!important;
     padding: 8px 25px;

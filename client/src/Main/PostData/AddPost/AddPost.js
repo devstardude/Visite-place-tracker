@@ -1,30 +1,31 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   CustomTextInput,
-  CustomFileInput
+  CustomFileInput,
 } from "../../../Shared/Inputs/Inputs";
 import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import { CustomSubmitButton } from "../../../Shared/CustomButton/CustomButton";
+import { imageUploadHandler } from "../../../utils/utils";
 import "./AddPost.css";
 
 const AddPost = (props) => {
-   const auth = useContext(AuthContext);
-   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const history = useHistory();
 
-  const dataSubmitHandler = async(values, { setSubmitting, resetForm }) => {
-
+  const dataSubmitHandler = async (values, { setSubmitting, resetForm }) => {
     const data = JSON.stringify({
-      title:values.title,
-      description:values.description,
-      content:values.content,
-      tags:values.tags.split(',')
-    })
+      title: values.title,
+      description: values.description,
+      content: values.content,
+      tags: values.tags.split(","),
+      image: await imageUploadHandler(auth.userId,values.image,0.1),
+    });
     await sendRequest(
       `${process.env.REACT_APP_BACKEND_URL}/posts/new`,
       "POST",
@@ -37,7 +38,6 @@ const AddPost = (props) => {
     setSubmitting(false);
     // resetForm();
     // history.push(`/user/${auth.userId}`);
-
   };
   return (
     <div className="AddPlaceForm">

@@ -6,6 +6,7 @@ import "./GlobalZoneChatDiv.css";
 import { AuthContext } from "../../../../Shared/Context/auth-context";
 import Spinner from "../../../../Shared/Spinner/Spinner";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import TooltipInfo from "../../../../Shared/TooltipInfo/TooltipInfo";
 const GlobalZoneChatDiv = (props) => {
   const auth = useContext(AuthContext);
   const [formValue, setFormValue] = useState("");
@@ -50,10 +51,12 @@ const GlobalZoneChatDiv = (props) => {
           <span ref={dummy}></span>
         </div>
         <div className="Right ">
-          <ExpandMoreIcon
-            className="CursorPointer bg-light rounded "
-            onClick={bottomScrollHandler}
-          />
+          <TooltipInfo info="Scroll to bottom">
+            <ExpandMoreIcon
+              className="CursorPointer bg-light rounded "
+              onClick={bottomScrollHandler}
+            />
+          </TooltipInfo>
         </div>
       </div>
       <div className="col-12 px-2 px-md-3 mt-3 mt-md-0">

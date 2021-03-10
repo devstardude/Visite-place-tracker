@@ -24,11 +24,11 @@ const userSchema = new mongoose.Schema({
   },
   likes: {
     type: [],
-    default: null,
+    default: [],
   },
   places: {
     type: [],
-    default: null,
+    default: [],
     ref: "Place",
   },
   posts: [
@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   ],
+  messages: {
+    type: [],
+    default: [],
+  },
   date: {
     type: Date,
     default: Date.now,

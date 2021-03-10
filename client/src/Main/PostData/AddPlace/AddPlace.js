@@ -38,7 +38,7 @@ const AddPlace = (props) => {
           placeSearch.address.freeformAddress +
           ", " +
           placeSearch.address.country,
-        image: await imageUploadHandler(auth.userId,values.image),
+        image: await imageUploadHandler(auth.userId,values.image,0.1),
         coordinates: placeSearch.position,
         typeOfPlace: values.typeOfPlace,
         wishlist: state.PostWishlistSwitch,

@@ -1,9 +1,9 @@
 import imageCompression from "browser-image-compression";
 import { uploadImage } from "../firebase/firebase";
 
-export const imageUploadHandler = async (id, file) => {
+export const imageUploadHandler = async (id, file,size) => {
   const options = {
-    maxSizeMB: 0.2,
+    maxSizeMB: size,
     maxWidthOrHeight: 1920,
     useWebWorker: true,
   };

@@ -14,6 +14,10 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: -1;
 }
+.GlobalAvtarDiv {
+  background-color: #00000033;
+  border-radius: 7px;
+}
 .GlobalAvatar {
   max-width: 7.2rem;
   min-width: 7.2rem;
@@ -36,7 +40,7 @@
   max-height: 7.2rem;
   min-height: 7.2rem;
 }
-.GlobalPlaceCount{
+.GlobalPlaceCount {
   text-align: center;
   display: inline-block;
   min-height: 30px;
@@ -44,7 +48,6 @@
   min-width: 30px;
   max-width: 30px;
 }
-
 
 @media (max-width: 670px) {
   .GlobalUsersDiv {
@@ -77,16 +80,16 @@
   .GlobalDesc {
     font-size: 11px;
   }
-  .GlobalPlaceCount{
-  text-align: center;
-  display: inline-block;
-  font-size: 11px;
-  min-height: 25px;
-  max-height: 25px;
-  min-width: 25px;
-  max-width: 25px;
-}
-.GlobalBadgeText{
-  font-size: small;
-}
+  .GlobalPlaceCount {
+    text-align: center;
+    display: inline-block;
+    font-size: 11px;
+    min-height: 25px;
+    max-height: 25px;
+    min-width: 25px;
+    max-width: 25px;
+  }
+  .GlobalBadgeText {
+    font-size: small;
+  }
 }

@@ -10,7 +10,7 @@ const GlobalZonePostCard = (props)=>{
     return (
       <div className="mb-5">
         <Card className="GlobalZoneCardDiv ">
-          <Link style={{ color: "black" }} to={`/post/${props.post.id}`}>
+          <Link style={{ color: "black" }} to={`/post/${props.post.uid}`}>
             <ImageHeader
               className="GlobalZoneCardImage"
               alt="image"

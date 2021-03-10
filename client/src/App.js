@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
-
 import Loading from "./Shared/Loading/Loading";
 import Navbar from "./Shared/Navbar/Navbar";
 import { AuthContext } from "./Shared/Context/auth-context";
@@ -22,8 +21,8 @@ const EditUser = lazy(() => import("./Main/EditData/EditUser/EditUser"));
 const SinglePost = lazy(()=>import("./Shared/SinglePost/SinglePost"))
 const AboutMe = lazy(() => import("./Main/AboutMe/AboutMe"));
 const GlobalZone = lazy(() => import("./Main/GlobalZone/Page/GlobalZone"));
+const AdminPost = lazy(()=>import("./Main/AdminOnly/AdminPost/AdminPost"))
 let hist = createBrowserHistory();
-
 function App() {
   const { token, username, email,dp, login, logout, userId } = useAuth();
   let routes;
@@ -37,9 +36,9 @@ function App() {
         <Route path="/global/users" component={GlobalUser} exact />
         <Route path="/add" component={PostDataTabs} exact />
         <Route path="/post/:postId" component={SinglePost} exact />
-
         <Route path="/about" component={AboutMe} exact />
         <Route path="/globalzone" component={GlobalZone} exact />
+        <Route path="/admin/post" component={AdminPost} exact />
         <Route path="/" component={Landing} exact />
         <Redirect to="/" />
       </Switch>

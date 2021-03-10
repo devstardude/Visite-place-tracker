@@ -25,7 +25,7 @@ const GlobalUserCard = (props) => {
       <div className="row p-2 p-md-1">
         <div className="col-4">
           <Link to={`/user/${props.user.id}`}>
-            <div className="d-inline-block">
+            <div className="d-inline-block GlobalAvtarDiv">
               <img className=" GlobalAvatar" src={props.user.dp} alt="Dp.jpg" />
             </div>
           </Link>

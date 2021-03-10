@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CoverPic from "../../assets/images/cover.jpg"
 import Dp from "../../assets/images/dp.jpg"
 import'./AboutMe.css';
@@ -22,10 +23,10 @@ const AboutMe = (props)=>{
               />
             </div>
             <h2>Arun Shekhar</h2>
-            <p className="UserHeaderBio my-3 mx-auto">Just a guy who's a hero for fun</p>
-            {/* <button type="button" class="btn LikeProfileButton rounded-pill btn-outline-secondary my-2">
-            🖤 Like Profile
-          </button> */}
+            <p className="UserHeaderBio my-3 mx-auto">
+              Just a guy who's a hero for fun
+            </p>
+            
           </div>
         </div>
       </React.Fragment>

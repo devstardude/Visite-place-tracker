@@ -2,17 +2,11 @@
   font-size: 22px;
 }
 
-.AddUserForm {
-  width: 60%;
-}
-
 
 @media (max-width: 768px) {
 
   .AddUserHeading h5 {
     font-size: 15px;
   }
-  .AddUserForm {
-    width: 90%;
-  }
+
 }

@@ -53,7 +53,7 @@ const Login = (props) => {
           <h5>Hope you're having great adventures.</h5>
         </div>
         {error && <ErrorModal errorText={error} clicked={clearError} />}
-        <div className="AddUserForm my-4 mx-auto">
+        <div className="PaperForm my-4 mx-auto">
           <Paper>
             <Formik
               initialValues={{

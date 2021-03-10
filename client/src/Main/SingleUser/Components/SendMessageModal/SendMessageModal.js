@@ -7,16 +7,15 @@ import SendIcon from "@material-ui/icons/Send";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { CustomTextInput } from "../../../../Shared/Inputs/Inputs";
-import firebase from "firebase/app";
-import {firestore} from "../../../../firebase/firebase";
+import { useHttpClient } from "../../../../Shared/hooks/http-hook";
+
 // import "./SendMessageModal.css";
-
-
 
 const SendMessageModal = (props) => {
   const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
   const [open, setOpen] = React.useState(false);
-  const messagesRef = firestore.collection(`user-${props.id}`);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -25,13 +24,24 @@ const SendMessageModal = (props) => {
     setOpen(false);
   };
   const dataSubmitHandler = async (values, { setSubmitting, resetForm }) => {
-    await messagesRef.add({
+    const message = JSON.stringify({
       text: values.message,
       senderId: auth.userId,
-      senderName:auth.username,
+      senderName: auth.username,
       senderDp: auth.dp,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: +new Date(),
     });
+     try {
+       await sendRequest(
+         `${process.env.REACT_APP_BACKEND_URL}/users/messages/${props.id}`,
+         "PATCH",
+         message,
+         {
+           "Content-Type": "application/json",
+           Authorization: "Bearer " + auth.token,
+         }
+       );
+     } catch (err) {}
     setSubmitting(false);
     resetForm();
     setOpen(false);

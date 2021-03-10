@@ -10,7 +10,7 @@ const jwt_token = String(process.env.JWT);
 const getUsers = async (req, res, next) => {
   let users;
   try {
-    users = await User.find({}, { password: 0, date: 0 });
+    users = await User.find({}, { password: 0, date: 0,messages:0 });
   } catch (err) {
     const error = new HttpError(
       "Fetching users failed, please try again later.",
@@ -28,7 +28,7 @@ const getUserById = async (req, res, next) => {
   const userId = req.params.uid;
   let user;
   try {
-    user = await User.find({ _id: userId }, { email: 0, password: 0 });
+    user = await User.find({ _id: userId }, { email: 0, password: 0,messages:0 });
   } catch (err) {
     const error = new HttpError(
       "Fetching User failed, please try again later.",
@@ -45,6 +45,7 @@ const getUserById = async (req, res, next) => {
     user,
   });
 };
+
 // ---------------Sign up new user-----------
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -91,6 +92,7 @@ const signup = async (req, res, next) => {
     likes: [],
     places: [],
     posts: [],
+    message: [],
   });
   try {
     await createdUser.save();
@@ -218,6 +220,52 @@ const giveLike = async (req, res, next) => {
   res.status(200).json({ message: "Profile Liked" });
 };
 
+// --------------Send Message---------
+const sendMessage = async (req, res, next) => {
+  const userId = req.params.userId;
+  const senderId = req.userData.userId;
+  let user;
+  try {
+    user = await User.findById(userId, { messages: 1 });
+  } catch (err) {
+    const error = new HttpError("Finding user failed, please try again.", 500);
+    return next(error);
+  }
+  if (!user) {
+    const error = new HttpError("No user of that id.", 500);
+    return next(error);
+  }
+  const { senderName, text, senderDp } = req.body;
+  const message = { senderId,senderName, text, senderDp };
+  try {
+    user.messages.push(message);
+    await user.save();
+  } catch (err) {
+    const error = new HttpError("Cannot send message, please try again.", 500);
+    return next(error);
+  }
+  res.status(200).json({ message: "message send" });
+};
+
+//---------------Get Messages--------
+const getMessages = async(req,res,next)=>{
+  const userId = req.params.userId;
+  let user 
+  try {
+    user = await User.findById(userId, { messages: 1 });
+  } catch (err) {
+    const error = new HttpError("Finding user failed, please try again.", 500);
+    return next(error);
+  }
+  if (!user) {
+    const error = new HttpError("No user of that id.", 500);
+    return next(error);
+  }
+   res.status(200).json({
+     messages:user.messages,
+   });
+}
+
 // --------------Update user---------
 const updateUser = async (req, res, next) => {
   const errors = validationResult(req);
@@ -260,4 +308,6 @@ exports.getUserById = getUserById;
 exports.signup = signup;
 exports.login = login;
 exports.giveLike = giveLike;
+exports.sendMessage = sendMessage;
+exports.getMessages = getMessages;
 exports.updateUser = updateUser;

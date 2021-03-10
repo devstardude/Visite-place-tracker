@@ -48,7 +48,7 @@ const UserHeader = (props) => {
               />
             </div>
             <h2>{props.user.username}</h2>
-            <p className="UserHeaderBio my-3 mx-auto">{props.user.bio}</p>
+            <p className="UserHeaderBio mt-2 mb-3 mx-auto">{props.user.bio}</p>
             {!currentUserCheck && (
               <div className="OtherUserButtons">
                 <button

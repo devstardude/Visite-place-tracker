@@ -5,7 +5,10 @@ import { useHttpClient } from "../hooks/http-hook";
 import Loading from "../Loading/Loading";
 import Masthead from "../Masthead/Masthead";
 import Spinner from "../Spinner/Spinner";
-//import'./SinglePost.css';
+import { Chip } from "@material-ui/core";
+import { Card, CardBody } from "react-simple-card";
+import Markdown from "react-markdown";
+import "./SinglePost.css";
 
 const SinglePost = (props) => {
   const [loadedPost, setLoadedPost] = useState();
@@ -28,21 +31,48 @@ const SinglePost = (props) => {
   }
   if (loadedPost) {
     return (
-       <div>
-      <Masthead title={loadedPost.title} cover={loadedPost.image} />
-     { console.log(loadedPost)}
-      <div className="container">
-        <div>
-          <h4>{loadedPost.title}</h4>
-          <p className="text-muted">{loadedPost.description}</p>
-          <p className="">{loadedPost.content}</p>
+      <div>
+        <Masthead title="Have a good read :)" cover={loadedPost.image} />
+        <div style={{ height: "100vh" }}>
+          <div className="PaperForm SinglePostDiv mx-auto">
+            <Card className="SinglePostCard ">
+              {console.log(loadedPost)}
+              <CardBody>
+                <h1 style={{ fontWeight: "600" }}>{loadedPost.title} </h1>
+                <h6>
+                  {"("}
+                  {loadedPost.description}
+                  {")"}
+                </h6>
+                <p className="text-muted">Posted on : {loadedPost.time}</p>
+                <hr />
+                <div className="SinglePostContentDiv">
+                  <Markdown
+                    escapeHtml={false}
+                    source={loadedPost.sanitizedContent}
+                  />
+                </div>
+
+                <br />
+                <p className="mb-0 pb-0">
+                  {loadedPost.tags.map((tag) => (
+                    <Chip
+                      style={{ marginRight: "5px" }}
+                      className="my-1"
+                      size="small"
+                      label={tag}
+                      clickable
+                    />
+                  ))}
+                </p>
+              </CardBody>
+            </Card>
+          </div>
         </div>
       </div>
-    </div>
-     
     );
   }
-  if(!loadedPost && !isLoading){
+  if (!loadedPost && !isLoading) {
     return (
       <div>
         <ErrorModal error={error} onClear={clearError} />
@@ -53,7 +83,7 @@ const SinglePost = (props) => {
   return (
     <div>
       <Masthead title="Loading" />
-      <br/>
+      <br />
       <Spinner color="black" />
     </div>
   );

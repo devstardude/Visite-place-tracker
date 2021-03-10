@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
+import Avatar from "@material-ui/core/Avatar";
 import { AuthContext } from "../Context/auth-context";
 import { DrawerLinkButton } from "../CustomButton/CustomButton";
 const notLoggedInButtons = [
@@ -72,15 +73,35 @@ const RightDrawer = () => {
         <React.Fragment>
           <div className="container Center mt-5">
             {notLoggedInButtons.map((button) => (
-              <DrawerLinkButton link={button.link} text={button.text} />
+              <DrawerLinkButton
+                key={button.text}
+                link={button.link}
+                text={button.text}
+              />
             ))}
           </div>
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <div className="container Center mt-5">
+          <div className="container Center mt-5 pt-2">
+            <div className="d-flex justify-content-center align-items-center  ">
+              <Avatar
+              className="m-1"
+                src={auth.dp}
+                style={{ height: "40px", width: "40px" }}
+                alt="dp"
+              />
+              <h4 className="d-inline my-auto px-1  ">
+                {auth.username}
+              </h4>
+            </div>
+            <hr className="mt-2" style={{ color: "#2184ac" }} />
             {loggedInButtons.map((button) => (
-              <DrawerLinkButton link={button.link} text={button.text} />
+              <DrawerLinkButton
+                key={button.text}
+                link={button.link}
+                text={button.text}
+              />
             ))}
             <div className="mb-3">
               <Button

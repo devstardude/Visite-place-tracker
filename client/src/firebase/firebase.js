@@ -17,9 +17,10 @@ const firebaseApp = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
 export const firestore = firebase.firestore();
+const auth = firebaseApp.auth();
 const storage = firebaseApp.storage();
 
-export const uploadImage = async(uid, file)=> {
+export const uploadImage = async (uid, file) => {
   const id = uid;
   const uploadTask = storage.ref(`images/${file.name}-${id}`).put(file);
   return new Promise((resolve, reject) => {
@@ -36,5 +37,12 @@ export const uploadImage = async(uid, file)=> {
       }
     );
   });
-}
+};
 
+export const signInWithGoogle = async () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  await auth.signInWithPopup(provider);
+};
+export const logOut = async () => {
+  await auth.signOut();
+};

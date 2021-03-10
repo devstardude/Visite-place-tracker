@@ -1,0 +1,12 @@
+.SinglePostImageDiv img {
+  height: 30vh;
+  object-fit: cover;
+}
+.SinglePostContentDiv img {
+  width: 50%;
+}
+@media (max-width: 768px) {
+  .SinglePostContentDiv img {
+    width: 90%;
+  }
+}

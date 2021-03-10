@@ -40,8 +40,18 @@ a {
   cursor: pointer;
 }
 
+.PaperForm {
+  width: 60%;
+}
+
 @keyframes rotate {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .PaperForm {
+    width: 90%;
   }
 }

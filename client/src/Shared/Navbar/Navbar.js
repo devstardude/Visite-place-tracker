@@ -129,7 +129,7 @@ const Navbar = (props) => {
               {!loggedIn ? (
                 <div className="mr-0 d-none d-md-block">
                   {notLoggedInButtons.map((button) => (
-                    <Link className="Link" to={button.link}>
+                    <Link key={button.text} className="Link" to={button.link}>
                       <Button
                         style={{ color: "white", fontFamily: "Montserrat" }}
                       >
@@ -141,7 +141,7 @@ const Navbar = (props) => {
               ) : (
                 <div className="mr-0 d-none d-md-flex align-content-middle">
                   {loggedInButtons.map((button) => (
-                    <Link className="Link" to={button.link}>
+                    <Link key={button.text} className="Link" to={button.link}>
                       <Button
                         style={{ color: "white", fontFamily: "Montserrat" }}
                       >

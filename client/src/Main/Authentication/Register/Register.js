@@ -27,7 +27,7 @@ const Register = (props) => {
         email:values.email,
         password:values.password,
         bio:values.password,
-        dp: await imageUploadHandler(auth.userId,values.dp)
+        dp: await imageUploadHandler(auth.userId,values.dp,0.05)
       })
       const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/users/signup`,
