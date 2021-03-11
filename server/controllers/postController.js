@@ -74,7 +74,14 @@ const createPost = async (req, res, next) => {
     description,
     content,
     tags,
-    time: String(new Date().toDateString()),
+    time: String(
+      new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    ),
     image,
     username: req.userData.username,
     email: req.userData.email,

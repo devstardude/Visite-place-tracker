@@ -39,12 +39,12 @@ const AdminPost = (props) => {
         const data = {
           title: values.title,
           description: values.description,
-          content: values.content,
+          firebaseContent: values.content,
           tags: values.tags.split(","),
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         };
         try {
-          await postRef.add(data).then((res)=>(console.log("res",res))).catch((err) => {
+          await postRef.add(data).catch((err) => {
             setError(err.message);
           });
         } catch (err) {}

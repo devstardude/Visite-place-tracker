@@ -18,7 +18,6 @@ const GlobalZonePostDiv = (props) => {
   });
   return (
     <div className="GlobalZonePostDiv p-3">
-      {console.log(allPosts)}
       {!allPosts && <Spinner color="black"  />}
       {allPosts &&
         allPosts.map((post) => <GlobalZonePostCard post={post} />)}
