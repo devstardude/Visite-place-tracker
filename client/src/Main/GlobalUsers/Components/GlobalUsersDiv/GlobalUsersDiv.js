@@ -17,7 +17,7 @@ const GlobalUsersDiv = (props) => {
           `${process.env.REACT_APP_BACKEND_URL}/users`
         );
 
-        setLoadedUsers(responseData.users);
+        setLoadedUsers(responseData.users.reverse());
       } catch (err) {}
     };
     fetchUsers();

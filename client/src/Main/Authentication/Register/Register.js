@@ -26,7 +26,7 @@ const Register = (props) => {
         username:values.username,
         email:values.email,
         password:values.password,
-        bio:values.password,
+        bio:values.bio,
         dp: await imageUploadHandler(auth.userId,values.dp,0.05)
       })
       const responseData = await sendRequest(
@@ -77,14 +77,15 @@ const Register = (props) => {
                   .required("Required"),
                 password: Yup.string()
                   .min(6, "Password is too short - should be 6 chars minimum.")
+                  .max(15, "Cannot exceed 15 character")
                   .required("Required"),
                 username: Yup.string()
-                  .min(2, "Must be atleast 1 characters")
+                  .min(2, "Must be atleast 2 characters")
                   .max(12, "Cannot exceed 12 character")
                   .required("Required"),
                 bio: Yup.string()
-                  .min(1, "Must be atleast 1 characters")
-                  .max(60, "Cannot exceed 60 character")
+                  .min(2, "Must be atleast 1 characters")
+                  .max(200, "Cannot exceed 200 character")
                   .required("Required"),
                 dp: Yup.mixed().required("Please upload a file"),
               })}

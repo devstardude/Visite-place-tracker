@@ -12,18 +12,22 @@ router.get("/myposts/:uId", postController.myPosts);
 //Further routes are protected by Authentication 
 router.use(checkAuth);
 router.delete("/delete/:pid", postController.deletePost);
-router.post("/new", [
-  check("title").not().isEmpty(),
-  check("description").not().isEmpty(),
-  check("content").isLength({ min: 1 }),
-],postController.createPost);
+router.post(
+  "/new",
+  [
+    check("title").isLength({ min: 4, max: 200 }),
+    check("description").isLength({ min: 4, max: 400 }),
+    check("content").isLength({ min: 4, }),
+  ],
+  postController.createPost
+);
 
 router.patch(
   "/update/:pid",
   [
-    check("title").not().isEmpty(),
-    check("description").not().isEmpty(),
-    check("content").isLength({ min: 6 }),
+    check("title").isLength({ min: 4, max: 200 }),
+    check("description").isLength({ min: 4, max: 400 }),
+    check("content").isLength({ min: 4, }),
   ],
   postController.updatePost
 );

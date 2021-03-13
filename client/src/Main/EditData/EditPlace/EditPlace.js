@@ -90,10 +90,12 @@ const EditPlace = (props) => {
                   }}
                   validationSchema={Yup.object({
                     title: Yup.string()
-                      .min(1, "should be 1 charactor minimum")
+                      .min(4, "Must be atleast 4 characters")
+                      .max(100, "Cannot exceed 100 character")
                       .required("Required"),
                     description: Yup.string()
-                      .min(1, "should be 1 chars minimum.")
+                      .min(4, "Must be atleast 4 characters")
+                      .max(200, "Cannot exceed 200 character")
                       .required("Required"),
                   })}
                   onSubmit={dataSubmitHandler}

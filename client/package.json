@@ -26,6 +26,7 @@
     "react-simple-card": "^2.0.2",
     "react-swipeable-views": "^0.13.9",
     "tomtom-react-searchbox": "^0.2.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.9"
   },

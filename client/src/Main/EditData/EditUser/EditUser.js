@@ -80,7 +80,7 @@ const EditUser = (props) => {
           </div>
           {error && <ErrorModal errorText={error} clicked={clearError} />}
           <div className="AddUserForm my-4 mx-auto">
-          {console.log(loadedUser)}
+            {console.log(loadedUser)}
             <Paper>
               {!isLoading && loadedUser && (
                 <Formik
@@ -90,10 +90,12 @@ const EditUser = (props) => {
                   }}
                   validationSchema={Yup.object({
                     username: Yup.string()
-                      .min(1, "should be 1 charactor minimum")
+                      .min(2, "Must be atleast 2 characters")
+                      .max(12, "Cannot exceed 12 character")
                       .required("Required"),
                     bio: Yup.string()
-                      .min(1, "should be 1 chars minimum.")
+                      .min(2, "Must be atleast 1 characters")
+                      .max(200, "Cannot exceed 200 character")
                       .required("Required"),
                   })}
                   onSubmit={dataSubmitHandler}

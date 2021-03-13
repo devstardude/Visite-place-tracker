@@ -4,11 +4,6 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import GlobalZonePostCard from "../GlobalZonePostCard/GlobalZonePostCard";
 import "./GlobalZonePostDiv.css";
 import Spinner from "../../../../Shared/Spinner/Spinner";
-const post = {
-  title: "heheheheheh",
-  description: "pepepepepe",
-  tags: ["pepe", "ppepe"],
-};
 
 const GlobalZonePostDiv = (props) => {
   const postsRef = firestore.collection("global-post");

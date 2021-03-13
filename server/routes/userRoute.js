@@ -10,9 +10,9 @@ router.get("/:uid", usersController.getUserById);
 router.post(
   "/signup",
   [
-    check("username").not().isEmpty(),
+    check("username").isLength({ min: 4,max:12 }),
     check("email").normalizeEmail().isEmail(),
-    check("password").isLength({ min: 6 }),
+    check("password").isLength({ min: 6,max:15 }),
   ],
   usersController.signup
 );
@@ -20,7 +20,7 @@ router.post(
   "/login",
   [
     check("email").normalizeEmail().isEmail(),
-    check("password").isLength({ min: 6 }),
+    check("password").isLength({ min: 6,max:15 }),
   ],
   usersController.login
 );

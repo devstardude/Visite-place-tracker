@@ -34,10 +34,9 @@ const GlobalUserCard = (props) => {
           <Link to={`/user/${props.user.id}`}>
             <div className="GlobalDetailsDiv RoundAndDark p-2">
               <h3 className="m-0 pb-1 GlobalName">{props.user.username}</h3>
-              {/* Name Limit is 12 */}
               <p className="m-0 pb-1 GlobalDesc">
-                {props.user.bio.slice(0, 75)}{" "}
-                {props.user.bio.slice(76, 77) && "... (Read More)"}
+                {props.user.bio.slice(0, 65)}{" "}
+                {props.user.bio.slice(65, 76) && "... (Read More)"}
               </p>
             </div>
           </Link>

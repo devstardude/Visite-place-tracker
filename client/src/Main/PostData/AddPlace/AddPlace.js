@@ -91,17 +91,17 @@ const AddPlace = (props) => {
           }}
           validationSchema={Yup.object({
             title: Yup.string()
-              .min(2, "Must be atleast 1 characters")
-              .max(12, "Cannot exceed 12 character")
+              .min(4, "Must be atleast 4 characters")
+              .max(100, "Cannot exceed 100 character")
               .required("Required"),
             description: Yup.string()
-              .min(1, "Must be atleast 1 characters")
-              .max(60, "Cannot exceed 60 character")
+              .min(4, "Must be atleast 4 characters")
+              .max(200, "Cannot exceed 200 character")
               .required("Required"),
             typeOfPlace: Yup.string()
               .oneOf(["urban", "nature", "sea", "other"])
               .required("Required"),
-            // file: Yup.mixed().required("Please upload a file"),
+            image: Yup.mixed().required("Please upload a file"),
           })}
           onSubmit={dataSubmitHandler}
         >

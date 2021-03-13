@@ -21,8 +21,11 @@ const auth = firebaseApp.auth();
 const storage = firebaseApp.storage();
 
 export const uploadImage = async (uid, file) => {
+  const unixTimeStamp = Date.now();
   const id = uid;
-  const uploadTask = storage.ref(`images/${file.name}-${id}`).put(file);
+  const uploadTask = storage
+    .ref(`images/${file.name}-${unixTimeStamp}-${id}`)
+    .put(file);
   return new Promise((resolve, reject) => {
     uploadTask.on(
       "state_changed",
@@ -31,12 +34,19 @@ export const uploadImage = async (uid, file) => {
       () => {
         storage
           .ref("images")
-          .child(`${file.name}-${id}`)
+          .child(`${file.name}-${unixTimeStamp}-${id}`)
           .getDownloadURL()
           .then(resolve);
       }
     );
   });
+};
+export const imageDeleteHandler = (url) => {
+  let imageRef = storage.refFromURL(url);
+  imageRef
+    .delete()
+    .then(() => {})
+    .catch((err) => {});
 };
 
 export const signInWithGoogle = async () => {

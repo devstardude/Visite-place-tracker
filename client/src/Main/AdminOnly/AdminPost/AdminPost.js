@@ -66,18 +66,17 @@ const AdminPost = (props) => {
                 }}
                 validationSchema={Yup.object({
                   title: Yup.string()
-                    .min(2, "Must be atleast 1 characters")
-                    .max(12, "Cannot exceed 12 character")
+                    .min(4, "Must be atleast 4 characters")
+                    .max(200, "Cannot exceed 200 character")
                     .required("Required"),
                   description: Yup.string()
-                    .min(1, "Must be atleast 1 characters")
-                    .max(60, "Cannot exceed 60 character")
+                    .min(4, "Must be atleast 4 characters")
+                    .max(400, "Cannot exceed 400 character")
                     .required("Required"),
                   content: Yup.string()
-                    .min(1, "Must be atleast 1 characters")
-                    .max(60, "Cannot exceed 60 character")
+                    .min(4, "Must be atleast 4 characters")
                     .required("Required"),
-                  // image: Yup.mixed().required("Please upload an image"),
+                  image: Yup.mixed().required("Please upload an image"),
                 })}
                 onSubmit={dataSubmitHandler}
               >
@@ -124,8 +123,10 @@ const AdminPost = (props) => {
                   </Form>
                 )}
               </Formik>
-              <div className="Center mt-4" >
-                <Button onClick={logOut} className="btn px-2">Log out</Button>
+              <div className="Center mt-4">
+                <Button onClick={logOut} className="btn px-2">
+                  Log out
+                </Button>
               </div>
             </Paper>
             {error && (

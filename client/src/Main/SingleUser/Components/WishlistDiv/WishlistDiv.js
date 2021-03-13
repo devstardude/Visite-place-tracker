@@ -19,6 +19,13 @@ const WishlistDiv = (props) => {
            </div>
          </div>
        )}
+       {!props.loading &&
+         props.wishlistList &&
+         props.wishlistList.length === 0 && (
+           <div className="container Center pt-4">
+             <h4 style={{ color: "#ffffff" }}>No Places to show</h4>
+           </div>
+         )}
        {!props.loading && !props.wishlistList && (
          <div className="container Center pt-4">
            <h4 style={{ color: "#ffffff" }}>No Places to show</h4>

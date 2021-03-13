@@ -1,15 +1,28 @@
 .AppInfoCarousalDiv {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
   width: 50%;
-  border-radius: 7px;
+  border-radius: 10px!important;
   transition: 1s;
 }
-.AppInfoCarousalDiv:hover{
+.AppInfoCarousalDiv:hover {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.218);
-
 }
 .carousel-item img {
-  border-radius: 7px !important;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  border-radius: 10px !important;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clear: float;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px !important;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
 }
 .carousel.carousel-fade .carousel-item {
   display: block;
@@ -26,4 +39,3 @@
     width: 90%;
   }
 }
-

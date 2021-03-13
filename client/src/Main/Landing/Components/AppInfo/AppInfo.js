@@ -1,7 +1,9 @@
 import React from "react";
 import AppInfoCarousal from "../AppInfoCarousal/AppInfoCarousal";
 import { Card, ImageHeader, CardBody } from "react-simple-card";
-import Image from "../../../../assets/images/cover.jpg"
+import Image1 from "../../../../assets/images/map.jpg"
+import Image2 from "../../../../assets/images/tourBlogs.jpg"
+import Image3 from "../../../../assets/images/chatting.jpg"
 import'./AppInfo.css';
 
 const AppInfo = (props) => {
@@ -26,7 +28,7 @@ const AppInfo = (props) => {
           </div>
         </div>
         <div className="col-12 mt-5">
-          <div className="container px-0 AppInfoSecondtHeading">
+          <div className="container px-0 AppInfoSecondHeading">
             <h2>Experience More With . . .</h2>
             <hr className="mx-auto" />
             <div className="row p-3">
@@ -35,7 +37,7 @@ const AppInfo = (props) => {
                   <ImageHeader
                     className="CardImage"
                     alt="image"
-                    imageSrc={Image}
+                    imageSrc={Image1}
                   />
                   <CardBody className="text-center">
                     <h4>Map Rendering and Geocoding</h4>
@@ -47,7 +49,7 @@ const AppInfo = (props) => {
                   <ImageHeader
                     className="CardImage"
                     alt="image"
-                    imageSrc={Image}
+                    imageSrc={Image2}
                   />
                   <CardBody className="text-center">
                     <h4>Tourism Blogs and Recommandations</h4>
@@ -59,7 +61,7 @@ const AppInfo = (props) => {
                   <ImageHeader
                     className="CardImage"
                     alt="image"
-                    imageSrc={Image}
+                    imageSrc={Image3}
                   />
                   <CardBody className="text-center">
                     <h4>Global Chatroom For Like Minded Wanderers </h4>

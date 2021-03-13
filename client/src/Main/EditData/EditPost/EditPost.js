@@ -92,14 +92,16 @@ const EditPost = (props)=>{
                }}
                validationSchema={Yup.object({
                  title: Yup.string()
-                   .min(1, "should be 1 charactor minimum")
+                   .min(4, "Must be atleast 4 characters")
+                   .max(400, "Cannot exceed 400 character")
                    .required("Required"),
                  description: Yup.string()
-                   .min(1, "should be 1 chars minimum.")
+                   .min(4, "Must be atleast 4 characters")
+                   .max(400, "Cannot exceed 400 character")
                    .required("Required"),
-                 content: Yup.string().min(1, "should be 1 chars minimum."),
+                 content: Yup.string().min(4, "Must be atleast 4 characters"),
                })}
-                onSubmit={dataSubmitHandler}
+               onSubmit={dataSubmitHandler}
              >
                {({ setFieldValue, ...props }) => (
                  <Form className="py-2">

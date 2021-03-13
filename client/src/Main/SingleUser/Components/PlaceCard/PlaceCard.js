@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Card, ImageHeader, CardBody, CardFooter } from "react-simple-card";
-import Image from "../../../../assets/images/traveller.jpg";
 import MapModal from "../MapModal/MapModal";
 import Switch from "@material-ui/core/Switch";
 import { AuthContext } from "../../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../../Shared/hooks/http-hook";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import ErrorModal from "../../../../Shared/ErrorModal/ErrorModal";
-
+import { imageDeleteHandler } from "../../../../firebase/firebase";
 import "./PlaceCard.css";
 
 const PlaceCard = React.memo((props) => {
@@ -19,7 +18,7 @@ const PlaceCard = React.memo((props) => {
   const currentUserCheck = auth.userId === props.place.creator;
   const wishlist = props.place.wishlist;
   useEffect(() => {
-    return ()=> setSwitchState(wishlist);
+    return () => setSwitchState(wishlist);
   }, [switchState, wishlist]);
 
   const handleChange = async () => {
@@ -51,6 +50,7 @@ const PlaceCard = React.memo((props) => {
           Authorization: "Bearer " + auth.token,
         }
       );
+      imageDeleteHandler(props.place.image);
       props.onPlaceDelete(props.place.wishlist, props.place.id);
     } catch (err) {}
   };
@@ -59,7 +59,11 @@ const PlaceCard = React.memo((props) => {
     <div className="mx-auto SingelUserPlaceCard">
       {error && <ErrorModal errorText={error} clicked={clearError} />}
       <Card className="CardDiv">
-        <ImageHeader className="CardImage" alt="image" imageSrc={props.place.image} />
+        <ImageHeader
+          className="CardImage"
+          alt="image"
+          imageSrc={props.place.image}
+        />
         <CardBody className="text-center">
           <h4>{props.place.title} </h4>
           <p className="text-muted  m-0 p-0">

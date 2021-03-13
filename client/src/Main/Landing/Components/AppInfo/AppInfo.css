@@ -19,10 +19,18 @@
 .LandingCardDiv:hover {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.418) !important;
 }
-.AppInfoSecondtHeading img {
+.LandingCardDiv img {
+  height: 250px;
+  object-fit: cover;
   border-radius: 10px 10px 0px 0px !important;
 }
 @media (max-width: 768px) {
+  .LandingCardDiv img {
+  height: 150px;
+}
+  .AppInfoFirstHeading h2 {
+    font-size: 28px;
+  }
   .AppInfoFirstHeading hr {
     width: 90%;
   }

@@ -15,15 +15,18 @@ router.delete("/:pid", placesControllers.deletePlace);
 router.post(
   "/",
   [
-    check("title").not().isEmpty(),
-    check("description").not().isEmpty(),
+    check("title").isLength({ min: 4, max: 100 }),
+    check("description").isLength({ min: 4, max: 200 }),
     check("address").not().isEmpty(),
   ],
   placesControllers.createPlace
 );
 router.patch(
   "/update/:pid",
-  [check("title").not().isEmpty(), check("description").not().isEmpty()],
+  [
+    check("title").isLength({ min: 4, max: 100 }),
+    check("description").isLength({ min: 4, max: 200 }),
+  ],
   placesControllers.updatePlace
 );
 
