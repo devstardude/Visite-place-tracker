@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import CoverPic from "../../../../assets/images/banner.jpg";
 import { AuthContext } from "../../../../Shared/Context/auth-context";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import SendMessageModal from "../SendMessageModal/SendMessageModal";

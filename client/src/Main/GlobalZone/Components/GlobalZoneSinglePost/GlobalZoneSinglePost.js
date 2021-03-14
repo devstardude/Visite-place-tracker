@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { firestore } from "../../../../firebase/firebase";
 import Loading from "../../../../Shared/Loading/Loading";

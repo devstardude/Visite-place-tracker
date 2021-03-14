@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Dp from "../../assets/images/saitamaHappy.jpg";
 import Masthead from "../../Shared/Masthead/Masthead";
 import InstagramIcon from "@material-ui/icons/Instagram";

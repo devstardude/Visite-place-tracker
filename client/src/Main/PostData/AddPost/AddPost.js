@@ -36,8 +36,8 @@ const AddPost = (props) => {
       }
     );
     setSubmitting(false);
-    // resetForm();
-    // history.push(`/user/${auth.userId}`);
+    resetForm();
+    history.push(`/user/${auth.userId}`);
   };
   return (
     <div className="AddPlaceForm">

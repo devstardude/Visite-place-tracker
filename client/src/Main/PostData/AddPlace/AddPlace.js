@@ -54,8 +54,8 @@ const AddPlace = (props) => {
       );
     } catch (err) {}
     setSubmitting(false);
-    // resetForm();
-    // history.push(`/user/${auth.userId}`);
+    resetForm();
+    history.push(`/user/${auth.userId}`);
   };
   const PlaceSearchResultHandler = (result) => {
     setPlaceSearch(result);
