@@ -42,7 +42,7 @@ const myPosts = async (req, res, next) => {
   try {
     userPosts = await Post.find(
       { creator: userId },
-      { title: 1, description: 1, time: 1, tags: 1, creator: 1 }
+      { title: 1, description: 1, time: 1, tags: 1, creator: 1,image:1 }
     ).sort({ id: -1 });
   } catch (err) {
     const error = new HttpError(

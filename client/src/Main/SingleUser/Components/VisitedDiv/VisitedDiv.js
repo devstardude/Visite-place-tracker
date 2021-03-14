@@ -5,6 +5,7 @@ import PlaceCard from "../PlaceCard/PlaceCard";
 // import "./VisitedDiv.css";
 
 const VisitedDiv = (props) => {
+  
   return (
     <React.Fragment>
       {props.loading && <Spinner />}
@@ -26,7 +27,7 @@ const VisitedDiv = (props) => {
       )}
       {!props.loading && !props.visitedList && (
         <div className="container Center pt-4">
-          <h4 style={{ color: "#ffffff" }}>No Places to show</h4>
+          <h4 style={{ color: "#ffffff" }}>Loading...</h4>
         </div>
       )}
     </React.Fragment>

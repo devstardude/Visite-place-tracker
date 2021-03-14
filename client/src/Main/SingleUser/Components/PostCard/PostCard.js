@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Image from "../../../../assets/images/traveller.jpg";
 import { Card, ImageHeader, CardBody, CardFooter } from "react-simple-card";
 import { AuthContext } from "../../../../Shared/Context/auth-context";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -30,7 +29,8 @@ const PostCard = (props) => {
       {error && <ErrorModal errorText={error} clicked={clearError} />}
       <Card className="CardDiv">
         <Link style={{ color: "black" }} to={`/post/${props.post.id}`}>
-          <ImageHeader className="CardImage" alt="image" imageSrc={Image} />
+        {console.log(props.post)}
+          <ImageHeader className="CardImage" alt="image" imageSrc={props.post.image} />
           <CardBody>
             <h4>{props.post.title} </h4>
             <p>

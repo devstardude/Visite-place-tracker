@@ -26,9 +26,9 @@ const WishlistDiv = (props) => {
              <h4 style={{ color: "#ffffff" }}>No Places to show</h4>
            </div>
          )}
-       {!props.loading && !props.wishlistList && (
+       {!props.loading && !props.visitedList && (
          <div className="container Center pt-4">
-           <h4 style={{ color: "#ffffff" }}>No Places to show</h4>
+           <h4 style={{ color: "#ffffff" }}>Loading...</h4>
          </div>
        )}
      </React.Fragment>

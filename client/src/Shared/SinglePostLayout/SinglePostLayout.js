@@ -1,10 +1,9 @@
 import React from "react";
 import Masthead from "../Masthead/Masthead";
-import Spinner from "../Spinner/Spinner";
 import { Chip } from "@material-ui/core";
 import { Card, CardBody } from "react-simple-card";
 import Markdown from "react-markdown";
-//import'./SinglePostLayout.css';
+import'./SinglePostLayout.css';
 
 const SinglePostLayout = (props) => {
   const { title, description, sanitizedContent, tags, image } = props.post;
@@ -35,7 +34,15 @@ const SinglePostLayout = (props) => {
 
               <hr />
               <div className="SinglePostLayoutContentDiv">
-                <Markdown escapeHtml={false} source={sanitizedContent?sanitizedContent:props.post.firebaseContent} />
+                <Markdown
+                  className="SinglePostLayoutContentDiv"
+                  escapeHtml={false}
+                  source={
+                    sanitizedContent
+                      ? sanitizedContent
+                      : props.post.firebaseContent
+                  }
+                />
               </div>
 
               <br />

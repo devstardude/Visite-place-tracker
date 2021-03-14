@@ -1,7 +1,7 @@
 import imageCompression from "browser-image-compression";
 import { uploadImage } from "../firebase/firebase";
 
-export const imageUploadHandler = async (id, file,size) => {
+export const imageUploadHandler = async (id, file, size) => {
   const options = {
     maxSizeMB: size,
     maxWidthOrHeight: 1920,
@@ -21,6 +21,8 @@ const badge = (urban, nature, sea, others) => {
     return "New Adventurer";
   } else if (urban >= 10 && nature >= 10 && sea >= 10 && others >= 10) {
     return "Pro Traveller";
+  } else if (urban === nature && nature === sea && sea === others) {
+    return "Perfectly Balanced";
   } else if (urban === Math.max(urban, nature, sea, others)) {
     return "Urban Traveller";
   } else if (nature === Math.max(urban, nature, sea, others)) {

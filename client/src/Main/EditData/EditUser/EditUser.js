@@ -7,7 +7,6 @@ import { AuthContext } from "../../../Shared/Context/auth-context";
 import { useHttpClient } from "../../../Shared/hooks/http-hook";
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import Masthead from "../../../Shared/Masthead/Masthead";
-import CoverPic from "../../../assets/images/cover.jpg";
 import { Paper } from "@material-ui/core";
 import Loading from "../../../Shared/Loading/Loading";
 import "./EditUser.css";

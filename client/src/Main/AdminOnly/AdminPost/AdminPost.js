@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -20,15 +20,21 @@ import {
 import ErrorModal from "../../../Shared/ErrorModal/ErrorModal";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./AdminPost.css";
+import { imageUploadHandler } from "../../../utils/utils";
 
 const googleAuth = firebase.auth();
 const AdminPost = (props) => {
+  const history = useHistory();
   const [user] = useAuthState(googleAuth);
   const [error, setError] = React.useState(null);
   const auth = useContext(AuthContext);
   const clearErrorHandler = () => {
     setError(null);
   };
+  const signInWithGoogleHandler =async()=>{
+    await signInWithGoogle();
+    history.push("/admin/post")
+  }
   if (auth.userId === process.env.REACT_APP_ADMIN_ID) {
     if (user) {
       const postRef = firestore.collection("global-post");
@@ -41,6 +47,7 @@ const AdminPost = (props) => {
           description: values.description,
           firebaseContent: values.content,
           tags: values.tags.split(","),
+          image: await imageUploadHandler(auth.userId, values.image, 0.2),
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         };
         try {
@@ -123,7 +130,7 @@ const AdminPost = (props) => {
                   </Form>
                 )}
               </Formik>
-              <div className="Center mt-4">
+              <div className="Center mt-3">
                 <Button onClick={logOut} className="btn px-2">
                   Log out
                 </Button>
@@ -141,25 +148,22 @@ const AdminPost = (props) => {
           style={{ height: "100vh" }}
           className="jumbotron d-flex align-items-center Center justify-content-center bg-dark"
         >
-            <div
-              className="card text-center "
-              style={{ width: "20rem" }}
-            >
-              <div className="card-header">Hidden Route {"( ͡° ͜ʖ ͡°)"}</div>
-              <div className="card-body">
-                <h5 className="card-title">Welcome Admin</h5>
-                <p className="card-text" style={{ color: "black" }}>
-                  Login with Google
-                </p>
-                <Link
-                  to="/login"
-                  className="btn btn-dark"
-                  onClick={signInWithGoogle}
-                >
-                  Click Here
-                </Link>
-              </div>
+          <div className="card text-center " style={{ width: "20rem" }}>
+            <div className="card-header">Hidden Route {"ಠ‿ಠ"}</div>
+            <div className="card-body">
+              <h5 className="card-title">Welcome Admin</h5>
+              <p className="card-text" style={{ color: "black" }}>
+                Login with Google
+              </p>
+              <Link
+                to="/login"
+                className="btn btn-dark"
+                onClick={signInWithGoogleHandler}
+              >
+                Click Here
+              </Link>
             </div>
+          </div>
         </div>
       );
     }

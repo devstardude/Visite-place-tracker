@@ -33,9 +33,9 @@ const AboutMe = (props) => {
           </h2>
           <hr />
           <h5 className="px-2 px-md-5">
-            I have worked with React, React-hooks, Node-Express, MongoDB, and
+            I have worked with React, React-hooks, Node-Express, MongoDB, REST Api, and 
             Firebase in quite a few projects to have a good understanding about
-            how these stack work together to make an amazing working web
+            how these stack and technologies work together and make an amazing working web
             application.
           </h5>
           <hr />

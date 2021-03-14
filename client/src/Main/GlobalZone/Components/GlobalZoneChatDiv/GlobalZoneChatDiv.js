@@ -7,6 +7,7 @@ import { AuthContext } from "../../../../Shared/Context/auth-context";
 import Spinner from "../../../../Shared/Spinner/Spinner";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import TooltipInfo from "../../../../Shared/TooltipInfo/TooltipInfo";
+import { Link } from "react-router-dom";
 const GlobalZoneChatDiv = (props) => {
   const auth = useContext(AuthContext);
   const [formValue, setFormValue] = useState("");
@@ -26,6 +27,7 @@ const GlobalZoneChatDiv = (props) => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       dp: auth.dp,
       uid: auth.userId,
+      username:auth.username
     });
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
@@ -85,15 +87,19 @@ const GlobalZoneChatDiv = (props) => {
 };
 const ChatMsg = (props) => {
   const auth = useContext(AuthContext);
-  const { text, uid, dp } = props.message;
+  const { text, uid, dp,username } = props.message;
   const messageClass = uid === auth.userId ? "sent" : "received";
   return (
     <div className="col-12 m-1 ">
       <div className={`message ${messageClass}`}>
-        <img className="Image" src={dp} alt="dp.jpg" />
-        <p style={{ textAlign: "left" }} className="ChatText">
-          {text}
-        </p>
+        <TooltipInfo info={username}>
+          <img className="GlobalChatImage" src={dp} alt="dp.jpg" />
+        </TooltipInfo>
+        <Link to={`/user/${uid}`}>
+          <p style={{ textAlign: "left" }} className="ChatText">
+            {text}
+          </p>
+        </Link>
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Chip } from "@material-ui/core";
-import { Card, ImageHeader, CardBody, CardFooter } from "react-simple-card";
+import { Card, ImageHeader, CardBody} from "react-simple-card";
 import { Link } from "react-router-dom";
-import Cover from "../../../../assets/images/cover.jpg";
 
 import'./GlobalZonePostCard.css';
 
@@ -14,7 +13,7 @@ const GlobalZonePostCard = (props)=>{
             <ImageHeader
               className="GlobalZoneCardImage"
               alt="image"
-              imageSrc={Cover}
+              imageSrc={props.post.image}
             />
             <CardBody>
               <h4>{props.post.title} </h4>
@@ -36,20 +35,6 @@ const GlobalZonePostCard = (props)=>{
               </p>
             </CardBody>
           </Link>
-
-          {/* {currentUserCheck && (
-            <CardFooter>
-              <div className="container d-flex justify-content-between GlobalZonePostCardFooterButton">
-                <Link to={`/edit/post/${props.post.id}`}>
-                  <button className="btn btn-outline-info">Edit</button>
-                </Link>
-                <DeleteConfirmationModal
-                  deleteWarning="Are you sure you want to delete this post?"
-                  deleteHandler={deleteHandler}
-                />
-              </div>
-            </CardFooter>
-          )} */}
         </Card>
       </div>
     );
