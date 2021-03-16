@@ -14,7 +14,7 @@ const SinglePostLayout = (props) => {
         <div className="PaperForm SinglePostLayoutDiv mx-auto">
           <Card className="SinglePostLayoutCard ">
             <CardBody>
-              <h1 style={{ fontWeight: "600" }}>{title} </h1>
+              <h1 style={{ fontWeight: "bold" }}>{title} </h1>
               <h6>
                 {"("}
                 {description}

@@ -5,7 +5,7 @@ import "./MessageBox.css";
 const MessageBox = (props) => {
   const { text, senderId, senderName, senderDp } = props.message;
   return (
-    <div className="container p-3 ">
+    <div className="container pt-3 pb-2 px-3">
       <div className="d-flex align-middle">
         <TooltipInfo info={senderName}>
           <img className="MessageImage" src={senderDp} alt="..." />

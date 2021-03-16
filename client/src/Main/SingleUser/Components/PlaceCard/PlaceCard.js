@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Card, ImageHeader, CardBody, CardFooter } from "react-simple-card";
 import MapModal from "../MapModal/MapModal";
@@ -16,10 +16,6 @@ const PlaceCard = React.memo((props) => {
   const [switchState, setSwitchState] = useState(props.place.wishlist);
   const [switchDisabled, setSwitchDisabled] = useState(false);
   const currentUserCheck = auth.userId === props.place.creator;
-  const wishlist = props.place.wishlist;
-  useEffect(() => {
-    return () => setSwitchState(wishlist);
-  }, [switchState, wishlist]);
 
   const handleChange = async () => {
     setSwitchState((prev) => !prev);

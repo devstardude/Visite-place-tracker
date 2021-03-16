@@ -1,7 +1,7 @@
 .GlobalUsersDiv {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../../../../assets//images/mountains.jpg");
-   background-color: #202020;
+  background-color: #202020;
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
@@ -14,7 +14,7 @@
   justify-content: center;
   z-index: -2;
 }
-.NoUsersDiv{
+.NoUsersDiv {
   width: 30%;
   color: white;
   -webkit-border-radius: 13px;
@@ -31,7 +31,7 @@
 }
 
 .UsersScrollableDiv {
-  height: 100vh;
+  height: 72vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -71,13 +71,16 @@
 }
 
 @media (max-width: 768px) {
-  .GlobalCardScaled{
+  .GlobalCardScaled {
     transform: scale(0.95);
   }
   .GlobalUsersContent {
-  padding-top: 10vh;
-}
-.NoUsersDiv{
-  width: 80%;
-} 
+    padding-top: 10vh;
+  }
+  .UsersScrollableDiv {
+    height: 75vh;
+  }
+  .NoUsersDiv {
+    width: 80%;
+  }
 }
