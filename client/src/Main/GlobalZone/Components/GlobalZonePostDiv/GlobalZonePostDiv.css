@@ -1,0 +1,46 @@
+.GlobalZonePostDiv {
+  height: 80vh;
+  width: 100%;
+  padding: 5% 10%;
+  overflow-y: auto;
+}
+
+.GlobalZonePostDiv::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-thumb {
+  background: #353535;
+  border: 0px none #7e7e7e;
+  border-radius: 50px;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-thumb:hover {
+  background: #353535;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-thumb:active {
+  background: #353535;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-track {
+  background: #e7e7e7;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-track:hover {
+  background: #e7e7e7;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-track:active {
+  background: #e7e7e7;
+}
+.GlobalZonePostDiv::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+
+@media (max-width: 768px) {
+
+}

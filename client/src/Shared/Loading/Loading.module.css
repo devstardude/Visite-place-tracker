@@ -1,0 +1,15 @@
+.LoadingIcon {
+  font-size: 3.4rem !important;
+  color: white !important;
+  animation: rotate 1.5s linear infinite;
+}
+
+.Backdrop {
+  background-color: #242424;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

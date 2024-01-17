@@ -1,0 +1,55 @@
+.Owner {
+  z-index: 2;
+  text-align: center;
+}
+.Owner .Avatar {
+  padding: 15px;
+  max-width: 180px;
+  max-height: 180px;
+  margin: -85px auto 0;
+  display: inline-block;
+  object-fit: cover;
+}
+.Img-circle {
+  background-color: #00000041;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 50% !important;
+  min-width: 9rem;
+  min-height: 9rem;
+  max-width: 9rem;
+  max-height: 9rem;
+  object-fit: cover;
+}
+.Img-no-padding {
+  padding: 0px;
+}
+
+.Head-fab {
+  outline: none;
+  background-color: #fafafa !important;
+  box-shadow: none !important;
+}
+.Head-fab:focus{
+  outline: none;
+}
+.Head-fab:hover {
+  color: rgb(0, 0, 0);
+}
+
+.AddUserHeading h5 {
+  font-size: 22px;
+  line-height: 1.5;
+}
+.AddUserHeading h1 {
+}
+
+@media (max-width: 768px) {
+  .UserHeaderBio {
+    width: 90%;
+    line-height: 2;
+  }
+  .AddUserHeading h5 {
+    font-size: 15px;
+  }
+}

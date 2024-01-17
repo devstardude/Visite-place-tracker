@@ -1,0 +1,86 @@
+.GlobalUsersDiv {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../../../assets//images/mountains.jpg");
+  background-color: #202020;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -2;
+}
+.NoUsersDiv {
+  width: 30%;
+  color: white;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+.GlobalUsersContent {
+  padding-top: 15vh;
+}
+
+.UsersScrollableDiv {
+  height: 72vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.UsersScrollableDiv::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb {
+  background: #d6d6d6;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.UsersScrollableDiv::-webkit-scrollbar-thumb:active {
+  background: #e0e0e0;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track {
+  background: #525252;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track:hover {
+  background: #5c5c5c;
+}
+.UsersScrollableDiv::-webkit-scrollbar-track:active {
+  background: #5c5c5c;
+}
+.UsersScrollableDiv::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .GlobalCardScaled {
+    transform: scale(0.95);
+  }
+  .GlobalUsersContent {
+    padding-top: 10vh;
+  }
+  .UsersScrollableDiv {
+    height: 75vh;
+  }
+  .NoUsersDiv {
+    width: 80%;
+  }
+}

@@ -1,0 +1,20 @@
+.SearchBar{
+    width: 50%;
+}
+.SearchBarInput {
+  background-color: #F8F9FA;
+    font-size: 20px;
+  border: none;
+}
+.SearchBarInput:focus {
+  outline: none;
+}
+.SearchIcon{
+    font-size: 30px!important;
+}
+
+@media(max-width:768px){
+    .SearchBar{
+    width: 90%;
+}
+}

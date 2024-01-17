@@ -1,0 +1,12 @@
+.AddUserHeading h5 {
+  font-size: 22px;
+}
+
+
+@media (max-width: 768px) {
+
+  .AddUserHeading h5 {
+    font-size: 15px;
+  }
+
+}

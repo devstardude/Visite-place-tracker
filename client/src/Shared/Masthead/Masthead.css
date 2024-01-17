@@ -1,0 +1,30 @@
+.MastheadCover {
+  background-color: #161616;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  object-fit: cover;
+}
+.MastheadCover h1{
+    font-size: calc(2.2vw + 3.6vh + 2.5vmin);
+    color: white;
+    font-weight: 700;
+}
+.MastheadCover h2{
+    font-size: calc(2.2vw + 3.6vh + 2.5vmin);
+    color: white;
+    font-weight: 700;
+}
+
+@media(max-width:500px){
+  .MastheadCover{
+  min-height: 30vh;
+  }
+}

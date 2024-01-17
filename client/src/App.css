@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;800;900&display=swap");
+@import "tomtom-react-searchbox";
+.Center {
+  text-align: center;
+}
+.Right {
+  text-align: right;
+}
+.WaveBackground{
+  background-color: #ffffff4b;
+background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+button {
+  font-family: "Montserrat", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+.Link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+.Link:hover{
+  color: white;
+}
+
+.CursorPointer:hover{
+  cursor: pointer;
+}
+
+.PaperForm {
+  width: 60%;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .PaperForm {
+    width: 90%;
+  }
+}

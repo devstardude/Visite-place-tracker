@@ -1,0 +1,40 @@
+.AppInfoFirstHeading h5 {
+  line-height: 1.5;
+}
+.AppInfoFirstHeading h2 {
+  line-height: 1.5;
+}
+.AppInfoSecondHeading h4 {
+  font-size: 20px !important;
+}
+.AppInfoFirstHeading hr {
+  width: 75%;
+}
+.LandingCardDiv {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  transition: 1s;
+}
+.LandingCardDiv:hover {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.418) !important;
+}
+.LandingCardDiv img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0px 0px !important;
+}
+@media (max-width: 768px) {
+  .LandingCardDiv img {
+  height: 150px;
+}
+  .AppInfoFirstHeading h2 {
+    font-size: 28px;
+  }
+  .AppInfoFirstHeading hr {
+    width: 90%;
+  }
+  .AppInfoSecondHeading h4 {
+    font-size: 20px !important;
+  }
+}

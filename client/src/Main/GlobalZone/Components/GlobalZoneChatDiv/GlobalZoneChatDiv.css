@@ -1,0 +1,91 @@
+.ChatContainer {
+  height: 78vh;
+}
+.ChatMessageContainer {
+  height: 67vh;
+}
+
+.ChatText {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent .ChatText {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.received .ChatText {
+  background: #e5e5ea;
+  color: black;
+}
+.GlobalChatImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0px 5px;
+  object-fit: cover;
+}
+
+.ChatMessageOverflow {
+  overflow-y: auto;
+}
+
+
+
+.ChatMessageOverflow::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.ChatMessageOverflow::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.ChatMessageOverflow::-webkit-scrollbar-thumb {
+  background: #1cb2fd;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.ChatMessageOverflow::-webkit-scrollbar-thumb:hover {
+  background: #0683d0;
+}
+.ChatMessageOverflow::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.ChatMessageOverflow::-webkit-scrollbar-track {
+  background: #ededed;
+  border: 0px none #ffffff;
+  border-radius: 1px;
+}
+.ChatMessageOverflow::-webkit-scrollbar-track:hover {
+  background: #e8e8e8;
+}
+.ChatMessageOverflow::-webkit-scrollbar-track:active {
+  background: #e0e0e0;
+}
+.ChatMessageOverflow::-webkit-scrollbar-corner {
+  background: transparent;
+}
+@media (max-width: 768px) {
+    .ChatContainer {
+  height: 81vh;
+}
+    .ChatMessageContainer {
+  height: 70vh;
+}
+}

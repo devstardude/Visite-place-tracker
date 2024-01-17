@@ -1,0 +1,25 @@
+.Heart {
+  color: #9c9c9c;
+  animation: heathing 1.5s ease infinite;
+}
+
+@keyframes heathing {
+  0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}
