@@ -4,6 +4,7 @@
   "description": "An application that lets to track places, share posts, chat and including other features",
   "main": "app.js",
   "scripts": {
+    "start":"node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Devstar",
